@@ -1,0 +1,83 @@
+<!-- 租房详情页面 -->
+<wxs src="../../../lib/filter.wxs" module="filter" />
+<agent-invite></agent-invite>
+<view class="container related" wx:if="{{!noData}}">
+    <view class="box">
+        <!-- 轮播图 -->
+        <top-swiper bind:checkIsShow="handleCheckShow" bannerImgUrl="{{bannerImgUrl}}" houseImages="{{houseImages}}" type="{{searchBox.detailType}}" houseType="{{searchBox.detailType}}">
+            <view slot="btnCollection" class="option-group-style" wx:if="{{searchBox.detailType !=='apart'}}">
+                <block>
+                    <view wx:if="{{hasUserInfo}}" class="icon-collect {{isCollection=='2' ? 'on' : ''}}" bindtap="handleRentCollect"></view>
+                    <button class="icon-collect" wx:else open-type="getPhoneNumber" bindgetphonenumber="getUserInfo"></button>
+                </block>
+                <button class="icon-share" hover-class="none" open-type="share"></button>
+            </view>
+        </top-swiper>
+        <!-- 名称模块 -->
+        <view class="title-info">
+            <view class="name" wx:if="{{searchBox.detailType == 'garden'}}">
+                {{houseInfo.name}}
+                <view class="gerden-pos">{{houseInfo.region + ' · ' + houseInfo.bizArea}}</view>
+            </view>
+            <view class="name" wx:if="{{searchBox.detailType == 'apart'}}">
+                {{houseInfo.title}}
+                <view class="gerden-pos" wx:if="{{houseInfo.roomCoun}}">
+                    {{houseInfo.roomCount}}套可预订
+                </view>
+            </view>
+            <view class="name" wx:if="{{searchBox.detailType == 'school'}}">
+                {{houseInfo.name}}
+            </view>
+        </view>
+        <!-- felx信息 -->
+        <flex-info type="{{searchBox.detailType}}" info='{{houseInfo}}' wx:if="{{houseInfo}}"></flex-info>
+        <!-- 基础信息 -->
+        <base-info type="{{searchBox.detailType}}" info='{{houseInfo}}' wx:if="{{houseInfo}}"></base-info>
+    </view>
+    <!-- 学校模块 -->
+    <view class='mode-type' wx:if="{{searchBox.detailType == 'school'}}">
+        <list-block wx:if="{{showBlock && schoolNearby.length>0}}" itemType="garden" itemList='{{schoolNearby}}' showMore='{{true}}' title="对口小区" moreText='查看更多对口小区'></list-block>
+        <view class="school-desc">
+            <view class="title-item">
+                学校介绍
+                <text class="more-desc" bindtap="toTextPage" data-type='schoolDesc'>查看更多学校介绍</text>
+            </view>
+            <view class="desc-text">{{houseInfo.remark}}</view>
+        </view>
+        <list-block wx:if="{{showBlock && schoolRecommend.length>0}}" itemType="house" itemList='{{schoolRecommend}}' maxLength="5" title="房源推荐"></list-block>
+    </view>
+    <!-- 小区模块 -->
+    <view class='mode-type' wx:if="{{searchBox.detailType == 'garden'}}">
+        <!-- 推荐房源 tab -->
+        <tabList-block wx:if="{{showBlock}}" type="{{searchBox.detailType}}" blockId="{{searchBox.parme.gardenId}}" title="小区房源"></tabList-block>
+        <!-- 地图组件 -->
+        <map-mode wx:if="{{showBlock && houseInfo.longitude && houseInfo.latitude}}" address='{{houseInfo.address}}' longitude='{{houseInfo.longitude}}' latitude='{{houseInfo.latitude}}' region='{{houseInfo.region}}' name='{{houseInfo.name}}'></map-mode>
+        <!-- 横向组件 -->
+        <abeam-list wx:if="{{showBlock && gardenNearby.length>0}}" list='{{gardenNearby}}' itemTo='garden' title="周边小区"></abeam-list>
+    </view>
+    <!-- 房型公寓模块 -->
+    <view class='mode-type' wx:if="{{searchBox.detailType == 'apart'}}">
+        <!-- 公寓房屋配备 -->
+        <device-box type="{{searchBox.detailType}}" list='{{houseInfo.facilities}}' wx:if="{{houseInfo}}"></device-box>
+        <!-- 公寓简介 -->
+        <intro-info desc='{{houseInfo.desc}}' wx:if="{{houseInfo.desc}}" title="房源描述"></intro-info>
+        <!-- 公寓品牌 -->
+        <view class="brand-blcok" wx:if="{{searchBox.detailType === 'apart'}}" bindtap="toBrandList">
+            <image class="brand-pic" src="{{houseInfo.brandLogUrl?houseInfo.brandLogUrl:'https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-brand-pic@2x.png'}}"></image>
+            <view class="brand-info">
+                <view class="brand-name">{{houseInfo.brand}}</view>
+                <view class="brand-text">{{houseInfo.desc}}</view>
+            </view>
+            <image class="brand-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+        </view>
+        <map-mode wx:if="{{showBlock && apartPos.gardenLongitude && apartPos.gardenLatitude}}" address='{{apartPos.gardenAddress}}' longitude='{{apartPos.gardenLongitude}}' latitude='{{apartPos.gardenLatitude}}' region='{{apartPos.regionName}}' name='{{apartPos.gardenName}}'></map-mode>
+    </view>
+    <view wx:if="{{debugId}}" class="show-debug">{{id}}</view>
+    <!-- 底部经纪人电话 -->
+    <foot-mode type="{{searchBox.detailType}}" infoList='{{agents}}' wx:if="{{agents.length>0}}"></foot-mode>
+    <!-- 回到首页 -->
+    <cover-view class="fix-goback {{isShare == 1 ? '': 'hide'}}" bindtap="handleGoHome">
+        <cover-image class="icon-home" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-details-backhome@2x.png"></cover-image>
+    </cover-view>
+</view>
+<no-data show="{{noData&&!houseInfo}}" pageType='index'></no-data>

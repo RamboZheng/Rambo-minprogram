@@ -1,0 +1,14 @@
+{
+    "usingComponents": {
+        "tabList-block": "/component/detail/tabList-block/index",
+        "foot-mode": "/component/detail/foot-mode/index",
+        "comment-item": "/component/detail/comment-item/index",
+        "comment-broker": "/component/detail/comment-broker/index",
+        "star-level": "/component/common/star-level/index",
+        "phone-block": "/component/common/phone-block/index"
+    },
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "经纪人详情",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark"
+}

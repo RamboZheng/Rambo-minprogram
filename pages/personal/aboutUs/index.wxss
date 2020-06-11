@@ -1,0 +1,76 @@
+page {
+  height: 100%;
+}
+page .container {
+  border-top: 1rpx solid rgba(110, 110, 110, 0.493);
+  display: block;
+}
+page .container .top {
+  width: 350rpx;
+  height: 170rpx;
+  margin: 80rpx auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+page .container .footer {
+  padding: 0rpx 40rpx 60rpx 40rpx;
+}
+page .container .footer .aobut {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #878d99;
+  line-height: 40rpx;
+  text-align: justify;
+}
+page .container .footer .aobut .content {
+  color: #475266;
+  margin-bottom: 40rpx;
+}
+page .container .footer .aobut .about-list {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #878d99;
+  text-align: justify;
+  line-height: 40rpx;
+}
+page .container .footer .aobut .about-list .list-item {
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+  margin-left: 36rpx;
+  line-height: 40rpx;
+  position: relative;
+}
+page .container .footer .aobut .about-list .list-item::before {
+  content: '';
+  width: 16rpx;
+  height: 16rpx;
+  background: #6595f4;
+  border-radius: 8rpx;
+  display: inline-block;
+  position: absolute;
+  left: -36rpx;
+  top: 12rpx;
+}
+page .container .footer .aobut .about-list :last-child {
+  margin-bottom: 0rpx;
+}
+page .container .footer .line {
+  width: 100%;
+  height: 2rpx;
+  background: #edeff0;
+  border-radius: 2rpx;
+  margin: 60rpx 0rpx;
+}
+page .container .footer .official-web,
+page .container .footer .phone {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #878d99;
+  text-align: justify;
+  line-height: 40rpx;
+  margin-bottom: 10rpx;
+}
+page .container .footer .phone {
+  margin-bottom: 0rpx;
+}

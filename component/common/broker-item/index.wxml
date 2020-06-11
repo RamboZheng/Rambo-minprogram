@@ -1,0 +1,18 @@
+<!-- 组件模板 -->
+<!-- 经纪人item -->
+<view class="broker-item" wx:if="{{info && type == 'view'}}">
+    <image class="head-pic" src="{{info.photoUrl|| info.photo}}" data-id="{{info.id}}" bindtap="toBrokerDetail"></image>
+    <view class="broker-text">
+        <view class="broker-name">{{info.name}}</view>
+        <view class="broker-company">{{info.company}}({{info.source}})</view>
+    </view>
+    <image class="phone" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-phone-bule@2x.png" bindtap="callIn" data-phone="{{info.contactPhone}}"></image>
+</view>
+<cover-view class="broker-item" wx:if="{{info && type == 'coverView'}}">
+    <cover-image class="head-pic" src="{{info.photoUrl || info.photo}}" data-id="{{info.id}}" bindtap="toBrokerDetail"></cover-image>
+    <cover-view class="broker-text">
+        <cover-view class="broker-name">{{info.name}}</cover-view>
+        <cover-view class="broker-company">{{info.company}}({{info.source}})</cover-view>
+    </cover-view>
+    <cover-image class="phone" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-phone-bule@2x.png" bindtap="callIn" data-phone="{{info.contact}}"></cover-image>
+</cover-view>

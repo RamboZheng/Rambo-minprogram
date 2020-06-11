@@ -1,0 +1,20 @@
+<view class="intro-box">
+    <view class="box house-des">
+        <view class="content">
+            <view class="common-title">{{title}}</view>
+            <view class="intro {{toggleParams.flag === 1 ? 'intro-h':''}}">
+                <view class="intro-desc" wx:if="{{houseDesc.length < 2}}">{{houseDesc}}</view>
+                <view class="intro-part" wx:else>
+                    <view class="intro-list">
+                        <view class="li" wx:for="{{houseDesc}}" wx:key="key">
+                            <view class="describe">{{item}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="show-all-text" wx:if="{{toggleParams.show}}" bindtap="handleToggleShow">
+                {{toggleParams.flag === 1 ? '展开全部':'收起'}}
+            </view>
+        </view>
+    </view>
+</view>

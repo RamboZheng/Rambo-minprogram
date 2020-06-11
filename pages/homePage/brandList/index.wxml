@@ -1,0 +1,59 @@
+<view class="container {{banMove?'container-fixed':''}}">
+    <image class="brand-pic" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img_apartment_banner@2x.png"></image>
+    <tab-bar tabList='{{tabList}}' bind:tabIndex="getIndex"></tab-bar>
+    <!-- 公寓列表 -->
+    <view class="list-box" style="display:{{currentIndex == 0?'blcok':'none'}}">
+        <view class="center-view" style="display:{{showTop || banMove?'blcok':'none'}}">
+            <condition-item id="condition" wx:if="{{showCon}}" infoBox="{{searchBox}}" moreCondition="{{conditionList}}" bind:changeCon="refreshList" bind:openItem="isBanMove"></condition-item>
+        </view>
+        <view class='swiper-tab' wx:if="{{!showTop}}">
+            <!-- 租房tab栏 -->
+            <view class="swiper-tab-list {{currentTab==0||selectedName||regionStr.length>0 || metroStr.length>0?  'on' : ''}}" data-current="0" catchtap="indexNav" data-type='region'>
+                {{selectedName?selectedName:'区域'}}
+                <image class='tab-arrow' src="{{downArrow}}" data-current="0" data-type='region'></image>
+            </view>
+            <view class="swiper-tab-list {{currentTab==6||rentalStr.length>0 ? 'on' : ''}}" data-current="6" catchtap="indexNav" data-type='money'>
+                {{rentalName?rentalName:'租金'}}
+                <image class='tab-arrow' src="{{downArrow}}" data-current="6" data-type='money'></image>
+            </view>
+            <view class="swiper-tab-list {{currentTab==3 ||moreStr.length>0? 'on' : ''}}" data-current="3" catchtap="indexNav" data-type='more'>
+                {{moreName?moreName:'更多'}}
+                <image class='tab-arrow' src="{{downArrow}}" data-current="3" data-type='more'></image>
+            </view>
+        </view>
+        <view class="swiper-num" wx:if="{{!showTop}}">
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{regionStr.length>0 || metroStr.length>0}}" data-current="0" data-type='region'>
+                    ({{metroStr.length+regionStr.length+1}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{rentalStr.length>1}}" data-current="6" data-type='rental'>
+                    ({{rentalStr.length}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{moreStr.length>1}}" data-current="3" data-type='more'>
+                    ({{moreStr.length}})
+                </view>
+            </view>
+        </view>
+        <list-item wx:for="{{showList}}" wx:if='{{item}}' listItem="{{item}}" detailType='flat' wx:key="key"></list-item>
+        <no-data show="{{noData}}"></no-data>
+    </view>
+    <pull-get showMore="{{showMore}}" showEnd="{{showEnd}}" wx:if="{{currentIndex == 0}}"></pull-get>
+    <!-- 公寓信息 -->
+    <view class="list-box" style="display:{{currentIndex == 1?'blcok':'none'}}">
+        <!-- 公寓简介 -->
+        <intro-info desc='{{brandInfo.description}}' wx:if="{{brandInfo.description}}" title="房源描述"></intro-info>
+        <view class='desc-bar'></view>
+        <view class='brand-desc'>
+            <view class='desc-title'>商家资质</view>
+            <view class='desc-text' wx:for="{{brandInfo.businessQualification}}" wx:key="key">
+                <image class="means-pic" wx:if="{{item=='经营许可证'}}" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img_apartment_zizhi_one@2x.png"></image>
+                <image class="means-pic" wx:if="{{item=='房屋使用权许可证'}}" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img_apartment_zizhi_one@2x.png"></image>
+                {{item}}
+            </view>
+        </view>
+    </view>
+</view>

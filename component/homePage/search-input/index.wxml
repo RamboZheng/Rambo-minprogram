@@ -1,0 +1,21 @@
+<!-- 组件模板 -->
+<!-- 首页搜索栏 -->
+<view class="home-top top" wx:if="{{homeSearch}}">
+    <view class="home-action">
+        <view class="input-box">
+            <view class="locate" bindtap="toChooseCity">
+                {{city.name}}
+                <text class='locate-icon'>▼</text>
+            </view>
+            <view class="line"></view>
+            <image class='seek-img' src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-home-search-normal@3x.png" width="20%"></image>
+            <view class="top-input" bindtap="navToSearch" wx:if="{{homeSearch}}">你想住在哪？</view>
+        </view>
+    </view>
+</view>
+<!-- 其他页面搜索栏 -->
+<view class="renting-top top" wx:else>
+    <image class='top-img' src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-home-search-normal@2x.png"></image>
+    <view class="top-input" bindtap="radiToSearch" wx:if='{{type == "school"}}'>请输入小学或中学名称</view>
+    <view class="top-input" bindtap="radiToSearch" wx:else>{{searchText}}</view>
+</view>

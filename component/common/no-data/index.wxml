@@ -1,0 +1,31 @@
+<!-- 组件模板 -->
+<view class="item" wx:if="{{show && pageType=='list'}}">
+    <image class="noData-pic" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-emptypages-record@2x.png"></image>
+</view>
+<view class="item" wx:if="{{show && pageType== 'detail'}}">
+    <image class="noData-pic" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-emptypages-record@2x.png"></image>
+</view>
+<view class="item" wx:if="{{show && pageType== 'person'}}">
+    <view class="showImg">
+        <image class="noData-pic" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-emptypages-record@2x.png"></image>
+        <slot class="tips"></slot>
+    </view>
+</view>
+<view class="item" wx:if="{{show && pageType== 'broker'}}">
+    <image class="noData-pic" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-emptypages-record@2x.png"></image>
+</view>
+<view class="item" wx:if="{{show && pageType== 'index'}}">
+    <view class="indexImg">
+        <image class="noData-pic" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img_empty_record@2x.png"></image>
+        <view class="index-tip">该房源不存在</view>
+    </view>
+</view>
+<view class="item" wx:if="{{show && pageType== 'school'}}">
+    <view class="indexImg">
+        <view class="index-tip">
+            <image class="noData-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic_home_abnormal@3x.png"></image>
+            未找到符合条件的学校
+        </view>
+        <image class="noData-pic" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img_empty_record@3x.png"></image>
+    </view>
+</view>

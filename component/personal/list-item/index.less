@@ -1,0 +1,167 @@
+.item {
+    box-sizing: border-box;
+    width: 100%;
+    // height: 240rpx;
+    padding: 0rpx 30rpx;
+    display: flex;
+    align-items: center;
+
+    .itemBox {
+        width: 100%;
+        height: 100%;
+        border-bottom: 2rpx solid #edeff0;
+        display: flex;
+        // align-items: center;
+        padding: 30rpx 0rpx;
+
+        .left {
+            width: 240rpx;
+            height: 180rpx;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20rpx;
+
+            .item-image {
+                flex: 1;
+                width: 240rpx;
+                height: 180rpx;
+                background: #d8d8d8;
+                border-radius: 8rpx;
+            }
+
+            .price-spread {
+                flex: 0;
+                width: 240rpx;
+                height: 40rpx;
+                background: #9cbdff;
+                border-radius: 0rpx 0rpx 8rpx 8rpx;
+                font-family: PingFangSC-Regular;
+                font-size: 24rpx;
+                color: #ffffff;
+                letter-spacing: 0;
+                line-height: 33rpx;
+                text-align: center;
+                position: absolute;
+                bottom: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .right {
+            .item-title {
+                font-family: PingFangSC-Regular;
+                font-size: 28rpx;
+                color: #475266;
+                letter-spacing: 0;
+                word-break: break-all;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .item-describe {
+                font-family: PingFangSC-Regular;
+                font-size: 24rpx;
+                color: #878d99;
+                letter-spacing: 0;
+                margin-top: 10rpx;
+                word-break: break-all;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                .line {
+                    margin: 0rpx 10rpx;
+                }
+            }
+
+            .distance {
+                margin-top: 10rpx;
+                font-family: PingFangSC-Regular;
+                font-size: 24rpx;
+                color: #878d99;
+                letter-spacing: 0;
+            }
+
+            .item-tags {
+                height: 42rpx;
+                display: flex;
+                align-items: center;
+                margin-top: 10rpx;
+
+                .tag {
+                    display: inline-block;
+                    padding: 5rpx 14rpx;
+                    font-size: 20rpx;
+                    background: #edeff0;
+                    color: #878d99;
+                    border: 2rpx solid #edeff0;
+                    border-radius: 8rpx;
+                    line-height: 28rpx;
+                    margin-right: 20rpx;
+                }
+
+                :first-child {
+                    background: #fff;
+                    color: #6595f4;
+                    border: 2rpx solid #6595f4;
+                }
+            }
+
+            .item-price {
+                margin-top: 14rpx;
+                height: 40rpx;
+                display: flex;
+                align-items: center;
+
+                view {
+                    margin-right: 20rpx;
+                }
+
+                .test-price {
+                    font-family: PingFangSC-Regular;
+                    font-size: 24rpx;
+                    color: #a4a4a4;
+                    letter-spacing: 0;
+                    text-decoration: line-through;
+                }
+                .price {
+                    font-family: SourceHanSansCN-Heavy;
+                    font-size: 28rpx;
+                    color: #e56a67;
+                    letter-spacing: 0;
+                }
+                .unit-price {
+                    font-family: PingFangSC-Regular;
+                    font-size: 24rpx;
+                    color: #a4a4a4;
+                    letter-spacing: 0;
+                }
+            }
+        }
+    }
+
+    .shage {
+        flex: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.7);
+        position: relative;
+
+        .SoldOutIcon {
+            width: 140rpx;
+            height: 140rpx;
+            position: absolute;
+            top: 0;
+            right: -30rpx;
+        }
+    }
+}

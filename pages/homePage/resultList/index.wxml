@@ -1,0 +1,41 @@
+<view class="container {{banMove?'container-fixed':''}}">
+    <!-- <view class="top-bar" wx:if='{{searchBox.type=="rent" || searchBox.type=="intact"  || searchBox.type=="combine"}}'></view> -->
+    <view class="top">
+        <search-input type='{{searchBox.type}}' wx:if="{{searchBox.type}}"></search-input>
+        <condition-item wx:if="{{showCon}}" infoBox="{{searchBox}}" moreCondition="{{conditionList}}" bind:changeCon="refreshList" bind:openItem="isBanMove"></condition-item>
+    </view>
+    <view class="have-data" wx:if="{{showResult == 'showData'}}">
+        <view class='result-box' wx:for='{{resultList}}' wx:key="key">
+            <view class="result-name" data-id="{{item.outNetId}}" bindtap="toBlock">
+                {{item.name}}
+                <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-home-rightarrow@2x.png"></image>
+            </view>
+            <view class="result-size">
+                {{item.region}}-{{item.bizArea}} |
+                <view class="house-total">
+                    {{!item.avgPrice || item.avgPrice == "暂无数据" || item.avgPrice == "暂无数据元/㎡"?"暂无数据":item.avgPrice+'元/㎡'}}
+                </view>
+                |
+                <view class="house-total" wx-if='{{item.houseTotal}}'>在售{{item.houseTotal}}套</view>
+                <view class="house-total" wx-if='{{!item.houseTotal}}'>暂无数据</view>
+            </view>
+            <view class="collect-button white-button" bindtap="collectPage" data-house="{{item.outNetId}}" wx:if='{{!item.isCollect}}'>
+                <view>收藏</view>
+            </view>
+            <view class="collect-button blue-button" bindtap="cancleCollect" data-house="{{item.outNetId}}" wx:if='{{item.isCollect}}'>
+                <view>已收藏</view>
+            </view>
+        </view>
+    </view>
+    <view class="no-data" wx:if="{{showResult =='noData'}}">
+        <view class="top-text">
+            <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-home-abnormal@2x.png"></image>
+            {{searchBox.type=='garden'?'未找到符合条件的小区':'未找到符合条件的房源'}}
+        </view>
+        <view class="bottom-text">推荐房源</view>
+    </view>
+    <view class="top-bar" style='height:70rpx' wx:if="{{searchBox.type != 'flat' && showResult != 'showData' && showResult !='noData'}}"></view>
+    <list-item wx:for="{{showList}}" detailType='{{searchBox.type}}' listItem="{{item}}" wx:key="key"></list-item>
+    <no-data show="{{noData}}" pageType="{{searchBox.type=='school'?'school':'list'}}"></no-data>
+    <pull-get showMore="{{showMore}}" showEnd="{{showEnd}}"></pull-get>
+</view>

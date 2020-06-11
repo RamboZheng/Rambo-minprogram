@@ -1,0 +1,98 @@
+/**app.wxss**/
+/* 禁止滑动样式 */
+.container-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/* 中部间隔bar */
+.mid-bar {
+    width: 100%;
+    height: 20rpx;
+    background-color: #F2F3F5;
+}
+
+/* 调试模式展示id样式 */
+.show-debug {
+    width: 92%;
+    padding: 30rpx;
+    color: #878d99;
+    margin-bottom: 155rpx;
+}
+
+.container {
+    height: 100%;
+    font-family: PingFangSC-Regular;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 200rpx 0; */
+    box-sizing: border-box;
+    font-size: 28rpx;
+    letter-spacing: 0;
+    background-color: #fff;
+}
+
+.top-bar {
+    width: 100%;
+    height: 30rpx;
+}
+
+.matter {
+    width: 92%;
+    margin: 0 auto;
+}
+
+.angent-dl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 30rpx; */
+}
+
+.angent-dl .dt {
+    display: flex;
+    align-items: center;
+}
+
+.angent-dl .dt .avatar {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.angent-dl .dt .avatar image {
+    width: 100%;
+    height: 100%;
+}
+
+.angent-dl .dt .people {
+    margin-left: 20rpx;
+}
+
+.angent-dl .people .user {
+    font-size: 32rpx;
+    color: #475266;
+    display: block;
+    font-weight: bold;
+}
+
+.angent-dl .people .date {
+    font-size: 28rpx;
+    color: #878d99;
+    margin-top: 10rpx;
+    line-height: 40rpx;
+    display: block;
+}
+
+.angent-dl .dd {
+    width: 64rpx;
+    height: 64rpx;
+    background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-phone-bule@2x.png?tdsourcetag=s_pcqq_aiomsg);
+    background-size: cover;
+}

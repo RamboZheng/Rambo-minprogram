@@ -1,0 +1,133 @@
+// out:./index.wxss
+// compress:true
+// sourceMpa:true
+.container {
+
+    width: 100%;
+
+    // 顶部搜索栏
+    .top {
+        font-size: 28rpx;
+        width: 100%;
+
+        .search {
+            width: 92%;
+            margin: 0 auto;
+            position: relative;
+
+            .search-text1 {
+                width: 516rpx;
+                margin: 0 auto;
+                position: relative;
+                background-color: #F2F3F5;
+                display: inline-block;
+                border-radius: 0 8rpx 8rpx 0;
+
+            }
+
+            .search-text2 {
+                width: 100%;
+                margin: 0 auto;
+                position: relative;
+                background-color: #F2F3F5;
+                display: inline-block;
+                border-radius: 8rpx;
+            }
+
+            .search-icon {
+                position: absolute;
+                top: 30rpx;
+                left: 30rpx;
+            }
+
+            input {
+                width: 70%;
+                height: 80rpx;
+                line-height: 80rpx;
+                padding-left: 80rpx;
+            }
+
+            .search-clear {
+                position: absolute;
+                top: 25rpx;
+                right: 20rpx;
+            }
+        }
+
+        // 搜索提示结果
+        .result {
+            width: 100%;
+
+            .result-item {
+                padding: 30rpx 0;
+                font-size: 28rpx;
+                width: 91%;
+                margin: 0 auto;
+                border-bottom: 2rpx solid #E3E5E6;
+
+                .result-mark {
+                    font-size: 24rpx;
+                    color: #FFFFFF;
+                    background: #E56A67;
+                    border-radius: 8rpx;
+                    padding: 4rpx 10rpx;
+                    margin-left: 0;
+                }
+
+                .result-name {
+                    font-size: 28rpx;
+                    color: #878D99;
+                    white-space: nowrap;
+
+                    text-overflow: ellipsis;
+                    max-width: 200rpx;
+                    vertical-align: text-bottom;
+                    overflow: hidden;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+
+
+
+                    text {
+                        display: inline-block;
+                        line-height: 15rpx;
+
+                    }
+
+                    .key-name {
+                        font-family: PingFangSC-Regular;
+                        font-size: 28rpx;
+                        color: #9CBDFF;
+                    }
+
+                }
+
+                view {
+                    display: inline-block;
+                    color: #CBCBCB;
+                    margin-right: 20rpx;
+                }
+
+                .result-stock {
+                    float: right;
+                    margin-right: 0;
+                }
+            }
+
+            .search-name {
+                font-size: 28rpx;
+                color: #475266;
+                width: 91%;
+                margin: 0 auto;
+                padding: 30rpx 0;
+                border-bottom: 2rpx solid #E3E5E6;
+            }
+
+            .clear-his {
+                color: #878D99;
+                float: right;
+                font-size: 28rpx;
+            }
+        }
+    }
+}

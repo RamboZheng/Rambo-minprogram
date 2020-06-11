@@ -1,0 +1,21 @@
+<view wx:if="{{isOpen}}" class="pick-box">
+    <view class="picker-style" animation="{{pickerAnimation}}" style="height: {{info.H/2}}px; width: {{info.W}}px;padding-bottom:{{inputPadding}}rpx">
+        <view class="picker-but">
+            <view bindtap="_closePicker">取消</view>
+            <view bindtap="_surePicker" class='certain'>确定</view>
+        </view>
+        <view class="mid-bar"></view>
+        <picker-view indicator-style="height: 50px;" style="height: 60%;" value="{{defaltValue}}" bindchange="_bindChange" indicator-style="{{indicatorStyle}}" mask-style="{{maskStyle}}">
+            <picker-view-column wx:for="{{listData}}" wx:for-index="idx" wx:key="*this">
+                <view wx:for="{{item}}" wx:for-item="less" class="picker-line" wx:for-index="idx" wx:key="*this" style="line-height: 100px">
+                    {{less}}
+                </view>
+            </picker-view-column>
+        </picker-view>
+        <view class="bottom-input">
+            <input type="digit" class="search-input" placeholder="自定义利率" maxlength='4' value="{{rate}}" bindblur='inputBlur' bindfocus="inputFocus" bindinput="inputTyping" />
+            <text class="bottom-percent">%</text>
+            <view class='input-button' bindtap="add">添加</view>
+        </view>
+    </view>
+</view>

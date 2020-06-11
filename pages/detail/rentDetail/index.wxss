@@ -1,0 +1,583 @@
+page {
+  height: 100%;
+}
+.box,
+.common {
+  width: 100%;
+}
+.content {
+  width: 92%;
+  margin: 0 auto;
+}
+.box {
+  border-bottom: 2rpx solid #edeff0;
+  padding-bottom: 60rpx;
+  margin-bottom: 60rpx;
+}
+.related {
+  padding-bottom: 90rpx;
+}
+.no-scroll {
+  height: 100%;
+  overflow-y: hidden;
+}
+.container.hide {
+  display: none;
+}
+.top {
+  padding-bottom: 42rpx;
+}
+.common-title {
+  font-size: 32rpx;
+  color: #2c2f37;
+  font-weight: 700;
+  margin-bottom: 30rpx;
+  display: block;
+}
+.top .title {
+  margin-bottom: 60rpx;
+}
+.top .title .name {
+  font-size: 36rpx;
+  color: #475266;
+  line-height: 50rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-weight: bold;
+}
+.top .title .alias {
+  font-size: 28rpx;
+  color: #878d99;
+  margin-top: 20rpx;
+}
+.top .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top .info .left {
+  text-align: left;
+}
+.top .info .left view {
+  font-size: 32rpx;
+  color: #e56a67;
+  display: block;
+  font-weight: bold;
+  white-space: nowrap;
+  margin-left: -4px;
+}
+.top .info .center {
+  text-align: center;
+}
+.top .info .center view {
+  font-size: 32rpx;
+  color: #e56a67;
+  display: block;
+  font-weight: bold;
+}
+.top .info .line {
+  width: 2rpx;
+  height: 40rpx;
+  background-color: #e3e5e6;
+}
+.top .info .right {
+  text-align: right;
+}
+.top .info .right view {
+  font-size: 32rpx;
+  color: #e56a67;
+  display: block;
+  font-weight: bold;
+}
+.top .info text {
+  font-size: 32rpx;
+  color: #e56a67;
+  display: block;
+  font-weight: bold;
+}
+.top .info .desc {
+  font-size: 26rpx;
+  color: #878d99;
+  margin-top: 12rpx;
+  font-weight: normal;
+}
+.top .option-group-style {
+  position: absolute;
+  top: 10rpx;
+  right: 30rpx;
+}
+.top .option-group-style .icon-collect {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-details-uncollected@2x.png?tdsourcetag=s_pcqq_aiomsg);
+  background-size: cover;
+  display: inline-block;
+  background-color: transparent;
+}
+.top .option-group-style .icon-collect.on {
+  background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-details-collection@2x.png?tdsourcetag=s_pcqq_aiomsg);
+  background-size: cover;
+}
+.top .option-group-style .icon-share {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-details-share@2x.png?tdsourcetag=s_pcqq_aiomsg);
+  background-size: cover;
+  background-color: transparent;
+  display: inline-block;
+}
+.base .name {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.base .name text {
+  background: #f2f3f5;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: #878d99;
+  margin-right: 30rpx;
+  display: block;
+  padding: 10rpx 20rpx;
+  margin-bottom: 10rpx;
+}
+.base .introduce .title {
+  font-size: 32rpx;
+  color: #2c2f37;
+  font-weight: 700;
+  margin-bottom: 30rpx;
+}
+.base .introduce .list {
+  display: flex;
+  justify-content: space-between;
+}
+.base .introduce .item {
+  text-align: left;
+}
+.base .introduce .item view {
+  font-size: 28rpx;
+  color: #475266;
+  line-height: 40rpx;
+  margin-bottom: 20rpx;
+}
+.base .introduce .label {
+  margin-right: 20rpx;
+  color: #878d99;
+}
+.base .introduce .metro-info {
+  font-size: 28rpx;
+  color: #475266;
+}
+.map .place {
+  font-size: 28rpx;
+}
+.map .place .text {
+  color: #878d99;
+  vertical-align: top;
+  display: inline-block;
+}
+.map .place .monick {
+  margin-left: 20rpx;
+  color: #475266;
+  display: inline-block;
+  width: 88%;
+  line-height: 40rpx;
+}
+.map .address {
+  height: 356rpx;
+  margin-top: 30rpx;
+  position: relative;
+}
+.map .address map {
+  width: 100%;
+  height: 100%;
+}
+.map .lucency-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 6;
+}
+.map .lucency-content {
+  position: absolute;
+  top: 80rpx;
+  max-width: 80%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 34rpx;
+}
+.map .lucency-content .lucency-box {
+  position: relative;
+  display: inline-block;
+}
+.map .lucency-content .text {
+  width: auto;
+  background-color: #fff;
+  padding: 10rpx 10rpx;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  color: #475266;
+  line-height: 34rpx;
+}
+.map .lucency-content .icon-arrow {
+  width: 28rpx;
+  height: 10rpx;
+  margin: 0 auto;
+}
+.rent-house .rent-title {
+  display: flex;
+  justify-content: space-between;
+}
+.rent-house .type {
+  width: 60%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 28rpx;
+  color: #878d99;
+  font-weight: normal;
+}
+.rent-house .type view {
+  margin-left: 30rpx;
+}
+.rent-house .type view:first-child {
+  margin-left: 0;
+}
+.rent-house .type .on {
+  color: #6595f4;
+}
+.rent-house .similar-list .r-content .price {
+  margin-top: 19rpx;
+}
+.house-info {
+  padding-bottom: 20rpx;
+}
+.house-info .info-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 40rpx;
+}
+.house-info .info-item .text {
+  width: 78%;
+  display: flex;
+  justify-content: space-between;
+  color: #878d99;
+}
+.house-info .info-item .text view {
+  min-width: 30rpx;
+}
+.house-info .info-item .text view:nth-child(3) {
+  min-width: 140rpx;
+  text-align: right;
+}
+.house-info .info-item .text view:last-child {
+  min-width: 160rpx;
+  text-align: right;
+}
+.house-info .info-item .chat {
+  color: #6595f4;
+}
+.house-info .info-item .chat.current {
+  color: #cbcbcb;
+}
+.allocation .facility {
+  display: flex;
+  flex-wrap: wrap;
+}
+.allocation .facility .list {
+  margin: 30rpx 19rpx 0 19rpx;
+}
+.allocation .facility .list .icon {
+  width: 100rpx;
+  height: 100rpx;
+}
+.allocation .facility .list .name {
+  text-align: center;
+  color: #878d99;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+}
+.allocation .facility .list .name.no {
+  color: #cbcbcb;
+}
+.brand-blcok {
+  position: relative;
+}
+.brand-blcok .brand-pic {
+  width: 120rpx;
+  height: 120rpx;
+  float: left;
+  border-radius: 50%;
+}
+.brand-blcok .brand-info {
+  padding: 10rpx 0;
+  font-size: 28rpx;
+}
+.brand-blcok .brand-info .brand-name {
+  color: #475266;
+}
+.brand-blcok .brand-info .brand-text {
+  margin-top: 10rpx;
+  color: #878D99;
+  width: 60%;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  font-family: PingFangSC-Medium;
+}
+.brand-blcok .brand-icon {
+  width: 18rpx;
+  height: 32rpx;
+  position: absolute;
+  top: 30rpx;
+  right: 20rpx;
+}
+.house-des .intro-desc {
+  font-size: 28rpx;
+  color: #878d99;
+  text-align: justify;
+  vertical-align: top;
+  line-height: 40rpx;
+}
+.house-des .intro-part .title {
+  font-size: 28rpx;
+  color: #475266;
+}
+.house-des .intro-list .li {
+  margin-top: 36rpx;
+  width: 100%;
+  /* .dot {
+        display: inline-block;
+        width: 16rpx;
+        height: 16rpx;
+        background-color: #b3ccff;
+        margin-right: 20rpx;
+        border-radius: 50%;
+      } */
+}
+.house-des .intro-list .li .describe {
+  display: block;
+  font-size: 28rpx;
+  color: #878d99;
+  text-align: justify;
+  vertical-align: top;
+  line-height: 36rpx;
+}
+.house-des .intro-list .li:first-child {
+  margin-top: 0;
+}
+.house-des .intro {
+  height: auto;
+}
+.house-des .intro-h {
+  height: 280rpx;
+  overflow: hidden;
+  /*自动隐藏文字*/
+}
+.house-des .show-all-text {
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #6595f4;
+  text-align: center;
+}
+.similar {
+  border-bottom: 0;
+  margin-bottom: 140rpx;
+  padding-bottom: 140rpx;
+}
+.similar .common-title {
+  margin-bottom: 0;
+}
+.similar-list {
+  border-bottom: 1rpx solid #edeff0;
+  padding-top: 30rpx;
+  padding-bottom: 32rpx;
+  display: flex;
+}
+.similar-list .cover {
+  width: 240rpx;
+  height: 180rpx;
+  border-radius: 8rpx;
+  margin-right: 30rpx;
+  background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-238pic-default@2x.png);
+  background-size: cover;
+}
+.similar-list .r-content-h {
+  min-height: 134rpx;
+}
+.similar-list .r-content .name {
+  font-size: 28rpx;
+  color: #475266;
+}
+.similar-list .r-content .size,
+.similar-list .r-content .dist {
+  font-size: 24rpx;
+  color: #878d99;
+}
+.similar-list .r-content .tags,
+.similar-list .r-content .price,
+.similar-list .r-content .size,
+.similar-list .r-content .dist {
+  margin-top: 10rpx;
+}
+.similar-list .r-content .tags {
+  display: flex;
+}
+.similar-list .r-content .tags view {
+  font-size: 20rpx;
+  color: #878d99;
+  padding: 6rpx 10rpx;
+  background: #edeff0;
+  border-radius: 4rpx;
+  margin-right: 10rpx;
+}
+.similar-list .r-content .price {
+  font-size: 28rpx;
+  color: #e56a67;
+  font-weight: bold;
+}
+.similar-list .r-content .size,
+.similar-list .r-content .price {
+  margin-left: -4rpx;
+}
+.similar-list:last-child {
+  border-bottom: 0;
+}
+.fix-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 148rpx;
+  background-color: #f2f3f5;
+  border-top: 2rpx solid #edeff0;
+  z-index: 9;
+}
+.fix-bottom .action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14rpx;
+}
+.fix-bottom .collect {
+  margin-left: 25rpx;
+  color: #878d99;
+  width: 80rpx;
+  text-align: center;
+}
+.fix-bottom .icon-collect {
+  width: 40rpx;
+  height: 40rpx;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  background-color: transparent;
+}
+.fix-bottom .share {
+  color: #878d99;
+}
+.fix-bottom .icon-share {
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+  background-size: cover;
+  vertical-align: top;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 0;
+  border: 0;
+  background-color: transparent;
+}
+.fix-bottom .text {
+  margin-top: 8rpx;
+}
+.fix-bottom .btn-call {
+  width: 300rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  background-color: #6595f4;
+  color: #fff;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+.fix-bottom .btn-call.no-click {
+  background: #ccc;
+}
+.fix-bottom.hide {
+  display: none;
+}
+.fix-bottom .content-info {
+  display: flex;
+  align-items: center;
+}
+.fix-bottom .content-info .avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 5rpx;
+}
+.fix-bottom .content-info .avatar image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.fix-bottom .content-info .people {
+  margin-left: 20rpx;
+}
+.fix-bottom .content-info .people .user {
+  font-size: 32rpx;
+  color: #475266;
+  font-weight: bold;
+}
+.fix-bottom .content-info .people .date {
+  font-size: 28rpx;
+  color: #878d99;
+  margin-top: 10rpx;
+  line-height: 40rpx;
+  max-width: 320rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+button::after {
+  border: none;
+}
+.button-hover {
+  background-color: transparent;
+}
+.fix-goback {
+  position: fixed;
+  bottom: 210rpx;
+  right: 30rpx;
+  width: 140rpx;
+  height: 140rpx;
+  z-index: 12;
+}
+.fix-goback .icon-home {
+  width: 140rpx;
+  height: 140rpx;
+}
+.fix-goback.hide {
+  display: none;
+}
+.chat-more {
+  color: #6595f4;
+  text-align: center;
+}
+.last-box-map {
+  margin-bottom: 155rpx;
+  padding-bottom: 155rpx;
+}
+.angent-dl .dt .avatar {
+  border: 5rpx solid #edeff0;
+}

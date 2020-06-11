@@ -1,0 +1,98 @@
+.container {
+  background-color: #fff;
+  height: 100%;
+  padding-bottom: 90rpx;
+}
+.container .top {
+  width: 100%;
+  background-color: #fff;
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+.container .top .top-search {
+  height: 400rpx;
+  background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-home2-bg@3x.png);
+  background-size: 100% 100%;
+}
+.container .top .top-button {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 60rpx 0 10rpx 0;
+}
+.container .top .top-button .entrance-box {
+  width: 25%;
+  padding: 20rpx 0;
+}
+.container .top .top-button .entrance-box image {
+  width: 88rpx;
+  height: 88rpx;
+  margin-left: 29%;
+}
+.container .top .top-button .entrance-box .entrance-name {
+  font-size: 26rpx;
+  color: #0B1526;
+  text-align: center;
+}
+.container .top .top-button .button {
+  border-radius: 8rpx;
+  width: 330rpx;
+  height: 200rpx;
+  background-size: 100% 100%;
+}
+.container .top .top-button .button-text {
+  font-size: 36rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.container .top .top-button .left-image {
+  background-image: url("https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-home-room@2x.png");
+}
+.container .top .top-button .right-image {
+  background-image: url("https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-home-renting@2x.png");
+}
+.container .recommand {
+  background-color: #fff;
+  width: 100%;
+}
+.container .recommand .recommand-name {
+  padding-top: 30rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  letter-spacing: 0;
+  padding-left: 30rpx;
+  font-size: 40rpx;
+  color: #0B1526;
+}
+.container .recommand .recommand-name .recommand-right {
+  display: inline-block;
+  float: right;
+  font-size: 28rpx;
+  color: #9399A5;
+}
+.container .recommand .recommand-name .recommand-right .right-text {
+  display: inline-block;
+  margin-right: 30rpx;
+}
+.container .recommand .list .list-bottom {
+  background-color: #fff;
+  width: 100%;
+  font-size: 28rpx;
+  padding: 40rpx 0 100rpx 0;
+  color: #475266;
+  text-align: center;
+}
+.container .top-icon {
+  width: 120rpx;
+  height: 120rpx;
+  position: fixed;
+  right: 3%;
+  bottom: 12%;
+  z-index: 10;
+}

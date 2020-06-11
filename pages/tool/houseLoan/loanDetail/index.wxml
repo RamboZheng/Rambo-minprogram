@@ -1,0 +1,22 @@
+<!-- index.wxml -->
+<view class="tableView">
+    <view class="table_header">
+        <view class="th9 th1">期数</view>
+        <view class="th9 th2">月供总额</view>
+        <view class="th9 th3">月供本金</view>
+        <view class="th9 th3">月供利息</view>
+        <view class="th9 th3">剩余本金</view>
+    </view>
+    <block wx:for="{{ listData }}" wx:for-item="work" wx:key="key">
+        <view class="table_cell {{work.number%2 ==0?'gray':''}}" wx:if="{{!work.year}}">
+            <view class="td td1">{{work.date}}</view>
+            <view class="td td2">{{work.monthTotal}}</view>
+            <view class="td td3">{{work.monthBase}}</view>
+            <view class="td td3">{{work.monthInterest}}</view>
+            <view class="td td3">{{work.totalMoney}}</view>
+        </view>
+        <view class="table_cell {{work.number%2 ==0?'gray':''}}" wx:if="{{work.year}}">
+            <view class="year-item">{{work.year}}</view>
+        </view>
+    </block>
+</view>

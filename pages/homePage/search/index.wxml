@@ -1,0 +1,153 @@
+<!-- index.wxml -->
+<view class="container">
+    <view class="top-bar"></view>
+    <view class="top">
+        <view class="search" wx:if='{{fromIndex}}'>
+            <select-component propArray='{{selectArray}}' nowText="二手房" bind:setData='getData'></select-component>
+            <view class="search-text1">
+                <icon class="search-icon" type="search" size="14" bindtap="search"></icon>
+                <input type="text" class="search-input" placeholder="{{searchWord}}" maxlength='20' value="{{inputVal}}" focus="{{inputShowed}}" bindconfirm='search' bindinput="inputTyping" />
+                <!-- 清除叉号 -->
+                <view class="search-clear" wx:if="{{inputVal}}" bindtap="clearInput">
+                    <icon type="clear" size="14"></icon>
+                </view>
+            </view>
+        </view>
+        <view class="search" wx:if='{{!fromIndex}}'>
+            <view class="search-text2">
+                <icon class="search-icon" type="search" bindtap="search" size="14"></icon>
+                <input type="text" class="search-input" placeholder="{{searchWord}}" maxlength='20' value="{{inputVal}}" focus="{{inputShowed}}" bindconfirm='search' bindinput="inputTyping" />
+                <!-- 清除叉号 -->
+                <view class="search-clear" wx:if="{{inputVal}}" bindtap="clearInput">
+                    <icon type="clear" size="14"></icon>
+                </view>
+            </view>
+        </view>
+        <!-- 联想提示 -->
+        <view class="result" wx:if="{{resultList.length > 0}}">
+            <view class='result-item' wx:for="{{resultList}}" wx:key="key">
+                <view style="width:100%" wx:if='{{searchType=="house"}}' data-id='{{item.outNetId || item.id}}' data-type='{{item.dictionaryType || ""}}' data-name='{{item.name}}' bindtap="toResultPage">
+                    <view class="result-mark">小区</view>
+                    <view class="result-name">
+                        <text wx:for="{{item.nameArr}}" wx:key="*this" class="{{item == inputVal ? 'key-name' : '' }}">
+                            {{item}}
+                        </text>
+                    </view>
+                    <view class="result-area" wx:if="{{item.region && item.bizArea}}">
+                        ({{item.region+"区"}} {{item.bizArea}})
+                    </view>
+                    <view class="result-stock" wx:if="{{item.houseTotal}}">
+                        约{{item.houseTotal}}套
+                    </view>
+                </view>
+                <!-- 租房联想 -->
+                <view style="width:100%" wx:if='{{searchType=="rent" || searchType == "rent" || searchType == "combine" || searchType == "intact" || searchType == "rentIndex"}}' data-id='{{item.outNetId || item.id}}' data-type='{{item.dictionaryType || ""}}' data-name='{{item.name}}' bindtap="toResultPage">
+                    <view class="result-mark" wx:if="{{item.dictionaryType=='apartment'}}">公寓</view>
+                    <view class="result-mark" wx:else>小区</view>
+                    <view class="result-name">
+                        <text wx:for="{{item.nameArr}}" wx:key="*this" class="{{item == inputVal ? 'key-name' : '' }}">
+                            {{item}}
+                        </text>
+                    </view>
+                    <view class="result-area" wx:if="{{item.region && item.bizArea}}">
+                        ({{item.region+"区"}} {{item.bizArea}})
+                    </view>
+                    <!-- <view class="result-stock">约{{item.houseTotal}}套</view> -->
+                </view>
+                <!-- 小区联想 -->
+                <view style="width:100%" wx:if='{{searchType=="garden"}}' data-id='{{item.outNetId || item.id}}' data-type='{{item.dictionaryType || ""}}' data-name='{{item.name}}' bindtap="toResultPage">
+                    <view class="result-mark">小区</view>
+                    <view class="result-name">
+                        <text wx:for="{{item.nameArr}}" wx:key="*this" class="{{item == inputVal ? 'key-name' : '' }}">
+                            {{item}}
+                        </text>
+                    </view>
+                    <view class="result-area" wx:if="{{item.region && item.bizArea}}">
+                        ({{item.region+"区"}} {{item.bizArea}})
+                    </view>
+                    <view class="result-stock" wx:if="{{item.houseTotal}}">
+                        约{{item.houseTotal}}套
+                    </view>
+                </view>
+                <!-- 学校联想 -->
+                <view style="width:100%" wx:if='{{searchType=="school"}}' data-id='{{item.outNetId || item.id}}' data-type='{{item.dictionaryType || ""}}' data-name='{{item.name}}' bindtap="toResultPage">
+                    <view class="result-name">
+                        <text wx:for="{{item.nameArr}}" wx:key="*this" class="{{item == inputVal ? 'key-name' : '' }}">
+                            {{item}}
+                        </text>
+                    </view>
+                </view>
+                <!-- 公寓联想 -->
+                <view style="width:100%" wx:if='{{searchType=="flat"}}' data-id='{{item.outNetId || item.id}}' data-type='{{item.dictionaryType || ""}}' data-name='{{item.name}}' bindtap="toResultPage">
+                    <view class="result-mark">{{item.type}}</view>
+                    <view class="result-name">
+                        <text wx:for="{{item.nameArr}}" wx:key="*this" class="{{item == inputVal ? 'key-name' : '' }}">
+                            {{item}}
+                        </text>
+                    </view>
+                    <view class="result-area" wx:if="{{item.region && item.bizArea}}">
+                        ({{item.region+"区"}} {{item.bizArea}})
+                    </view>
+                    <view class="result-stock" wx:if="{{item.houseTotal}}">
+                        约{{item.houseTotal}}套
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 历史搜索 -->
+        <view class="result" wx:if="{{!inputVal && historyData.length > 0}}">
+            <view class="search-name">
+                历史搜索
+                <view class="clear-his" bindtap="clearStore">清空</view>
+            </view>
+            <view class='result-item' wx:for="{{historyData}}" data-index="{{index}}" wx:if="{{index<10}}" bindtap="toResultPage" data-name='{{item}}' wx:key="key">
+                <view class="result-name" wx:if="{{item}}">{{item}}</view>
+            </view>
+        </view>
+        <!-- 热门搜索 -->
+        <view class="result" wx:if="{{!inputVal && historyData.length == 0 && hotData.length > 0}}">
+            <view class="search-name">热门搜索</view>
+            <view class='result-item' wx:for="{{hotData}}" wx:key="key">
+                <!-- 二手房热门 -->
+                <view style="width:100%" wx:if='{{searchType=="house"}}' bindtap="toResultPage" data-name='{{item.name}}'>
+                    <view class="result-mark">小区</view>
+                    <view class="result-name">{{item.name}}</view>
+                    <view class="result-area" wx:if="{{item.region && item.bizArea}}">
+                        ({{item.region+"区"}} {{item.bizArea}})
+                    </view>
+                </view>
+                <!-- 租房热门 -->
+                <view style="width:100%" wx:if='{{searchType=="rent" || searchType == "rent" || searchType == "combine" || searchType == "intact" || searchType == "rentIndex"}}' bindtap="toResultPage" data-name='{{item.gardenName}}'>
+                    <view class="result-mark" wx:if="{{item.tenementType=='LAY_OUT'}}">公寓</view>
+                    <view class="result-mark" wx:else>小区</view>
+                    <!-- <view class="result-mark" wx:if="{{item.tenementType=='ENTIRE_RENT'}}">整租</view>
+                    <view class="result-mark" wx:if="{{item.tenementType=='SHARED_RENT'}}">合租</view> -->
+                    <view class="result-name">{{item.gardenName}}</view>
+                    <view class="result-area" wx:if="{{item.regionName && item.businessName}}">
+                        ({{item.regionName+"区"}} {{item.businessName}})
+                    </view>
+                </view>
+                <!-- 小区热门 -->
+                <view style="width:100%" wx:if='{{searchType=="garden"}}' bindtap="toResultPage" data-name='{{item.name}}'>
+                    <view class="result-mark">小区</view>
+                    <view class="result-name">{{item.name}}</view>
+                    <view class="result-area" wx:if="{{item.region && item.bizArea}}">
+                        ({{item.region+"区"}} {{item.bizArea}})
+                    </view>
+                </view>
+                <!-- 学校热门 -->
+                <view style="width:100%" wx:if='{{searchType=="school"}}' bindtap="toResultPage" data-name='{{item.name}}'>
+                    <view class="result-name">{{item.name}}</view>
+                </view>
+                <!-- 公寓热门 -->
+                <view style="width:100%" wx:if='{{searchType=="flat"}}' bindtap="toResultPage" data-name='{{item.name}}'>
+                    <view class="result-mark">{{item.type}}</view>
+                    <view class="result-name">{{item.name}}</view>
+                    <view class="result-area" wx:if="{{item.region && item.bizArea}}">
+                        ({{item.region+"区"}} {{item.bizArea}})
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

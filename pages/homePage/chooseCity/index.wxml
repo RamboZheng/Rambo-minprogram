@@ -1,0 +1,29 @@
+<!-- Aiarron -->
+<view class="container">
+    <view class="content search-city">
+        <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-home-search-normal@2x.png" class="search-icon"></image>
+        <input type="text" class="search-input" placeholder="请输入城市名进行搜索" maxlength='10' disabled="true" />
+    </view>
+    <view class="content">
+        <view class="about-city">
+            <text class="title">定位城市</text>
+            <view class="city-group">
+                <view class="city-item" data-city="{{currentCity}}" bindtap="handleChoose">
+                    {{currentCity.name}}
+                </view>
+                <view class="again-location" bindtap="handleafresh">
+                    <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-city-location@2x.png"></image>
+                    重新定位
+                </view>
+            </view>
+        </view>
+        <view class="about-city">
+            <text class="title">已开通的城市</text>
+            <view class="city-group">
+                <view class="city-item" wx:for="{{openeds}}" data-city="{{item}}" bindtap="handleChoose" wx:key="key">
+                    {{item.name}}
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

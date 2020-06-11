@@ -1,0 +1,37 @@
+<!-- pages/detail/setMap/index.wxml -->
+<view class="container">
+    <view class="show-map">
+        <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location="true" markers="{{markers}}" bindmarkertap="makertap">
+            <!-- 头部 -->
+            <cover-view class="fix-show-info {{isShowLayer ? '':'hide'}}">
+                <cover-view class="tips">
+                    距离{{line}}{{locationName}}{{ on == 1 || on == 2 ? '站' : ''}}{{distance}}米步行约{{totalTime}}
+                </cover-view>
+            </cover-view>
+            <!-- 尾部 -->
+            <!-- <cover-view class="tab">
+                <cover-view class="matter-box">
+                    <cover-view class="type">
+                        <cover-view class="type-item {{on == item.id ? 'on' : ''}}" wx:for="{{generalities}}" wx:key="{{key}}" data-id="{{item.id}}" data-type="{{item.type}}" bindtap="handleTab" data-alias="{{item.alias}}">
+                            <cover-view class="icon icon-{{item.type}} {{on == item.id ? 'on':''}}" style="background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-xiangqing-list-{{on == item.id ? (item.icon + '-selected') : item.icon}}@2x.png)"></cover-view>
+                            <cover-view class="name">{{item.name}}</cover-view>
+                        </cover-view>
+                    </cover-view>
+                </cover-view>
+            </cover-view> -->
+        </map>
+    </view>
+    <!-- <view class="fix-show-info {{isShowLayer ? '':'hide'}}">
+        <view class="tips">距离{{locationName}}{{distance}}米步行约{{totalTime}}</view>
+    </view> -->
+    <view class="tab">
+        <view class="matter-box">
+            <view class="type">
+                <view class="type-item {{on == item.id ? 'on' : ''}}" wx:for="{{generalities}}" wx:key="{{key}}" data-id="{{item.id}}" data-type="{{item.type}}" bindtap="handleTab" data-alias="{{item.alias}}">
+                    <view class="icon" style="background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-xiangqing-list-{{on == item.id ? (item.icon + '-selected') : item.icon}}@2x.png)"></view>
+                    <view class="name">{{item.name}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

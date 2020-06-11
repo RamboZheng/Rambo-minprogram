@@ -1,0 +1,88 @@
+.top .top-img {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  top: 26rpx;
+  left: 40rpx;
+}
+.top .top-input {
+  width: 630rpx;
+  border-radius: 16rpx;
+  margin: 0 auto;
+  padding: 20rpx 0 20rpx 80rpx;
+  font-size: 28rpx;
+}
+.home-top {
+  width: 750rpx;
+  z-index: 5;
+  margin-top: 305rpx;
+}
+.home-top .home-action {
+  padding: 25rpx;
+  width: 86%;
+  margin: 0 auto;
+  background-size: 100% 100%;
+  background-color: #fff;
+  box-shadow: 0 12px 22px 0 rgba(0, 68, 200, 0.1);
+  border-radius: 10px;
+}
+.home-top .home-action .input-box {
+  width: 640rpx;
+  margin: 0 auto;
+  background-color: #F5F7FA;
+  display: flex;
+  align-items: center;
+  border-radius: 8rpx;
+}
+.home-top .home-action .input-box .locate {
+  min-width: 108rpx;
+  text-align: center;
+  padding: 0 10rpx;
+  font-size: 26rpx;
+  color: #5A5E66;
+  position: relative;
+}
+.home-top .home-action .input-box .locate .locate-icon {
+  font-size: 15rpx;
+  position: absolute;
+  top: 10rpx;
+}
+.home-top .home-action .input-box .locate:after {
+  content: ' ';
+  display: inline-block;
+  border-left: 12rpx solid transparent;
+  border-right: 12rpx solid transparent;
+  border-top: 12rpx solid #fff;
+  width: 0;
+  height: 0;
+  margin-left: 10rpx;
+  border-radius: 12rpx;
+  margin-top: -2rpx;
+  vertical-align: middle;
+}
+.home-top .home-action .input-box .seek-img {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 40rpx;
+}
+.home-top .home-action .input-box .top-input {
+  padding: 20rpx 0;
+  width: 60%;
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  color: #9399A5;
+}
+.home-top .home-action .input-box .line {
+  width: 2rpx;
+  height: 40rpx;
+  background-color: #E3E5E6;
+}
+.renting-top {
+  width: 750rpx;
+  background-color: #fff;
+  position: relative;
+}
+.renting-top .top-input {
+  background: #F2F3F5;
+  color: #878D99;
+}

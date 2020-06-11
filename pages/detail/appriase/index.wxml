@@ -1,0 +1,43 @@
+<!-- pages/detail/appriase/index.wxml -->
+<view class="container">
+    <view class="matter">
+        <text class="title">看房评价</text>
+        <view class="eval-list">
+            <view class="eval-item">
+                <view class="dl">
+                    <view class="dt">
+                        <view class="avatar">
+                            <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-head@2x.png?tdsourcetag=s_pcqq_aiomsg" />
+                        </view>
+                        <view class="people">
+                            <text class="user">张棒棒</text>
+                            <text class="date">2019-06-05</text>
+                        </view>
+                    </view>
+                    <view class="dd"></view>
+                </view>
+                <view class="appraise">
+                    这房子我去看了，户型方正，正南一个大阳台，面对小区泳池，这房子我去看了，户型方正，正南一个大阳台，风景很好，安静不吵。学位是实验学校坂非农场这房子我去看了，户型方正，正南一个大阳台，面对小区泳池，这房子我去看了，户型方正，正南一个大阳台，风景很好，安静不吵。学位是实验学校坂...
+                </view>
+            </view>
+            <view class="eval-item">
+                <view class="dl">
+                    <view class="dt">
+                        <view class="avatar">
+                            <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-head@2x.png?tdsourcetag=s_pcqq_aiomsg" />
+                        </view>
+                        <view class="people">
+                            <text class="user">张棒棒</text>
+                            <text class="date">2019-06-05</text>
+                        </view>
+                    </view>
+                    <view class="dd"></view>
+                </view>
+                <view class="appraise">
+                    这房子我去看了，户型方正，正南一个大阳台，面对小区泳池，这房子我去看了，户型方正，正南一个大阳台，风景很好，安静不吵。学位是实验学校坂非农场这房子我去看了，户型方正，正南一个大阳台，面对小区泳池，这房子我去看了，户型方正，正南一个大阳台，风景很好，安静不吵。学位是实验学校坂...
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="show-tips">没有更多记录了</view>
+</view>

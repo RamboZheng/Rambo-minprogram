@@ -1,0 +1,36 @@
+<!-- 组件模板 -->
+<!-- 公寓信息 -->
+<view class="recommend">
+    <view class="title">{{title}}</view>
+    <view class="silder">
+        <view class="silder-box">
+            <view class="list" wx:for="{{list}}" wx:key="{{key}}" data-id="{{item.id}}" bindtap="handleRecommend">
+                <view class="cover">
+                    <image src="{{item.img}}" />
+                </view>
+                <view class="relate">
+                    <view class="item-text">{{item.gardenName}}</view>
+                    <view class="item-size">
+                        {{item.region?item.region:""}}
+                        <text class="size-bar" wx:if="{{item.bizArea}}">|</text>
+                        {{item.bizArea?item.bizArea:""}}
+                        <text class="size-bar" wx:if="{{item.buildDate}}">|</text>
+                        {{item.buildDate?item.buildDate+"建":""}}
+                    </view>
+                    <view class="item-size">
+                        {{item.houseTotal?'在售'+item.houseTotal:""}}
+                        <text class="size-bar" wx:if="{{item.rentRoomQuantity}}">|</text>
+                        {{item.rentRoomQuantity?'在租'+item.rentRoomQuantity:""}}
+                    </view>
+                    <block wx:if="{{item.avgPrice}}">
+                        <view class="item-price">{{item.avgPrice}}元/㎡</view>
+                    </block>
+                    <block wx:else>
+                        <view class="item-price">暂无价格</view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+    <text class="tip">* 房源信息仅供参考，如有疑问，请联系客服</text>
+</view>

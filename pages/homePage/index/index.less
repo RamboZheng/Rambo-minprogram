@@ -1,0 +1,123 @@
+// out:./index.wxss
+// compress:true
+// sourceMpa:true
+
+.container {
+    background-color: #fff;
+    height: 100%;
+    padding-bottom: 90rpx;
+
+    .top {
+        width: 100%;
+        background-color: #fff;
+        font-family: PingFangSC-Medium;
+        font-size: 36rpx;
+        color: #FFFFFF;
+        letter-spacing: 0;
+
+        .top-search {
+            height: 400rpx;
+            background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-home2-bg@3x.png);
+            background-size: 100% 100%;
+        }
+
+        .top-button {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 60rpx 0 10rpx 0;
+
+            .entrance-box {
+                width: 25%;
+                padding: 20rpx 0;
+
+                image {
+                    width: 88rpx;
+                    height: 88rpx;
+                    margin-left: 29%;
+
+                }
+
+                .entrance-name {
+                    font-size: 26rpx;
+                    color: #0B1526;
+                    text-align: center;
+                }
+
+            }
+
+            .button {
+                border-radius: 8rpx;
+                width: 330rpx;
+                height: 200rpx;
+                background-size: 100% 100%;
+            }
+
+            .button-text {
+                font-size: 36rpx;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+            }
+
+            .left-image {
+                background-image: url("https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-home-room@2x.png")
+            }
+
+            .right-image {
+                background-image: url("https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-home-renting@2x.png")
+            }
+        }
+    }
+
+    .recommand {
+        background-color: #fff;
+        width: 100%;
+
+        .recommand-name {
+            padding-top: 30rpx;
+            font-family: PingFangSC-Medium;
+            font-weight: 500;
+            letter-spacing: 0;
+            padding-left: 30rpx;
+            font-size: 40rpx;
+            color: #0B1526;
+
+            .recommand-right {
+                display: inline-block;
+                float: right;
+                font-size: 28rpx;
+                color: #9399A5;
+
+                .right-text {
+                    display: inline-block;
+                    margin-right: 30rpx;
+                }
+            }
+        }
+
+        .list {
+            .list-bottom {
+                width: 100%;
+                background-color: #fff;
+                width: 100%;
+                font-size: 28rpx;
+                padding: 40rpx 0 100rpx 0;
+                color: #475266;
+                text-align: center;
+            }
+        }
+    }
+
+    .top-icon {
+        width: 120rpx;
+        height: 120rpx;
+        position: fixed;
+        right: 3%;
+        bottom: 12%;
+        z-index: 10;
+    }
+}

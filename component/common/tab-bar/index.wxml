@@ -1,0 +1,10 @@
+<!-- 组件模板 -->
+<view class='container'>
+    <!-- Tab布局 -->
+    <view class='title-box'>
+        <view class="title-item {{index == tabIndex ? 'trigger' : 'other-tab'}}" wx:for="{{tabList}}" data-index="{{index}}" wx:key="key" bindtap='titleClick'>
+            <text>{{item}}</text>
+            <view class="bottom-bar" wx:if="{{index == tabIndex}}"></view>
+        </view>
+    </view>
+</view>

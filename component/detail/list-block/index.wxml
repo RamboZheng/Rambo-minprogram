@@ -1,0 +1,27 @@
+<!-- 组件模板 -->
+<!-- 基本信息 -->
+<view class="list-block">
+    <view class="content">
+        <view class="title-item">
+            <view class="title-text">{{title}}</view>
+            <view class="type">
+                <!-- <text class="on">全部</text>
+            <text>开间</text>
+            <text>一居</text>
+            <text>二居+</text> -->
+                <!-- <view wx:for="{{flatTypeHouse}}" class="{{flatTypeOn === item.id ? 'on': ''}}" wx:key="key" data-tid="{{item.id}}" bindtap="handleTabList">
+                    {{item.msg}}
+                </view> -->
+            </view>
+        </view>
+        <view class="similar-item" wx:if="{{itemType == 'garden'}}">
+            <list-item wx:for="{{list}}" wx:if='{{item}}' showBorder="{{false}}" listItem="{{item}}" detailType='garden' wx:key="key"></list-item>
+        </view>
+        <view class="similar-item" wx:if="{{itemType == 'house'}}">
+            <list-item wx:for="{{list}}" wx:if='{{item}}' listItem="{{item}}" detailType='house' wx:key="key"></list-item>
+        </view>
+        <view class="chat-more" wx:if="{{itemList.length > 20}}" bindtap="moreItem">
+            {{moreText}}
+        </view>
+    </view>
+</view>

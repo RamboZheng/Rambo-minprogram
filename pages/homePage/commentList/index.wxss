@@ -1,0 +1,85 @@
+.comment-list {
+  width: 100%;
+  background-color: #fff;
+}
+.comment-list .uesr-comment {
+  border-bottom: 2rpx solid #edeff0;
+  padding-bottom: 60rpx;
+  width: 750rpx;
+}
+.comment-list .uesr-comment .title-item {
+  display: flex;
+}
+.comment-list .uesr-comment .title-item .title-text {
+  font-weight: 700;
+  font-size: 32rpx;
+  width: 100%;
+  padding: 0 30rpx;
+  color: #2C2F37;
+}
+.comment-list .uesr-comment .bottom {
+  width: 94%;
+  position: fixed;
+  bottom: 0;
+  padding: 20rpx;
+}
+.comment-list .uesr-comment .bottom input {
+  width: 80%;
+  padding: 20rpx;
+  font-size: 32rpx;
+  background: #F2F3F5;
+  display: inline-block;
+  border-radius: 8rpx;
+}
+.comment-list .uesr-comment .bottom image {
+  width: 60rpx;
+  height: 60rpx;
+  float: right;
+  vertical-align: middle;
+}
+.comment-list .broker-comment {
+  width: 100%;
+}
+.comment-list .broker-comment .top-info {
+  padding: 40rpx 0;
+}
+.comment-list .broker-comment .top-info .info-title {
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: #878D99;
+}
+.comment-list .broker-comment .top-info .info-score {
+  width: 64%;
+  padding: 20rpx 0;
+  display: flex;
+  margin: 0 auto;
+}
+.comment-list .broker-comment .top-info .info-score .bar {
+  margin-top: 10%;
+  width: 100rpx;
+  height: 2rpx;
+  background: #E3E5E6;
+}
+.comment-list .broker-comment .top-info .info-score .score {
+  font-weight: 700;
+  font-family: PingFangSC-Medium;
+  font-size: 80rpx;
+  color: #2C2F37;
+  margin: 0 80rpx;
+}
+.comment-list .broker-comment .top-info .info-total {
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: #CBCBCB;
+}
+.comment-list .broker-comment .bottom-list {
+  width: 100%;
+}
+.comment-list .broker-comment .no-more {
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #878D99;
+}

@@ -1,0 +1,317 @@
+<view class="container {{openPicker?'container-fixed':''}}">
+    <tab-bar tabList='{{tabList}}' bind:tabIndex="getIndex"></tab-bar>
+    <!-- 商业贷款 -->
+    <view class="info-box" wx:if='{{currentIndex == "0"}}'>
+        <view class="info-item">
+            计算方式
+            <view class="right-num">
+                <picker bindchange="selectType" data-type='calculateName' range="{{calculateArr}}" value="{{calculateValue}}">
+                    <text class="weui-btn" type="default">{{calculateName}}</text>
+                    <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+                </picker>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{calculateName == "按房屋总价"}}'>
+            房屋总价
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{totalPrice?totalPrice:0}}</text>
+                <input wx:if="{{!openPicker}}" type="number" class="search-input" maxlength='7' placeholder="0" value="{{totalPrice}}" data-type='totalPrice' bindinput="inputNum" />
+                <text class='item-unit'>万</text>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{calculateName == "按房屋总价"}}'>
+            首付比例
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{firstPrecent}}</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='5' placeholder="30" value="{{firstPrecent}}" data-type='firstPrecent' bindinput="inputNum" />
+                <text class='item-unit'>%</text>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{calculateName == "按房屋总价"}}'>
+            首付金额
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{firstPrice?firstPrice:0}}</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='7' placeholder="0" value="{{firstPrice}}" data-type='firstPrice' bindinput="inputNum" />
+                <text class='item-unit'>万</text>
+            </view>
+        </view>
+        <view class="info-item">
+            商贷金额
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker&&businessLoan}}">{{businessLoan}}</text>
+                <text class="input-num" wx:if="{{openPicker&&!businessLoan}}">0</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='7' placeholder="0" value="{{businessLoan}}" data-type='businessLoan' bindinput="inputNum" />
+                <text class='item-unit'>万</text>
+            </view>
+        </view>
+        <view class="info-item">
+            商贷年限
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{businessYear}}</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='2' placeholder="30" value="{{businessYear}}" data-type='businessYear' bindinput="inputNum" />
+                <text class='item-unit'>年</text>
+            </view>
+        </view>
+        <view class="info-item">
+            利率方式
+            <view class="right-num">
+                <picker bindchange="selectType" data-type='rateName' range="{{rateArr}}" value="{{rataValue}}">
+                    <text class="weui-btn" type="default">{{rateName}}</text>
+                    <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+                </picker>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{rateName == "按最新LPR"}}'>
+            LPR
+            <image class="icon" bindtap='showTip' data-type='LPR' src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_my_costdescription@2x.png"></image>
+            <view class="right-num">
+                <text class='item-unit'>{{LPR}}%</text>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{rateName == "按最新LPR"}}'>
+            基点
+            <image class="icon" bindtap='showTip' data-type='baseRate' src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_my_costdescription@2x.png"></image>
+            <view class="right-num">
+                <input type="digit" class="search-input" maxlength='{{baseLength}}' placeholder="0" value="{{baseRate}}" data-type='baseRate' bindinput="inputNum" />
+                <text class='item-unit'>BP(‱)</text>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{rateName == "按最新LPR"}}'>
+            商贷利率
+            <view class="right-num">
+                <text>{{LPR}}%+{{baseRate?baseRate:0}}‱={{loanRate}}%</text>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{rateName == "按旧版基准利率"}}' data-pickertype='loanRate' bindtap="openPick">
+            商贷利率
+            <view class="right-num">
+                <text class="weui-btn" type="default" wx:if="{{isAdd}}">{{businessLoanName}}%</text>
+                <text class="weui-btn" type="default" wx:else>{{businessLoanName}}</text>
+                <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+            </view>
+        </view>
+    </view>
+    <!-- 组合贷款 -->
+    <view class="info-box" wx:if='{{currentIndex == "1"}}'>
+        <view class="info-item" bindtap="showCover">
+            计算方式
+            <view class="right-num">
+                <picker bindchange="selectType" data-type='calculateName' range="{{calculateArr}}" value="{{calculateValue}}">
+                    <text class="weui-btn" type="default">{{calculateName}}</text>
+                    <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+                </picker>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{calculateName == "按房屋总价"}}'>
+            房屋总价
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{totalPrice?totalPrice:0}}</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='7' placeholder="0" value="{{totalPrice}}" data-type='totalPrice' bindinput="inputNum" />
+                <text class='item-unit'>万</text>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{calculateName == "按房屋总价"}}'>
+            首付比例
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{firstPrecent}}</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='5' placeholder="30" value="{{firstPrecent}}" data-type='firstPrecent' bindinput="inputNum" />
+                <text class='item-unit'>%</text>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{calculateName == "按房屋总价"}}'>
+            首付金额
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{firstPrice?firstPrice:0}}</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='7' placeholder="0" value="{{firstPrice}}" data-type='firstPrice' bindinput="inputNum" />
+                <text class='item-unit'>万</text>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{calculateName == "按贷款总额"}}'>
+            贷款总额
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{wholeLoan?wholeLoan:0}}</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='7' placeholder="0" value="{{wholeLoan}}" data-type='wholeLoan' bindinput="inputNum" />
+                <text class='item-unit'>万</text>
+            </view>
+        </view>
+        <view class="info-item">
+            商贷金额
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker&&businessLoan}}">{{businessLoan}}</text>
+                <text class="input-num" wx:if="{{openPicker&&!businessLoan}}">0</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='7' placeholder="0" value="{{businessLoan}}" data-type='businessLoan' bindinput="inputNum" />
+                <text class='item-unit'>万</text>
+            </view>
+        </view>
+        <view class="info-item">
+            商贷年限
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{businessYear}}</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='2' placeholder="30" value="{{businessYear}}" data-type='businessYear' bindinput="inputNum" />
+                <text class='item-unit'>年</text>
+            </view>
+        </view>
+        <view class="info-item">
+            利率方式
+            <view class="right-num">
+                <picker bindchange="selectType" data-type='rateName' range="{{rateArr}}" value="{{rataValue}}">
+                    <text class="weui-btn" type="default">{{rateName}}</text>
+                    <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+                </picker>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{rateName == "按最新LPR"}}'>
+            LPR
+            <image class="icon" bindtap='showTip' data-type='LPR' src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_my_costdescription@2x.png"></image>
+            <view class="right-num">
+                <text class='item-unit'>{{LPR}}%</text>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{rateName == "按最新LPR"}}'>
+            基点
+            <image class="icon" bindtap='showTip' data-type='baseRate' src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_my_costdescription@2x.png"></image>
+            <view class="right-num">
+                <input type="digit" class="search-input" maxlength='{{baseLength}}' placeholder="0" value="{{baseRate}}" data-type='baseRate' bindinput="inputNum" />
+                <text class='item-unit'>BP(‱)</text>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{rateName == "按最新LPR"}}'>
+            商贷利率
+            <view class="right-num">
+                <text>{{LPR}}%+{{baseRate?baseRate:0}}‱={{loanRate}}%</text>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{rateName == "按旧版基准利率"}}' data-pickertype='loanRate' bindtap="openPick">
+            商贷利率
+            <view class="right-num">
+                <text class="weui-btn" type="default" wx:if="{{isAdd}}">{{businessLoanName}}%</text>
+                <text class="weui-btn" type="default" wx:else>{{businessLoanName}}</text>
+                <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+            </view>
+        </view>
+        <view class="middle-bar"></view>
+        <view class="info-item">
+            公积金金额
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{publicLoan?publicLoan:0}}</text>
+                <input type="number" class="search-input" maxlength='2' placeholder="0" value="{{publicLoan}}" data-type='publicLoan' bindinput="inputNum" />
+                <text class='item-unit'>万</text>
+            </view>
+        </view>
+        <view class="info-item">
+            公积金年限
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{publicTime}}</text>
+                <input type="number" class="search-input" maxlength='2' placeholder="30" value="{{publicTime}}" data-type='publicTime' bindinput="inputNum" />
+                <text class='item-unit'>年</text>
+            </view>
+        </view>
+        <view class="info-item" data-pickertype='publicRate' bindtap="openPick">
+            公积金利率
+            <view class="right-num">
+                <text class="weui-btn" wx:if="{{isAdd}}">{{publicLoanName}}%</text>
+                <text class="weui-btn" wx:else>{{publicLoanName}}</text>
+                <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+            </view>
+        </view>
+    </view>
+    <!-- 公积金贷款 -->
+    <view class="info-box" wx:if='{{currentIndex == "2"}}'>
+        <view class="info-item">
+            计算方式
+            <view class="right-num">
+                <picker bindchange="selectType" data-type='calculateName' range="{{calculateArr}}" value="{{calculateValue}}">
+                    <text class="weui-btn" type="default">{{calculateName}}</text>
+                    <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+                </picker>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{calculateName == "按房屋总价"}}'>
+            房屋总价
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{totalPrice?totalPrice:0}}</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='7' placeholder="0" value="{{totalPrice}}" data-type='totalPrice' bindinput="inputNum" />
+                <text class='item-unit'>万</text>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{calculateName == "按房屋总价"}}'>
+            首付比例
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{firstPrecent}}</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='5' placeholder="30" value="{{firstPrecent}}" data-type='firstPrecent' bindinput="inputNum" />
+                <text class='item-unit'>%</text>
+            </view>
+        </view>
+        <view class="info-item" wx:if='{{calculateName == "按房屋总价"}}'>
+            首付金额
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{firstPrice?firstPrice:0}}</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='7' placeholder="0" value="{{firstPrice}}" data-type='firstPrice' bindinput="inputNum" />
+                <text class='item-unit'>万</text>
+            </view>
+        </view>
+        <view class="info-item">
+            公积金金额
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{publicLoan?publicLoan:0}}</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='2' placeholder="0" value="{{publicLoan}}" data-type='publicLoan' bindinput="inputNum" />
+                <text class='item-unit'>万</text>
+            </view>
+        </view>
+        <view class="info-item">
+            公积金年限
+            <view class="right-num">
+                <text class="input-num" wx:if="{{openPicker}}">{{publicTime}}</text>
+                <input type="number" wx:if="{{!openPicker}}" class="search-input" maxlength='2' placeholder="30" value="{{publicTime}}" data-type='publicTime' bindinput="inputNum" />
+                <text class='item-unit'>年</text>
+            </view>
+        </view>
+        <view class="info-item" data-pickertype='publicRate' bindtap="openPick">
+            公积金利率
+            <view class="right-num">
+                <text class="weui-btn" wx:if="{{isAdd}}">{{publicLoanName}}%</text>
+                <text class="weui-btn" wx:else>{{publicLoanName}}</text>
+                <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="cal-button blue" wx:if='{{(publicLoan&&publicTime)||(businessYear&&businessLoan)}}' bindtap='countPrice'>
+        开始计算
+    </view>
+    <view wx:else class="cal-button gary">开始计算</view>
+    <view class="tip-box" style='display:{{showTip?"block":"none"}}'>
+        <image bindtap="hideNav" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/record_h5_%20icon_delete@2x.png"></image>
+        <view class="tip-LPR" wx:if='{{showLPR}}'>
+            <view class="tip-top">LPR（贷款市场报价利率）</view>
+            <view class="tip-text">
+                自2019年10月8日起，新发放的商业住房贷款的贷款利率由“贷款基准利率（4.9%）”转换为“贷款市场报价利率（LPR）”。在LPR的基础上增加基点来确定最终的商贷利率；LPR每月20日（遇节假日顺延）报价一次，可在中国人民银行网站查询。
+            </view>
+            <view class="tip-text" style="font-weight:700">最新LPR：一年期4.15%，五年期4.8%</view>
+            <view class="tableView">
+                <view class="table_header">
+                    <view class="th th1">贷款年限</view>
+                    <view class="th th2">LPR</view>
+                </view>
+                <block wx:for="{{ LPRlist }}" wx:for-item="work" wx:key="key">
+                    <view class="table_cell">
+                        <view class="td td1">{{work.year}}</view>
+                        <view class="td td2">{{work.LPR}}</view>
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view class="tip-LPR" wx:if='{{showBaseRate}}'>
+            <view class="tip-top">基点（浮动值）</view>
+            <view class="tip-text">
+                自2019年10月8日起，商业贷款利率的计算方式由“贷款基准利率（4.9%）*上浮或下浮比例”改为“LPR+基点（1基点=0.01%）”
+            </view>
+        </view>
+        <!-- <view class="cal-button" bindtap='countPrice'>开始计算</view> -->
+    </view>
+    <view class="swiper-beijing" style='display:{{displays}}' bindtap='hidePicker'></view>
+    <view>
+        <picker-component wx:if="{{showPicker}}" bind:sure="sure" bind:close="close" bind:add="add" valueName="{{pickerType == 'loanRate'? businessLoanName:publicLoanName}}" pickerType="{{pickerType}}" pickData="{{pickerType == 'loanRate'?bussinessList : publicList}}" open="{{openPicker}}" />
+    </view>
+</view>
+<!-- 调价绩点icon -->
+<!-- 添加echart -->

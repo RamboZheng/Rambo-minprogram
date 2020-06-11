@@ -1,0 +1,266 @@
+.container {
+  width: 100%;
+  background: #F2F3F5;
+  /* 表格cell */
+}
+.container .tab-bar {
+  width: 100%;
+  border-bottom: 2rpx solid #000;
+  background: #fff;
+}
+.container .box-top {
+  width: 100%;
+  height: 500rpx;
+  background: #fff;
+  position: relative;
+}
+.container .box-top .line-chart {
+  width: 100%;
+  height: 500rpx;
+  position: relative;
+  z-index: 2;
+}
+.container .box-top .line-chart ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+.container .box-top .result-box {
+  position: absolute;
+  top: 190rpx;
+  width: 100%;
+  font-size: 30rpx;
+  color: #878D99;
+  text-align: center;
+  z-index: 6;
+}
+.container .box-top .result-box cover-image {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  left: 58%;
+  top: 0;
+}
+.container .box-top .result-box .result-num {
+  font-size: 36rpx;
+  color: #000000;
+  font-weight: 700;
+  margin-top: 10rpx;
+}
+.container .info-box {
+  width: 100%;
+  background: #fff;
+}
+.container .info-box .box-bottom {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 2rpx solid #E3E5E6;
+  padding: 40rpx 0 30rpx 0;
+}
+.container .info-box .box-bottom .content-item {
+  position: relative;
+  flex-grow: 1;
+}
+.container .info-box .box-bottom .content-item .item-top {
+  text-align: center;
+  font-size: 28rpx;
+  color: #5C6373;
+}
+.container .info-box .box-bottom .content-item .item-bottom {
+  margin-top: 10rpx;
+  text-align: center;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #2C2F37;
+}
+.container .info-box .box-bottom .content-item .item-bar {
+  width: 2rpx;
+  height: 60rpx;
+  background: #E3E5E6;
+  border-radius: 2rpx;
+  position: absolute;
+  right: 0;
+  top: 15rpx;
+}
+.container .info-box .info-tip {
+  width: 90%;
+  margin: 0 auto;
+  padding: 40rpx 0;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #878D99;
+}
+.container .loan-box {
+  width: 100%;
+  padding-bottom: 70rpx;
+  background: #fff;
+}
+.container .loan-box .loan-item .loan-top {
+  margin-top: 40rpx;
+  padding-left: 40rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #2C2F37;
+}
+.container .loan-box .loan-item .loan-item {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 32rpx;
+  color: #878D99;
+  padding: 10rpx 0 20rpx 0;
+  border-bottom: 2rpx solid #E3E5E6;
+  position: relative;
+}
+.container .loan-box .loan-item .loan-item image {
+  width: 18rpx;
+  height: 32rpx;
+  float: right;
+}
+.container .loan-box .result-tip {
+  text-align: center;
+  font-size: 28rpx;
+  color: #CBCBCB;
+  padding: 20rpx 0 40rpx 0;
+}
+.container .cal-button {
+  color: #fff;
+  width: 610rpx;
+  margin: 0 auto;
+  padding: 27rpx 0;
+  text-align: center;
+  background: #6595F4;
+  border-radius: 50rpx;
+}
+.container .tip-box {
+  position: fixed;
+  z-index: 9;
+  width: 690rpx;
+  border-radius: 8rpx;
+  background: #fff;
+  top: 180rpx;
+  padding: 40rpx 0;
+}
+.container .tip-box image {
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  right: 40rpx;
+  top: 40rpx;
+}
+.container .tip-box .tip-top {
+  width: 80%;
+  font-size: 36rpx;
+  color: #2C2F37;
+  padding: 0 0 40rpx 40rpx;
+}
+.container .tip-box .tip-title {
+  padding-top: 40rpx;
+  font-size: 32rpx;
+  color: #2C2F37;
+  font-weight: 600;
+  line-height: 45rpx;
+  width: 90%;
+  margin: 0 auto;
+}
+.container .tip-box .tip-text {
+  font-size: 32rpx;
+  color: #475266;
+  line-height: 45rpx;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 40rpx;
+}
+.container .recommand-box {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 20rpx;
+  padding: 40rpx 0;
+  /* 表头 */
+}
+.container .recommand-box .box-title {
+  display: inline-block;
+  width: 70%;
+  font-size: 32rpx;
+  color: #2C2F37;
+  font-weight: 500;
+  padding-left: 30rpx;
+}
+.container .recommand-box .check-more {
+  display: inline-block;
+  color: #878D99;
+  font-size: 28rpx;
+  width: 22%;
+  line-height: 40rpx;
+}
+.container .recommand-box .check-more image {
+  vertical-align: sub;
+  width: 18rpx;
+  height: 32rpx;
+  margin-left: 20rpx;
+}
+.container .recommand-box .tableView {
+  border: 1px solid #E3E5E6;
+  border-right: 0;
+  border-bottom: 0;
+  width: 98%;
+  margin-left: 1%;
+}
+.container .recommand-box .table_header {
+  display: flex;
+  justify-content: space-between;
+  /* 项目位于各行之间留有空白的容器内。 */
+  background: #F2F3F5;
+  width: 100%;
+  font-size: 28rpx;
+  color: #2C2F37;
+  text-align: center;
+  font-weight: 900;
+}
+.container .recommand-box .th {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  border-bottom: 1px solid #E3E5E6;
+  border-right: 1px solid #E3E5E6;
+}
+.container .recommand-box .th1,
+.container .recommand-box .th2 {
+  width: 50%;
+}
+.container .recommand-box .th3 {
+  width: 50%;
+}
+.container .table_cell {
+  display: flex;
+  justify-content: space-between;
+  /* 项目位于各行之间留有空白的容器内。 */
+  width: 100%;
+  font-size: 28rpx;
+  color: #878D99;
+  text-align: center;
+}
+.container .td {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60rpx;
+  border-bottom: 1px solid #E3E5E6;
+  border-right: 1px solid #E3E5E6;
+}
+.container .td1,
+.container .td2 {
+  width: 50%;
+}
+.container .td3 {
+  width: 50%;
+}
+.swiper-beijing {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}

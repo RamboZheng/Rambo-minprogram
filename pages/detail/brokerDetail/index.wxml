@@ -1,0 +1,48 @@
+<view class="broker-detail {{showPhone|| showComment?'container-fixed':''}}">
+    <view class="top">
+        <image class="top-pic" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img_apartment_banner@2x.png"></image>
+        <image class="head-pic" src="{{borkerInfo.photo?borkerInfo.photo:'https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-head@2x.png'}}"></image>
+        <view class="info-box">
+            <view class="item-1">
+                <view class="item-name">{{borkerInfo.name?borkerInfo.name:"暂无数据"}}</view>
+                <view class="item-site" wx:if='{{borkerInfo.company}}'>
+                    {{borkerInfo.company}}▪ {{borkerInfo.shop?borkerInfo.shop:"暂无数据"}}
+                </view>
+                <button wx:if="{{!isLogin}}" class="item-button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+                    +关注
+                </button>
+                <button wx:if="{{isLogin && isCollect=='1'}}" class="item-button" bindtap="ifCollect">
+                    +关注
+                </button>
+                <button wx:if="{{isLogin && isCollect=='2'}}" class="item-button" bindtap="ifCollect">
+                    已关注
+                </button>
+            </view>
+            <view class="item-2">
+                主营商圈 :  {{borkerInfo.regionBizareasMap ? borkerInfo.regionBizareasMap:"暂无数据"}}
+            </view>
+            <view class="item-2">
+                用户评分 ：
+                <view class="star">
+                    <star-level isHandle="{{false}}" starType='{{"glod"}}' flagLevel='{{brokerScore}}'></star-level>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="mid-bar"></view>
+    <!-- 推荐房源 tab -->
+    <tabList-block wx:if='{{brokerId}}' type="broker" blockId="{{brokerId}}"></tabList-block>
+    <view class="mid-bar" wx:if="{{brokerComment.length>0}}"></view>
+    <view class="comment-box" wx:if="{{brokerComment.length>0}}">
+        <view class="comment-title">
+            用户评价（{{brokerComment.length}}）
+            <view class="check-all" bindtap="toCommentList">查看全部 ></view>
+        </view>
+        <view class="comment-list">
+            <comment-item type="houseBrokerComment" wx:for="{{brokerComment}}" item='{{item}}' wx:key="key"></comment-item>
+        </view>
+    </view>
+    <foot-mode type="broker" bind:triggerFoot="clickFooter" isCollect='{{isCollect}}'></foot-mode>
+    <comment-broker wx:if='{{showComment}}' bind:handleInfo="clickComment" tags='{{tagList}}' commitInfo="{{commitInfo}}"></comment-broker>
+    <phone-block wx:if='{{showPhone}}' bind:cancel="cancelPhone" number="{{borkerInfo.contactPhone || borkerInfo.contact400}}"></phone-block>
+</view>

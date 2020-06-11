@@ -1,0 +1,62 @@
+.intro-box {
+  padding: 60rpx 0;
+  border-top: 2rpx solid #EDEFF0;
+}
+.intro-box .content {
+  width: 92%;
+  margin: 0 auto;
+}
+.intro-box .content .common-title {
+  font-size: 32rpx;
+  color: #2C2F37;
+  font-weight: 700;
+  padding-bottom: 30rpx;
+}
+.intro-box .house-des .intro-desc {
+  font-size: 28rpx;
+  color: #878d99;
+  text-align: justify;
+  vertical-align: top;
+  line-height: 40rpx;
+}
+.intro-box .house-des .intro-part .title {
+  font-size: 28rpx;
+  color: #475266;
+}
+.intro-box .house-des .intro-list .li {
+  margin-top: 36rpx;
+  width: 100%;
+  /* .dot {
+            display: inline-block;
+            width: 16rpx;
+            height: 16rpx;
+            background-color: #b3ccff;
+            margin-right: 20rpx;
+            border-radius: 50%;
+          } */
+}
+.intro-box .house-des .intro-list .li .describe {
+  display: block;
+  font-size: 28rpx;
+  color: #878d99;
+  text-align: justify;
+  vertical-align: top;
+  line-height: 36rpx;
+}
+.intro-box .house-des .intro-list .li:first-child {
+  margin-top: 0;
+}
+.intro-box .house-des .intro {
+  height: auto;
+}
+.intro-box .house-des .intro-h {
+  height: 280rpx;
+  overflow: hidden;
+  /*自动隐藏文字*/
+}
+.intro-box .house-des .show-all-text {
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #6595f4;
+  text-align: center;
+}

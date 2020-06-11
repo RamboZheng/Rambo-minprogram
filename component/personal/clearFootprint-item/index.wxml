@@ -1,0 +1,8 @@
+<!-- component/personal/clearFootprint-item/index.wxml -->
+<view class="clear-footeprint">
+    <view class="box-left">提示:仅保存最近30天的浏览记录</view>
+    <view class="box-right" wx:if="{{needBtn}}" bindtap="clearAll">
+        <image style="width: 23rpx; height: 23rpx;margin-right:10rpx;" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-toast-delete@3x.png"></image>
+        <text>清空</text>
+    </view>
+</view>

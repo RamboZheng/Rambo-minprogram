@@ -1,0 +1,137 @@
+<view class="container">
+    <tab-bar tabList='{{tabList}}' bind:tabIndex="getIndex"></tab-bar>
+    <!-- 等额本息 -->
+    <view class="box-top">
+        <view class='result-box' wx:if="{{currentIndex=='0'}}" bindtap='showTip'>
+            每月应还
+            <cover-image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_my_costdescription@2x.png" bindtap='openTip' style="display:{{showTip?'none':'block'}}"></cover-image>
+            <view class='result-num'>{{everyMonth}}元</view>
+        </view>
+        <view class='result-box' wx:if="{{currentIndex=='1'}}" bindtap='showTip'>
+            首月应还
+            <cover-image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_my_costdescription@2x.png" bindtap='openTip' style="display:{{showTip?'none':'block'}}"></cover-image>
+            <view class='result-num'>{{firstMonth}}元</view>
+        </view>
+        <view class="line-chart" style="display:{{showTip?'none':'block'}}">
+            <ec-canvas id="mychart-dom-bar" class='mychart-bar' canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+        </view>
+    </view>
+    <view class="info-box" wx:if='{{currentIndex == "0"}}'>
+        <view class="box-bottom">
+            <view class="content-item" wx:if='{{firstPrecent!=0}}'>
+                <view class="item-top">首付({{firstPrecent}}%)</view>
+                <view class="item-bottom">{{firstPrice}}万</view>
+                <view class="item-bar"></view>
+            </view>
+            <view class="content-item">
+                <view class="item-top">贷款总额</view>
+                <view class="item-bottom">{{loanNum}}万</view>
+                <view class="item-bar"></view>
+            </view>
+            <view class="content-item">
+                <view class="item-top">利息总额</view>
+                <view class="item-bottom">{{totalInterest}}万</view>
+            </view>
+        </view>
+        <view class="info-tip">
+            <text style="color:#9CBDFF">每月还款金额不变</text>
+            ，其中还款的本金逐月增加，利息逐月递减。
+        </view>
+    </view>
+    <view class="info-box" wx:if='{{currentIndex == "1"}}'>
+        <view class="box-bottom">
+            <view class="content-item" wx:if='{{firstPrecent!=0}}'>
+                <view class="item-top">首付({{firstPrecent}}%)</view>
+                <view class="item-bottom">{{firstPrice}}万</view>
+                <view class="item-bar"></view>
+            </view>
+            <view class="content-item">
+                <view class="item-top">贷款总额</view>
+                <view class="item-bottom">{{loanNum}}万</view>
+                <view class="item-bar"></view>
+            </view>
+            <view class="content-item">
+                <view class="item-top">利息总额</view>
+                <view class="item-bottom">{{totalInterest}}万</view>
+            </view>
+        </view>
+        <view class="info-tip">每月还款金额递减{{reduceLoan}}元，其中每月还款的本金不变，利息逐月减少。</view>
+    </view>
+    <view class="loan-box">
+        <view class='loan-item' wx:if="{{loanType=='0'}}">
+            <view class="loan-top">商业贷款({{businessLoan}}万)</view>
+            <view class="loan-item" data-total="{{businessLoan}}" data-year="{{businessYear}}" data-rate="{{loanRate}}" bindtap='toLoanDetail'>
+                贷款年限：{{businessYear}}年   贷款利率：{{loanRate}}%
+                <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+            </view>
+        </view>
+        <view class='loan-item' wx:if="{{loanType=='1'}}">
+            <view class="loan-top">商业贷款({{businessLoan}}万)</view>
+            <view class="loan-item" data-total="{{businessLoan}}" data-year="{{businessYear}}" data-rate="{{loanRate}}" bindtap='toLoanDetail'>
+                贷款年限：{{businessYear}}年   贷款利率：{{loanRate}}%
+                <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+            </view>
+            <view class="loan-top">公积金贷款({{publicLoan}}万)</view>
+            <view class="loan-item" data-total="{{publicLoan}}" data-year="{{publicTime}}" data-rate="{{publicRate}}" bindtap='toLoanDetail'>
+                贷款年限：{{publicTime}}年   贷款利率：{{publicRate}}
+                <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+            </view>
+        </view>
+        <view class='loan-item' wx:if="{{loanType=='2'}}">
+            <view class="loan-top">公积金贷款({{publicLoan}}万)</view>
+            <view class="loan-item" data-total="{{publicLoan}}" data-year="{{publicTime}}" data-rate="{{publicRate}}" bindtap='toLoanDetail'>
+                贷款年限：{{publicTime}}年   贷款利率：{{publicRate}}
+                <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+            </view>
+        </view>
+        <view class="result-tip">— 本计算结果仅供参考 —</view>
+        <view class="cal-button" bindtap='backIndex'>重新计算</view>
+    </view>
+    <view class="recommand-box" wx:if="{{recommandList.length>0 && !showTip}}">
+        <view class="box-title">房源推荐</view>
+        <view class="check-more" bindtap='toMore'>
+            查看更多
+            <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@3x.png"></image>
+        </view>
+        <list-item wx:for="{{recommandList}}" wx:if='{{item}}' listItem="{{item}}" detailType="house" wx:key="key"></list-item>
+    </view>
+    <scroll-view class="tip-box" style='display:{{showTip?"block":"none"}};height:1000rpx' scroll-x="false" scroll-y="true">
+        <image bindtap="hideNav" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/record_h5_%20icon_delete@2x.png"></image>
+        <view class="tip-LPR">
+            <view class="tip-top">等额本金和等额本息两种贷款方式有什么区别？选哪一种比较合适？</view>
+            <view class="tip-title">等额本金</view>
+            <view class="tip-text">
+                定义：每月还的本金一样。由于总本金逐渐减少，利率也会逐渐减少，每月还款的数额也越来越少。
+                计算公式：每月应还款额=（本金/还款月数）+（本金—累计已还本金）X月利率
+            </view>
+            <view class="tip-text">
+                优缺点：
+            优点是同等贷款年限下，等额本金比等额本息利息少；
+            缺点是等额本金还款开始阶段金额较高，压力大
+            </view>
+            <view class="tip-text">
+                适合人群：
+            1、当前收入高、可承受高月供，还款能力强的人。
+            2、年纪较大，收入逐渐减少的人，如退休人士等。
+            3、极有可能提前还款的购房者。
+            4、投资性购房者。在贷款时间较短的情况下用等额本金的方式还款，一方面可以节省一部分利息，另一方面可以迅速减少剩余的本金，在有需要的时候将剩余的贷款迅速还完，然后利用房子进行再融资。
+            </view>
+            <view class="tip-title">等额本息</view>
+            <view class="tip-text">
+                定义：每月还款额相同。本金所占比例逐月递增，利息所占比例逐月递减，月还款金额不变。
+                计算公式：每月应还款额=[贷款本金×月利率×（1+月利率）^还款月数]÷[（1+月利率）^还款月数－1]
+                注：^  表示乘方，如2^3=8
+            </view>
+            <view class="tip-text">
+                优缺点：
+            优点是前期还款压力相对较小，后期随着收入的增加还款压力会更小。  
+            缺点是前期的还款大部分为利息，真正还的本金很少，而且总体支出的利息多。
+            </view>
+            <view class="tip-text">
+                适合人群：
+                现阶段收入少且稳定，尤其是刚工作不久的年轻人。这类人群前期收入不多，随着年龄的增长和职位的升迁，收入和还款能力逐渐增加。
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<view class="swiper-beijing" bindtap="hideNav" style='display:{{showTip?"block":"none"}}'></view>

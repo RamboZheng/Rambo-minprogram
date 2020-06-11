@@ -1,0 +1,97 @@
+<view class="container {{result?'container-last':''}}">
+    <view class="index-page" wx:if='{{indexPage}}'>
+        <view class="index-city" bindtap="toChooseCity">深圳</view>
+        <view class="content-box">
+            <view class="content-top">有没有购房资质，一测便知</view>
+            <view class="content-center">
+                <view class="contenr-bar"></view>
+                <view class="content-text">轻松测出你的购房资质，及当前资质下的</view>
+                <view class="content-text">贷款成数，对待限购不迷茫。</view>
+            </view>
+            <view class="content-button" bindtap="beginTest">开始测评</view>
+        </view>
+        <view class="bottom-bar"></view>
+    </view>
+    <view class="index-bottom" wx:if='{{indexPage}}'></view>
+    <view class="ques-box" wx:if='{{!indexPage && !result}}'>
+        <view class="last-ques" bindtap="lastQues" wx:if='{{lastQues.title && !result}}'>
+            上一题：{{lastQues.title}} --- {{lastQues.answer}}
+        </view>
+        <view class="center" wx:if='{{!result && !questionInfo.isJudge}}'>
+            <view class="ques-text">{{questionInfo.title}}</view>
+            <view class="answer-box">
+                <view class="answer-item" wx:for='{{questionInfo.answerArr}}' data-next='{{item.next}}' data-text='{{item.text}}' data-isJudge='{{false}}' data-result='{{item.result || false}}' wx:key='key' bindtap="toNext">
+                    {{item.text}}
+                    <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/group_zizhi_unselected@2x.png"></image>
+                    <!-- <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/group_zizhi_unselected@2x.png"></image> -->
+                </view>
+            </view>
+        </view>
+        <view class="center-judge" wx:if='{{!result && questionInfo.isJudge}}'>
+            <view class="answer-box">
+                <view class="ques-text">{{questionInfo.title}}</view>
+                <view class="answer-item" wx:for='{{questionInfo.answerArr}}' data-next='{{item.next}}' data-text='{{item.text}}' data-isJudge='{{true}}' data-result='{{item.result || false}}' wx:key='key' bindtap="toNext">
+                    <image wx:if='{{item.text=="是"}}' src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/btn_zizhi_yes@2x.png"></image>
+                    <image wx:if='{{item.text=="否"}}' src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/btn_zizhi_no@2x.png"></image>
+                    <view>{{item.text}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="bottom-bar"></view>
+        <view class="bottom-tip" wx:if='{{questionInfo.title == "您的婚姻情况？"}}'>
+            <view class="tip-title">友情提示：</view>
+            <view class="tip-text">当前的婚姻状态，只分单身和已婚两类；离异算作单身，复婚算作已婚。</view>
+        </view>
+        <view class="bottom-tip" wx:if='{{questionInfo.title == "您当前家庭在深圳拥有的住房套数？"}}'>
+            <view class="tip-title">友情提示：</view>
+            <view class="tip-text">购买房屋时，其家庭名下，登记和网签的所有住房，均算作家庭名下的房产，并以家庭为单位计算其住房套数；</view>
+            <view class="tip-text">
+                非同一家庭的2名或以上个人，以共有权的形式共有一套住房的，各自家庭计拥有一套住房；已经取得房屋产权的房屋和已完成网上签约但尚未取得产权证的房屋，都计入家庭名下的住房套数。
+            </view>
+            <view class="tip-text">成年子女不与父母算作一个家庭，互相不占用名额；</view>
+            <view class="tip-text">改善住房，需先卖掉再买哦~</view>
+        </view>
+        <view class="bottom-tip" wx:if='{{questionInfo.title == "您家庭在全国是否有房贷记录？"}}'>
+            <view class="tip-title">友情提示：</view>
+            <view class="tip-text">1、房贷记录指人民银行征信系统中显示的在国内各地的商业性或公积金住房贷款记录；</view>
+            <view class="tip-text">2、家庭名下的公积金、商贷记录都算，组合贷按揭的贷款记录记做一套；</view>
+            <view class="tip-text">商住两用房、商铺等非住宅贷款记录不计算入内。</view>
+            <view class="tip-text">3、家庭名下全国范围内的所有住房贷款都计算在内。客户已去银行结清贷款未注销抵押的不算。</view>
+        </view>
+        <view class="bottom-tip" wx:if='{{questionInfo.title == "是否在深圳连续五年缴纳社保或个税？"}}'>
+            <view class="tip-title">友情提示：</view>
+            <view class="tip-text">1、社会保险包含养老、医疗、工伤三项中任意两项即可；</view>
+            <view class="tip-text">2、必须近60个月连续缴纳，且中间不可断缴或补缴。</view>
+        </view>
+        <view class="bottom-tip" wx:if='{{questionInfo.title == "您是否已在深圳居住满1年以上，并且有跟公司签署且在劳动局备案最近一年以上的《劳务合同》和劳动局颁发的《就业证》？"}}'>
+            <view class="tip-title">友情提示：</view>
+            <view class="tip-text">
+                需提供跟公司签署且在劳动局备案最近一年以上的《劳务合同》和劳动局颁发的《就业证》，才可以以家庭为单位在深圳限购一套住宅，不能购买商业房产。
+            </view>
+        </view>
+    </view>
+    <view class="last-page" wx:if='{{result}}'>
+        <view class="last-box">
+            <view class="top">购房资质测试结果</view>
+            <view class="center">
+                <view class="result-text">{{result}}</view>
+                <view class="result-tip">测试结果仅供参考，请以住建委资质审核结果为准。</view>
+            </view>
+            <view class="bottom" bindtap="showDetail">
+                查看测试详情
+                <text>></text>
+            </view>
+        </view>
+        <view class="result-button" bindtap='onceAgain'>再测一次</view>
+    </view>
+    <view class="detail-list" style='display:{{displays}}'>
+        <image bindtap="hideDetail" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_zizhi_delete@2x.png"></image>
+        <view class="detail-top">测试详情</view>
+        <view class="detail-box" wx:for='{{chooseArr}}'>
+            <view class="detail-question">{{item.title}}</view>
+            <view class="detail-answer">{{item.answer}}</view>
+        </view>
+        <view class="detail-button" bindtap='onceAgain'>再测一次</view>
+    </view>
+    <view class="swiper-beijing" bindtap="hideNav" style='display:{{displays}}'></view>
+</view>

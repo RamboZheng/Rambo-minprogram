@@ -1,0 +1,103 @@
+.container {
+    padding-top: 16%;
+}
+
+.container .top {
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    padding-top: 30rpx;
+}
+
+.container .have-data {
+    width: 100%;
+    font-size: 24rpx;
+    border-bottom: 2rpx solid #EDEFF0;
+    margin-top: 76rpx;
+}
+
+.container .have-data .result-box {
+    padding-bottom: 32rpx;
+    position: relative;
+}
+
+.container .have-data .result-box .result-name {
+    font-size: 36rpx;
+    color: #475266;
+    padding-left: 30rpx;
+}
+
+.container .have-data .result-box .result-name image {
+    width: 14rpx;
+    height: 24rpx;
+    margin-left: 20rpx;
+}
+
+.container .have-data .result-box .result-size {
+    color: #878D99;
+    padding-left: 30rpx;
+    margin-top: 20rpx;
+}
+
+.container .have-data .result-box .result-size .house-total {
+    display: inline-block;
+}
+
+.container .have-data .result-box .collect-button {
+    border: 2rpx solid #6595F4;
+    border-radius: 34rpx;
+    width: 132rpx;
+    color: #6595F4;
+    display: inline-block;
+    position: absolute;
+    top: 42rpx;
+    right: 30rpx;
+    line-height: 60rpx;
+    font-size: 24rpx;
+}
+
+.container .have-data .result-box .collect-button view {
+    width: 100%;
+    text-align: center;
+}
+
+.container .have-data .result-box .blue-button {
+    background: #6595F4;
+    color: #fff;
+}
+
+.container .have-data .result-box .white-button {
+    background: #fff;
+    color: #6595F4;
+}
+
+.container .no-data {
+    width: 100%;
+    font-size: 24rpx;
+    border-bottom: 2rpx solid rgb(228, 241, 248);
+    padding: 150rpx 0 32rpx 0;
+    color: #475266;
+    position: relative;
+}
+
+.container .no-data .top-text {
+    font-size: 32rpx;
+    color: rgba(71, 82, 102, 0.8);
+    width: 60%;
+    margin: 0 auto;
+}
+
+.container .no-data .top-text image {
+    width: 42rpx;
+    height: 42rpx;
+    vertical-align: top;
+    margin-right: 30rpx;
+}
+
+.container .no-data .bottom-text {
+    font-size: 28rpx;
+    color: #475266;
+    padding: 60rpx 30rpx 0 30rpx;
+}

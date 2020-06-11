@@ -1,0 +1,41 @@
+<!-- index.wxml -->
+<view class="container">
+  <view class="login-prompt">
+    <view class="say-hello">你好，</view>
+    <view class="prompt">欢迎使用自定义，请登录</view>
+  </view>
+  <view class="user-account">
+    <input class="user-phone" placeholder-class="phoneclass" type="number" maxlength="11" placeholder="请输入手机号码" bindinput="_getPhone" bindblur="_isPhoneTrue" value="{{phone}}"></input>
+    <view class="input-line"></view>
+    <view class="box">
+      <view class="left">
+        <input class="code" placeholder-class="codeclass" type="number" maxlength="6" placeholder="请输入验证码" value="{{code}}" bindinput="_getCode"></input>
+        <view class="input-line"></view>
+      </view>
+      <view class="right">
+        <button class="{{isAbled?'is-abled':'get-code'}}" disabled="{{sendBtnStatus}}" bindtap="_sendSms">
+          {{sendBtnContent}}
+        </button>
+      </view>
+    </view>
+  </view>
+  <view class="register">
+    <view class="{{loginBtnStatus?'login':'permit'}}" bindtap="handleLogin">登录</view>
+    <view class="or">或</view>
+    <button class="weChat-login" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+      微信授权登录
+    </button>
+  </view>
+  <view wx:if="{{false}}" class="agreement">
+    <view class="left">
+      <label catchtap='_checkedTap'>
+        <radio checked="{{flag}}"></radio>
+      </label>
+    </view>
+    <view class="right">
+      <navigator>自定义用户协议</navigator>
+      <text>及</text>
+      <navigator>用户隐私政策</navigator>
+    </view>
+  </view>
+</view>

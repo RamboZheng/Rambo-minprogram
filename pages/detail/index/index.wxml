@@ -1,0 +1,505 @@
+<wxs src="../../../lib/filter.wxs" module="filter" />
+<view class="container {{loading ? '':'hide'}} {{showLayer? 'no-scroll':''}}">
+    <agent-invite></agent-invite>
+    <view class="box top">
+        <chat-img bind:checkIsShow="handleCheckShow" class="c-banner" bannerImgUrl="{{bannerImgUrl}}" houseImages="{{houseImages}}" houseType="{{detailType}}">
+            <!-- <view wx:if="{{hasUserInfo}}" slot="btnCollection" class="collection {{isCollection ? 'on' : ''}}" bindtap="handleCollection"></view>
+            <button wx:else slot="btnCollection" open-type="getPhoneNumber" class="enshrine" bindgetphonenumber="getUserInfo"></button> -->
+            <view slot="btnCollection" class="option-group-style">
+                <view wx:if="{{hasUserInfo}}" class="collection {{isCollection ? 'on' : ''}}" bindtap="handleCollection"></view>
+                <button wx:else open-type="getPhoneNumber" class="enshrine" bindgetphonenumber="getUserInfo"></button>
+                <button class="icon-share" hover-class="none" open-type="share"></button>
+            </view>
+            <view class="layout-bottom" slot="layerBottom" wx:if="{{agents.length > 0}}" bindtap="handleShowConcate">
+                <view class="icon-phone"></view>
+                联系经纪人
+            </view>
+        </chat-img>
+        <!-- info -->
+        <block wx:if="{{detailType === 'house'}}">
+            <view class="about content">
+                <view class="title">{{housingInfo.title}}</view>
+                <!-- <button class="icon-share" hover-class="none" open-type="share"></button> -->
+            </view>
+            <view class="info content">
+                <view class="left">
+                    <text>{{housingInfo.price}}万</text>
+                    <text class="desc">价格</text>
+                </view>
+                <view class="center">
+                    <text>{{housingInfo.bedRoom + '室'}}{{housingInfo.livingRoom+'厅'}}</text>
+                    <text class="desc">户型</text>
+                </view>
+                <view class="right">
+                    <text>{{housingInfo.buildArea}}㎡</text>
+                    <text class="desc">建筑面积</text>
+                </view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="about content">
+                <view class="title">
+                    <text class="name">{{garendInfo.name}}</text>
+                    <text class="alias">{{garendInfo.alias || ''}}</text>
+                </view>
+                <!-- <button class="icon-share" hover-class="none" open-type="share"></button> -->
+            </view>
+            <view class="info content">
+                <view class="left">
+                    <text>{{garendInfo.avgPrice ? garendInfo.avgPrice + '元/m²':'暂无数据'}}</text>
+                    <text class="desc">参考均价</text>
+                </view>
+                <view class="center">
+                    <view class="need">
+                        {{ garendInfo.buildDate ?filter.formateSlice(garendInfo.buildDate):''}}
+                    </view>
+                    <text class="desc">建筑年代</text>
+                </view>
+                <view class="right">
+                    <text>{{garendInfo.roomQuantity ? garendInfo.roomQuantity : '暂无数据'}}</text>
+                    <text class="desc">总户数</text>
+                </view>
+            </view>
+        </block>
+    </view>
+    <!-- 小区房源 -->
+    <block wx:if="{{blockType.length > 0}}">
+        <view class="box block-housing" wx:if="{{detailType === 'block'}}">
+            <text class="block-name">小区房源</text>
+            <!-- <view class="all-item">
+            <view class="all-type content">
+                <view class="type">
+                    <view class="type-name {{currentType === index ? 'on' : ''}}" wx:for="{{blockType}}" wx:for-index="index" wx:key="{{key}}" data-bid="{{item.id}}" data-index="{{index}}" bindtap="chooseGarendType">
+                        {{item.name}}
+                    </view>
+                </view>
+            </view>
+            <view class="all-housing">
+                <list-item wx:for="{{blockType[currentType].result}}" wx:for-index="index" listItem="{{item}}" index="{{index}}" detailType="house" needTips="{{false}}" total="{{currentTotalNum}}" wx:key="key"></list-item>
+                
+                <view class="chat-more" wx:if="{{blockType[currentType].result.length > 3}}">
+                    <text bindtap="handleLoadMore">
+                        {{(blockType[currentType].result.length > 3 && currentTotalNum < blockType[currentType].result.length) ? '查看更多':'收起'}}
+                    </text>
+                </view>
+            </view>
+        </view> -->
+            <view class="all-item">
+                <view class="all-type content">
+                    <view class="type">
+                        <view class="type-name {{currentType === index ? 'on' : ''}}" wx:for="{{blockType}}" wx:for-index="index" wx:key="{{key}}" data-index="{{index}}" data-txt="{{item.name}}" bindtap="chooseGarendType">
+                            {{item.name}}
+                        </view>
+                    </view>
+                </view>
+                <view class="all-housing">
+                    <list-item wx:for="{{blockType[currentType].result}}" wx:for-index="index" listItem="{{item}}" index="{{index}}" detailType="house" needTips="{{false}}" wx:key="key"></list-item>
+                    <!-- 一开始就没有第二页的时候就隐藏更多以及收起的功能 -->
+                    <block wx:if="{{blockType[currentType].houseTotal > 3}}">
+                        <view class="chat-more" wx:if="{{blockType[currentType].result.length > 2}}">
+                            <text bindtap="handleLoadMore">{{ currentStatus ? '收起':'查看更多'}}</text>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </block>
+    <!-- 小区基本信息 -->
+    <view class="box estate-base" wx:if="{{detailType === 'block'}}">
+        <view class="content">
+            <text class="common-title">小区基本信息</text>
+            <view class="list">
+                <view class="item">
+                    <view class="item-info">
+                        <text class="label">建筑年代</text>
+                        {{garendInfo.buildDate ?filter.formateSlice(garendInfo.buildDate):''}}
+                    </view>
+                    <view class="item-info">
+                        <text class="label">产权年限</text>
+                        {{garendInfo.rightYear? garendInfo.rightYear + '年': '暂无数据'}}
+                    </view>
+                </view>
+                <view class="item">
+                    <view class="item-info">
+                        <text class="label">建筑类型</text>
+                        {{garendInfo.architecturalType ? garendInfo.architecturalType : '暂无数据'}}
+                    </view>
+                    <view class="item-info">
+                        <text class="label">交易属性</text>
+                        {{garendInfo.transactionOwnership ? garendInfo.transactionOwnership : '暂无数据'}}
+                    </view>
+                </view>
+                <view class="item">
+                    <view class="item-info">
+                        <text class="label">用水类型</text>
+                        {{garendInfo.waterType ? garendInfo.waterType : '暂无数据'}}
+                    </view>
+                    <view class="item-info">
+                        <text class="label">停车费</text>
+                        {{garendInfo.parkingRate ? garendInfo.parkingRate + '元/月': '暂无数据'}}
+                    </view>
+                </view>
+                <view class="item">
+                    <view class="item-info">
+                        <text class="label">用电类型</text>
+                        {{garendInfo.powerType ? garendInfo.powerType : '暂无数据'}}
+                    </view>
+                    <view class="item-info">
+                        <text class="label">停车位</text>
+                        {{garendInfo.parking ? garendInfo.parking + '个' : '暂无数据'}}
+                    </view>
+                </view>
+                <view class="item">
+                    <view class="item-info w100">
+                        <text class="label">物业公司</text>
+                        <view class="name">
+                            {{garendInfo.propertyCompany ? garendInfo.propertyCompany : '暂无数据' }}
+                        </view>
+                    </view>
+                </view>
+                <view class="item">
+                    <view class="item-info w100">
+                        <text class="label">物业费用</text>
+                        {{garendInfo.propertyFee ? garendInfo.propertyFee + '元/㎡·月' : '暂无数据'}}
+                    </view>
+                </view>
+            </view>
+            <text class="estate-tips">* 以上信息仅供参考，购房时请以房产证或不动产证信息为准。</text>
+        </view>
+    </view>
+    <view class="box base" wx:if="{{detailType === 'house'}}">
+        <view class="content">
+            <view class="name" wx:if="{{housingInfo.houseTags.length > 0}}">
+                <!-- <text class="new" wx:if="{{housingInfo.newRoom}}">新上</text> -->
+                <text wx:for="{{housingInfo.houseTags}}" wx:key="{{key}}">{{item}}</text>
+            </view>
+            <view class="introduce">
+                <text class="common-title">房源信息</text>
+                <view class="list">
+                    <view class="item">
+                        <view>
+                            <text decode="{{true}}" class="label">单&emsp;&emsp; 价</text>
+                            {{housingInfo.unitPrice}}元/m²
+                        </view>
+                        <view>
+                            <text decode="{{true}}" class="label">朝&emsp;&emsp; 向</text>
+                            {{housingInfo.direction}}
+                        </view>
+                        <view>
+                            <text decode="{{true}}" class="label">装&emsp;&emsp; 修</text>
+                            {{housingInfo.decoration}}
+                        </view>
+                        <view>
+                            <text class="label">户型结构</text>
+                            {{housingInfo.roomStructural}}
+                        </view>
+                        <view>
+                            <text class="label">房屋用途</text>
+                            {{housingInfo.propertyType}}
+                        </view>
+                    </view>
+                    <view class="item">
+                        <view>
+                            <text decode="{{true}}" class="label">户&emsp;&emsp; 型</text>
+                            {{housingInfo.bedRoom + '室'}}{{housingInfo.livingRoom+'厅'}}{{housingInfo.kitchen + '厨'}}{{housingInfo.bathRoom + '卫'}}
+                        </view>
+                        <view>
+                            <text decode="{{true}}" class="label">楼&emsp;&emsp; 层</text>
+                            {{housingInfo.floorName}}/{{housingInfo.totalFloor}}层
+                        </view>
+                        <view>
+                            <text decode="{{true}}" class="label">电&emsp;&emsp; 梯</text>
+                            {{housingInfo.hasElevator?housingInfo.hasElevator:"暂无数据"}}
+                        </view>
+                        <view>
+                            <text class="label">建筑年代</text>
+                            {{housingInfo.maxBuiltYear}}年
+                        </view>
+                        <view>
+                            <text class="label">房屋年限</text>
+                            {{housingInfo.propertyPeriod ? housingInfo.propertyPeriod == 0 ?  '暂无数据' : housingInfo.propertyPeriod : '暂无数据'}}
+                        </view>
+                    </view>
+                </view>
+                <view class="item">
+                    <view>
+                        <text class="label">抵押信息</text>
+                        {{housingInfo.pledgeInfo}}
+                    </view>
+                    <view>
+                        <text class="label">挂牌时间</text>
+                        {{housingInfo.listingDate}}
+                    </view>
+                </view>
+                <View class="item-garden">
+                    <view class="label">小区名称</view>
+                    <view class="name" data-id="{{housingInfo.gardenId}}" bindtap="handleMore">
+                        <view style="color: #6595f4;margin-left: 2rpx;">
+                            {{housingInfo.gardenName}}
+                        </view>
+                        （{{housingInfo.regionName}} {{housingInfo.businessName}}）
+                    </view>
+                    <view class="arrow" data-id="{{housingInfo.gardenId}}" bindtap="handleMore"></view>
+                </View>
+                <!-- <view class="more" bindtap="handleBaseInfo">更多房源信息</view> -->
+            </view>
+        </view>
+    </view>
+    <view class="box price {{housePriceRecords.length > 0 ? '' : 'hidden'}}" wx:if="{{detailType === 'house'}}">
+        <view class="price-box">
+            <text class="common-title">价格雷达</text>
+            <view class="current-price">
+                <text class="tips">当前挂牌价</text>
+                <!-- <view class="brand" wx:for="{{housePriceRecords}}" wx:key="{{key}}">
+                    <view class="brand-name">
+                        <view class="icon-lianjia" wx:if="{{item.changePriceList[0].source === '链家'}}"></view>
+                        <view class="icon-leyoujia" wx:if="{{item.changePriceList[0].source === '乐有家'}}"></view>
+                        <view class="icon-qfang" wx:if="{{item.changePriceList[0].source === 'Q房网'}}"></view>
+                        <view class="icon-zhongyuan" wx:if="{{item.changePriceList[0].source === '中原'}}"></view>
+                        <text class="nick">{{item.changePriceList[0].source}}</text>
+                    </view>
+                    <view class="brand-money">{{item.changePriceList[0].price}}万元</view>
+                </view> -->
+                <view class="brand" wx:for="{{housePriceRecords}}" wx:key="{{key}}">
+                    <view class="brand-name">
+                        <view class="icon-lianjia" wx:if="{{item.name === '链家'}}"></view>
+                        <view class="icon-leyoujia" wx:if="{{item.name === '乐有家'}}"></view>
+                        <view class="icon-qfang" wx:if="{{item.name === 'Q房网' || item.name === 'Q房'}}"></view>
+                        <view class="icon-zhongyuan" wx:if="{{item.name === '中原'}}"></view>
+                        <text class="nick">{{item.name}}</text>
+                    </view>
+                    <view class="brand-money">{{item.list[item.list.length - 1].price}}万元</view>
+                </view>
+            </view>
+            <view class="history-price">
+                <text class="tips">价格变动历史</text>
+                <view class="{{showPriceAll ?'':'show-history'}}">
+                    <view class="chain">
+                        <view class="chain-box" wx:for="{{housePriceRecordMap}}" wx:key="{{key}}" wx:for-index="hhouseKey">
+                            <view class="chain-list" wx:for="{{item}}" wx:for-item="list" wx:key="index">
+                                <view class="one">
+                                    <view class="dot" wx:if="{{index === 0}}"></view>
+                                    <text wx:if="{{index == 0}}">{{hhouseKey}}</text>
+                                </view>
+                                <view class="two">{{list.source}}</view>
+                                <view class="three">{{list.price}}万元</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="show-all" bindtap="showAllHistory" wx:if="{{computerPriceLen > 3 && !showPriceAll}}">
+                    展开全部
+                </view>
+            </view>
+        </view>
+        <view class="line-chart">
+            <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+        </view>
+        <!-- <view class="line-chart {{showCan?'showCan':'hideCan'}}">
+            <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+        </! -->
+    </view>
+    <!-- 房源点评 -->
+    <view class="box remark-on" wx:if="{{detailType === 'house' && houseFeatures.length > 0}}">
+        <view class="content">
+            <view class="common-title">
+                房源点评
+                <view class="common-link" bindtap="showLink">查看信息来源链接</view>
+            </view>
+            <view class="remark-content">
+                <view class="tab-list" wx:if="{{houseFeatures.length > 1}}">
+                    <view wx:for="{{houseFeatures}}" wx:key="key" class="tab-item {{index === remarkIndex ? 'on': ''}}" data-index="{{index}}" bindtap="handTabRemark">
+                        {{item.source}}
+                    </view>
+                </view>
+                <view class="remark-box {{toggleParams.flag === 1 ? 'remark-h':''}}">
+                    <view class="remark-list" wx:for="{{houseFeatures[remarkIndex].tagList}}" wx:key="key">
+                        <view class="label">{{item.tagType}}</view>
+                        <view class="text">{{item.desc}}</view>
+                    </view>
+                </view>
+                <view class="chat-more" wx:if="{{toggleParams.show}}" bindtap="handleToggleShow">
+                    {{toggleParams.flag == 1 ? '展开':'收起'}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <cover-view class="link-box" wx:if="{{showLink}}">
+        <cover-view style="width: 100%" scroll-top="0">
+            查看信息来源链接
+            <cover-image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_zizhi_delete@3x.png" class="closeIcon" bindtap="showLink"></cover-image>
+            <cover-view class="url-text">{{linkUrl}}</cover-view>
+            <cover-view class="copy-button" bindtap="copyUrl">复制</cover-view>
+        </cover-view>
+    </cover-view>
+    <!-- 看房评价 -->
+    <comment-box type="houseUserComment" gardenId="{{id}}"></comment-box>
+    <!-- <comment-box type="houseBokerComment" gardenId="{{searchBox.parme.gardenId}}" title="小区房源"></comment-box> -->
+    <view class="box map map-padding">
+        <view class="content">
+            <text class="common-title">位置以及周边</text>
+            <view class="place">
+                <text class="text">地址</text>
+                <text class="monick" bindtap="toSetMap">{{houseUrl}}</text>
+            </view>
+            <!-- <view class="address">
+                <map class="map" canvas-id="onMap" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location="true" markers="{{markers}}" bindmarkertap="makertap" bindtap="toSetMap"></map>
+                <view class="lucency-layer"></view>
+            </view> -->
+            <view class="address">
+                <map class="map" canvas-id="onMap" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="16" show-location="true" markers="{{markers}}" bindmarkertap="makertap" bindtap="toSetMap"></map>
+                <cover-view class="lucency-layer" bindtap="toSetMap">
+                    <cover-view class="lucency-content">
+                        <cover-view class="lucency-box">
+                            <cover-view class="text">
+                                {{detailType === 'house' ? housingInfo.regionName + ' ' + housingInfo.gardenName  :  garendInfo.region + ' ' + garendInfo.registerName}}
+                            </cover-view>
+                            <cover-image class="icon-arrow" src="../../../image/common/img-triangle@2x.png"></cover-image>
+                        </cover-view>
+                    </cover-view>
+                </cover-view>
+            </view>
+        </view>
+    </view>
+    <view class="box housing" wx:if="{{detailType === 'house'}}">
+        <view class="content" data-id="{{housingInfo.gardenId}}" bindtap="handleMore">
+            <view class="title">
+                <view class="name">{{housingInfo.gardenName}}</view>
+                <view class="to-detail">
+                    小区详情及更多房源
+                    <view class="arrow"></view>
+                </view>
+            </view>
+            <view class="example">
+                <view class="picture">
+                    <image src="{{housingInfo.imgUrl}}" />
+                </view>
+                <view class="info-text">
+                    <view class="area">
+                        {{housingInfo.gardenAvgPrice== null ? ' 暂无数据': filter.hasUnit(housingInfo.gardenAvgPrice) }}
+                        <text>参考均价</text>
+                    </view>
+                    <view class="character">
+                        <text>建筑年代：</text>
+                        {{housingInfo.gardenbuildDate ? filter.formateSlice(housingInfo.gardenbuildDate):'暂无数据'}}
+                    </view>
+                    <view class="character">
+                        <text>开发商：</text>
+                        {{housingInfo.gardenDeveloper ?housingInfo.gardenDeveloper:'暂无数据'}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <block wx:if="{{detailType === 'house'}}">
+        <view class="box recommend" wx:if="{{recommendList.length > 0}}">
+            <view class="content">
+                <text class="common-title">推荐房源</text>
+            </view>
+            <view class="silder">
+                <view class="silder-box">
+                    <view class="list" wx:for="{{recommendList}}" wx:key="{{key}}" data-id="{{item.id}}" bindtap="handleRecommend">
+                        <view class="cover">
+                            <image src="{{item.imgUrl}}" />
+                        </view>
+                        <view class="relate">
+                            <view class="name">{{item.title}}</view>
+                            <view class="type">
+                                {{item.bedRoom}}室{{item.livingRoom}}厅
+                                <text>|</text>
+                                {{item.buildArea}}m²
+                                <text>|</text>
+                                {{item.direction}}
+                            </view>
+                            <view class="price">
+                                {{item.price}}万
+                                <text class="selling">{{item.unitPrice}}元/m²</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <text class="tip">* 房源信息仅供参考，如有疑问，请联系客服</text>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="box recommend" wx:if="{{recommendList.length > 0}}">
+            <view class="content">
+                <text class="common-title">周边小区</text>
+            </view>
+            <view class="silder">
+                <view class="silder-box">
+                    <view class="list" wx:for="{{recommendList}}" wx:key="{{key}}" data-id="{{item.id}}" bindtap="handleRecommend">
+                        <view class="cover">
+                            <image src="{{item.img}}" />
+                        </view>
+                        <view class="relate">
+                            <view class="name">{{item.gardenName}}</view>
+                            <text class="total">在售：{{item.houseTotal}}套</text>
+                            <!-- <text class="type">总价：{{item.priceDesc}}</text> -->
+                            <view class="type">
+                                <!-- 总价：{{ item.priceDesc ? filter.goPoint(item.priceDesc):''}} -->
+                                总价：{{ item.priceDesc ? item.priceDesc : ''}}
+                            </view>
+                            <!-- <text class="type">
+                                {{item.bedRoom}}室{{item.livingRoom}}厅 {{item.buildArea}}m² {{item.direction}}
+                            </text>
+                            <view class="price">
+                                {{item.price}}万
+                                <text class="selling">{{item.unitPrice}}/m²</text>
+                            </view> -->
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <text class="tip">* 房源信息仅供参考，如有疑问，请联系客服</text>
+        </view>
+    </block>
+    <view class="null-box"></view>
+    <!-- <view class="contact {{show ? 'more' : ''}}" wx:if="{{agents.length > 0}}">
+        <view class="icon-up {{show ? 'icon-down' : ''}}" bindtap="showAll"></view>
+        <view class="contact-list">
+            <view class="dl" wx:for="{{agents}}" wx:key="{{key}}">
+                <view class="dt">
+                    <view class="avatar" data-id="{{item.id}}">
+                        <image mode="aspectFill" src="{{item.photoUrl}}" />
+                    </view>
+                    <view class="people">
+                        <text class="user">{{item.name}}</text>
+                        <text class="date">{{item.source}}</text>
+                    </view>
+                </view>
+                <view class="dd" bindtap="callIn" catchtap data-phone="{{item.contact}}"></view>
+            </view>
+        </view>
+    </view> -->
+    <!-- 调试模式展示id -->
+    <view wx:if="{{debugId}}" class="show-debug">{{id}}</view>
+    <foot-mode type="{{searchBox.detailType}}" infoList='{{agents}}' wx:if="{{agents.length>0}}"></foot-mode>
+    <!-- 联系经纪人 -->
+    <view class="fix-contact {{linkman ? '' : 'h0'}}">
+        <view class="contact all-agent more">
+            <view class="icon-up icon-down" bindtap="handleShowConcate"></view>
+            <view class="contact-list">
+                <view class="dl" wx:for="{{agents}}" wx:key="{{key}}">
+                    <view class="dt">
+                        <view class="avatar" data-id="{{item.id}}">
+                            <image mode="aspectFill" src="{{item.photoUrl}}" />
+                        </view>
+                        <view class="people">
+                            <text class="user">{{item.name}}</text>
+                            <text class="date">{{item.company}}</text>
+                        </view>
+                    </view>
+                    <view class="dd" bindtap="callIn" catchtap data-phone="{{item.contact}}"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 回到首页 -->
+    <cover-view class="fix-goback {{isShare == 1 && !show ? '': 'hide'}}" bindtap="bindViewTap">
+        <cover-image class="icon-home" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-details-backhome@2x.png"></cover-image>
+    </cover-view>
+</view>
+<cover-view class="swiper-beijing" bindtap="showLink" style='display:{{showLink?"blcok":"none"}}' wx:if="{{showLink}}"></cover-view>
+<no-data show="{{noData}}" pageType='index'></no-data>

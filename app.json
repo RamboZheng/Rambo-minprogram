@@ -1,0 +1,60 @@
+{
+    "pages": [
+        "pages/homePage/index/index",
+        "pages/login/index/index",
+        "pages/login/logs/logs",
+        "pages/homePage/resultList/index",
+        "pages/homePage/commentList/index",
+        "pages/homePage/renting/index",
+        "pages/homePage/search/index",
+        "pages/homePage/brandList/index",
+        "pages/tool/houseLoan/index/index",
+        "pages/tool/houseLoan/result/index",
+        "pages/tool/houseLoan/loanDetail/index",
+        "pages/tool/houseMeans/index",
+        "pages/IM/index/index",
+        "pages/personal/index/index",
+        "pages/personal/aboutUs/index",
+        "pages/personal/history/index",
+        "pages/personal/myCollect/index",
+        "pages/personal/phoneNumber/index",
+        "pages/personal/advice/index",
+        "pages/detail/index/index",
+        "pages/detail/brokerDetail/index",
+        "pages/detail/appriase/index",
+        "pages/detail/more/index",
+        "pages/detail/baseInfo/index",
+        "pages/detail/moduleDetail/index",
+        "pages/detail/rentDetail/index",
+        "pages/detail/setMap/index",
+        "component/common/showImg/index",
+        "pages/homePage/chooseCity/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "自定义",
+        "navigationBarTextStyle": "black"
+    },
+    "sitemapLocation": "sitemap.json",
+    "tabBar": {
+        "custom": true,
+        "color": "#878D99",
+        "selectedColor": "#475266",
+        "borderStyle": "black",
+        "list": [{
+                "pagePath": "pages/homePage/index/index",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/personal/index/index",
+                "text": "我的"
+            }
+        ]
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于自定义的效果展示"
+        }
+    }
+}

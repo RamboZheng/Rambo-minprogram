@@ -1,0 +1,127 @@
+page {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #f2f3f5;
+}
+page .container {
+  background: #f2f3f5;
+}
+page .container .box {
+  width: 100%;
+  height: 100%;
+}
+page .container .box .list {
+  padding-bottom: 150rpx;
+}
+page .container .box .user-top {
+  width: 100%;
+  height: 400rpx;
+  background: #6595f4;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+page .container .box .user-top .userinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+page .container .box .user-top .userinfo .img-head {
+  width: 160rpx;
+  height: 160rpx;
+  background: #ffffff;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+page .container .box .user-top .userinfo .img-head image {
+  width: 140rpx;
+  height: 140rpx;
+}
+page .container .box .user-top .userinfo .user-login {
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #ffffff;
+  text-align: center;
+}
+page .shade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+page .shade .loginOut {
+  box-sizing: border-box;
+  width: 690rpx;
+  height: 430rpx;
+  background: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+}
+page .shade .loginOut .title {
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #2c2f37;
+  text-align: center;
+  line-height: 50rpx;
+  font-weight: 600;
+  margin-top: 70rpx;
+}
+page .shade .loginOut .contenet {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #475266;
+  text-align: center;
+  line-height: 40rpx;
+  margin: 40rpx 0rpx;
+}
+page .shade .loginOut .btn {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0rpx 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+page .shade .loginOut .btn button {
+  width: 300rpx;
+  height: 100rpx;
+  box-shadow: 0 6rpx 15rpx 0 rgba(173, 188, 217, 0.5);
+  border-radius: 50rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  letter-spacing: 0;
+  line-height: 45rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60rpx;
+}
+page .shade .loginOut .btn button::after {
+  border: none;
+}
+page .shade .loginOut .btn .no {
+  background: #ffffff;
+  color: #7ea5f4;
+  margin-right: 10rpx;
+}
+page .shade .loginOut .btn .yes {
+  background: #6595f4;
+  color: #ffffff;
+}

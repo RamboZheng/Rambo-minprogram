@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "list-item": "/component/common/list-item/index",
+        "no-data": "/component/common/no-data/index"
+    },
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "浏览历史",
+    "navigationBarTextStyle": "black"
+}

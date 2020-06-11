@@ -1,0 +1,454 @@
+<!-- 租房详情页面 -->
+<wxs src="../../../lib/filter.wxs" module="filter" />
+<agent-invite></agent-invite>
+<view class="container related {{loading ? '':'hide'}} {{showLayer ? 'no-scroll':''}}">
+    <view class="box top">
+        <chat-img bind:checkIsShow="handleCheckShow" bannerImgUrl="{{bannerImgUrl}}" houseImages="{{houseImages}}" type="rent" houseType="{{detailType === 'flat' ? 'flat':'house'}}">
+            <view slot="btnCollection" class="option-group-style">
+                <block>
+                    <view wx:if="{{hasUserInfo}}" class="icon-collect {{isCollection ? 'on' : ''}}" bindtap="handleRentCollect"></view>
+                    <button class="icon-collect" wx:else open-type="getPhoneNumber" bindgetphonenumber="getUserInfo"></button>
+                </block>
+                <button class="icon-share" hover-class="none" open-type="share"></button>
+            </view>
+        </chat-img>
+        <view class="title content">
+            <view class="name">
+                {{ detailType === 'flat' ? houseInfo.brand + ' · ' + houseInfo.title :houseInfo.title}}
+            </view>
+            <!-- 公寓下的房源详情 -->
+            <view class="alias" wx:if="{{detailType ==='family' && houseInfo.roomCount > 0}}">
+                {{houseInfo.roomCount}}套可预定
+            </view>
+        </view>
+        <view class="info content">
+            <view class="left">
+                <view wx:if="{{houseInfo.maxPrice && houseInfo.maxPrice > 0}}">
+                    {{houseInfo.maxPrice == houseInfo.minPrice ? houseInfo.maxPrice + '元/月' : houseInfo.minPrice + '-' + houseInfo.maxPrice + '元/月'}}
+                </view>
+                <view wx:else>暂无价格</view>
+                <text class="desc">房租</text>
+            </view>
+            <view class="line"></view>
+            <view class="center" wx:if="{{detailType === 'flat'}}">
+                <view>{{houseInfo.roomCount}}套</view>
+                <text class="desc">在租</text>
+            </view>
+            <view class="center" wx:else>
+                <view>{{houseInfo.bedRoom}}室{{houseInfo.livingRoom}}厅{{houseInfo.bathRoom}}卫</view>
+                <text class="desc">户型</text>
+            </view>
+            <view class="line"></view>
+            <view class="right" wx:if="{{detailType === 'flat'}}">
+                <view wx:if="{{houseInfo.maxArea && houseInfo.maxArea != 0}}">
+                    {{houseInfo.maxArea === houseInfo.minArea ? houseInfo.minArea : houseInfo.minArea + '-'+ houseInfo.maxArea}}m²
+                </view>
+                <view wx:else>暂无数据</view>
+                <text class="desc">建筑面积</text>
+            </view>
+            <view class="right" wx:else>
+                <view>{{houseInfo.maxRoomArea}}m²</view>
+                <text class="desc">建筑面积</text>
+            </view>
+        </view>
+    </view>
+    <!-- <view class="box base" wx:if="{{detailType !== 'flat'}}">
+        <view class="content">
+            <view class="name">
+                <text wx:for="{{houseInfo.tags}}" wx:key="key">{{item}}</text>
+            </view>
+            <view class="introduce">
+                <text class="common-title">房源基本信息</text>
+                <view class="list">
+                    <view class="item">
+                        <view>
+                            <text class="label">所在楼层</text>
+                            {{houseInfo.floorName}}/{{houseInfo.totalFloor}}层
+                        </view>
+                        <view>
+                            <text class="label">装修情况</text>
+                            {{houseInfo.decoration == null || houseUrl.decoration == undefined ? '暂无数据' : houseInfo.decoration}}
+                        </view>
+                        <view>
+                            <text class="label">建设年代</text>
+                            {{houseInfo.maxBuiltYear}}年
+                        </view>
+                        <view>
+                            <text class="label">地铁地址</text>
+                            距5号环中线坂田站600米
+                        </view>
+                        <view>
+                            <text class="label">步行时间</text>
+                            约10分钟
+                        </view>
+                    </view>
+                    <view class="item">
+                        <view>
+                            <text class="label">押金方式</text>
+                            {{houseInfo.depositWay}}
+                        </view>
+                        <view>
+                            <text class="label">更新时间</text>
+                            {{houseInfo.modifyDate}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view> -->
+    <!-- 房源信息 -->
+    <block>
+        <!-- 整租 -->
+        <view class="box base" wx:if="{{detailType === 'intact'}}">
+            <view class="content">
+                <view class="name" wx:if="{{houseInfo.tags.length > 0}}">
+                    <!-- <text>近地铁</text>
+                <text>随时看房</text> -->
+                    <text wx:for="{{houseInfo.tags}}" wx:key="key">{{item}}</text>
+                </view>
+                <view class="introduce">
+                    <text class="common-title">房源基本信息</text>
+                    <view class="list">
+                        <view class="item">
+                            <view>
+                                <text decode="{{true}}" class="label">朝&emsp;&emsp; 向</text>
+                                {{houseInfo.direction}}
+                            </view>
+                            <view>
+                                <text class="label">装修情况</text>
+                                {{houseInfo.decoration == null || houseUrl.decoration == undefined ? '暂无数据' : houseInfo.decoration}}
+                            </view>
+                            <view>
+                                <text class="label">建筑年代</text>
+                                {{houseInfo.maxBuiltYear && houseInfo.maxBuiltYear > 0 ? houseInfo.maxBuiltYear + '年': '暂无数据'}}
+                            </view>
+                        </view>
+                        <view class="item">
+                            <view>
+                                <text class="label">所在楼层</text>
+                                {{houseInfo.floorName ? houseInfo.floorName + '/' + houseInfo.totalFloor + '层' : '暂无数据'}}
+                            </view>
+                            <view>
+                                <text class="label">押金方式</text>
+                                {{houseInfo.depositWay}}
+                            </view>
+                            <view>
+                                <text class="label">更新时间</text>
+                                {{houseInfo.modifyDate ? filter.getUpdateTime(houseInfo.modifyDate):(houseInfo.createDate ? filter.getUpdateTime(houseInfo.createDate) : '暂无数据')}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class="metro-info" wx:if="{{subwayInfo.faddress}}">
+                        <text class="label">地铁站点</text>
+                        距{{subwayInfo.flineno}}{{subwayInfo.faddress}}站{{subwayInfo.distance}}米步行约{{subwayInfo.time}}
+                    </view>
+                    <!-- <view class="metro-info" wx:else>
+            <text class="label">地铁站点</text>
+            暂无数据
+          </view> -->
+                </view>
+            </view>
+        </view>
+        <!-- 合租 -->
+        <view class="box base" wx:if="{{detailType === 'combine'}}">
+            <view class="content">
+                <view class="name" wx:if="{{houseInfo.tags.length > 0}}">
+                    <!-- <text>近地铁</text>
+                <text>随时看房</text> -->
+                    <text wx:for="{{houseInfo.tags}}" wx:key="key">{{item}}</text>
+                </view>
+                <view class="introduce">
+                    <text class="common-title">房源基本信息</text>
+                    <view class="list">
+                        <view class="item">
+                            <view>
+                                <text decode="{{true}}" class="label">朝&emsp;&emsp; 向</text>
+                                {{houseInfo.direction}}
+                            </view>
+                            <view>
+                                <text class="label">更新时间</text>
+                                {{houseInfo.modifyDate ? filter.getUpdateTime(houseInfo.modifyDate):(houseInfo.createDate ? filter.getUpdateTime(houseInfo.createDate) : '暂无数据')}}
+                            </view>
+                        </view>
+                        <view class="item">
+                            <view>
+                                <text decode="{{true}}" class="label">楼&emsp;&emsp; 层</text>
+                                {{houseInfo.floorName ? houseInfo.floorName + '/' + houseInfo.totalFloor + '层': '暂无数据'}}
+                            </view>
+                            <view>
+                                <text decode="{{true}}" class="label">押金方式</text>
+                                {{houseInfo.depositWay}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class="metro-info" wx:if="{{subwayInfo.faddress}}">
+                        <text class="label">地铁站点</text>
+                        距{{subwayInfo.flineno}}{{subwayInfo.faddress}}站{{subwayInfo.distance}}米步行约{{subwayInfo.time}}
+                    </view>
+                    <!-- <view class="metro-info" wx:else>
+            <text class="label">地铁站点</text>
+            暂无数据
+          </view> -->
+                </view>
+            </view>
+        </view>
+        <!-- 公寓下面的房源 -->
+        <view class="box base" wx:if="{{detailType === 'family'}}">
+            <view class="content">
+                <view class="name" wx:if="{{houseInfo.tags.length > 0}}">
+                    <text wx:for="{{houseInfo.tags}}" wx:key="key">{{item}}</text>
+                </view>
+                <view class="introduce">
+                    <text class="common-title">房源基本信息</text>
+                    <view class="list">
+                        <view class="item">
+                            <view>
+                                <text class="label">朝向</text>
+                                {{houseInfo.direction}}
+                            </view>
+                            <view>
+                                <text class="label">窗户</text>
+                                {{houseInfo.windowType}}
+                            </view>
+                        </view>
+                        <view class="item">
+                            <view>
+                                <text class="label">入住</text>
+                                {{houseInfo.checkIn}}
+                            </view>
+                            <view>
+                                <text class="label">租期</text>
+                                {{ houseInfo.rentBeginMonth&&houseInfo.rentEndMonth ? (houseInfo.rentBeginMonth ==  houseInfo.rentEndMonth ? houseInfo.rentEndMonth + '个月' : houseInfo.rentBeginMonth + '-' +houseInfo.rentEndMonth + '个月'):'暂无数据' }}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <!-- 在租房源 公寓的时候才有 -->
+    <block wx:if="{{detailType === 'flat' && houseInfo.desc}}">
+        <view class="box house-des">
+            <view class="content">
+                <text class="common-title">公寓简介</text>
+                <view class="intro {{toggleParams.flag === 1 ? 'intro-h':''}}">
+                    <view class="intro-desc" wx:if="{{houseDesc.length < 2}}">
+                        {{houseInfo.desc}}
+                    </view>
+                    <view class="intro-part" wx:else>
+                        <view class="intro-list">
+                            <view class="li" wx:for="{{houseDesc}}" wx:key="key">
+                                <!-- <text class="dot"></text> -->
+                                <view class="describe">{{item}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="show-all-text" wx:if="{{toggleParams.show}}" bindtap="handleToggleShow">
+                    {{toggleParams.flag === 1 ? '展开全部':'收起'}}
+                </view>
+            </view>
+        </view>
+        <!-- 在租房源 -->
+        <view class="box rent-house" wx:if="{{ houseInfo.roomCount > 0}}">
+            <view class="content">
+                <view class="rent-title common-title">
+                    <text>在租房型</text>
+                    <view class="type">
+                        <!-- <text class="on">全部</text>
+            <text>开间</text>
+            <text>一居</text>
+            <text>二居+</text> -->
+                        <view wx:for="{{flatTypeHouse}}" class="{{flatTypeOn === item.id ? 'on': ''}}" wx:key="key" data-tid="{{item.id}}" bindtap="handleTabList">
+                            {{item.msg}}
+                        </view>
+                    </view>
+                </view>
+                <view class="similar-item" wx:if="{{flatHouse.item.length > 0}}">
+                    <view class="similar-list" wx:for="{{flatHouse.item}}" wx:key="key" data-type="apart" data-id="{{item.websiteHouseId}}" bindtap="toApartDeatil">
+                        <view class="cover">
+                            <image class="cover" src="{{item.imgUrl}}"></image>
+                        </view>
+                        <view class="r-content">
+                            <view class="name">{{item.title}}</view>
+                            <view class="size">
+                                {{item.regionName}} | {{item.businessName}} | {{item.minRoomArea == item.maxRoomArea && item.maxRoomArea != 0  ? item.maxRoomArea + 'm² |' : (item.maxRoomArea != 0 ? item.minRoomArea + '-' + item.maxRoomArea + 'm² |' : '' )}} {{item.direction}}
+                            </view>
+                            <view class="tags" wx:if="{{item.tags.length > 0}}">
+                                <view wx:for="{{item.tags}}" wx:for-item="idx" wx:key="k">
+                                    {{idx}}
+                                </view>
+                            </view>
+                            <view class="price" wx:if="{{item.minPrice > 0}}">
+                                {{item.minPrice === item.maxPrice ? item.maxPrice + '元/月': item.minPrice + '-' + item.maxPrice + '元/月'}}
+                            </view>
+                            <view class="price" wx:else>暂无价格</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="similar-item" style="text-align: center;" wx:else>
+                    <view style="padding: 50rpx 0;">暂无数据</view>
+                </view>
+                <view class="chat-more" wx:if="{{flatHouse.total > 3}}" bindtap="handleMoreList">
+                    {{remarkNum >= flatHouse.total ? '收起' : '更多房源('+(flatHouse.total - remarkNum)+'套)' }}
+                </view>
+            </view>
+        </view>
+    </block>
+    <view class="box angent" wx:if="{{angents.length > 0 && detailType !== 'flat'}}">
+        <view class="content">
+            <text class="common-title">{{detailType === 'flat'? '房源管家':'推荐经纪人'}}</text>
+            <view class="angent-dl">
+                <view class="dt">
+                    <view class="avatar" data-id="{{angents[0].id}}">
+                        <image src="{{angents[0].photoUrl}}" />
+                    </view>
+                    <view class="people">
+                        <text class="user">{{angents[0].name}}</text>
+                        <block wx:if="{{detailType==='intact' || detailType==='combine'}}">
+                            <view class="date">{{angents[0].source}}</view>
+                        </block>
+                        <block wx:else>
+                            <view class="date">{{ houseInfo.brand}}</view>
+                        </block>
+                    </view>
+                </view>
+                <view class="dd" bindtap="callIn" catchtap data-phone="{{angents[0].contact}}"></view>
+            </view>
+        </view>
+    </view>
+    <!-- 房间信息 合租的时候才有 -->
+    <!-- <view class="box house-info" wx:if="{{detailType === 'combine' && houseRoomsInfo.length > 0}}">
+        <view class="content">
+            <text class="common-title">房间信息</text>
+            <view class="infolist">
+                <view class="info-item" wx:for="{{houseRoomsInfo}}" wx:key="key">
+                    <view class="text">
+                        <view>{{item.roomNum}}</view>
+                        <view>
+                            {{item.sex === 'FEMALE' ? '女' : item.sex === 'MALE' ? '男' : '-'}}
+                        </view>
+                        <view>{{item.maxRoomArea ? '约'+item.maxRoomArea+'㎡': '暂无数据'}}</view>
+                        <view>{{item.maxPrice ? item.maxPrice + '元/月':'暂无数据'}}</view>
+                    </view>
+                    <view class="chat {{(item.checkIn !== 'INCOMING' || item.websiteHouseId === houseInfo.websiteHouseId) ? 'current': ''}}" data-id="{{item.websiteHouseId}}" data-type="{{item.tenementType}}" data-check="{{item.checkIn}}" bindtap="chatCurrentPage">
+                        {{item.checkIn === 'INCOMING'? (item.websiteHouseId === houseInfo.websiteHouseId ? '当前房源' : '查看房源') : '已出租' }}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view> -->
+    <!-- 房屋配备 -->
+    <view class="box allocation">
+        <view class="content">
+            <text class="common-title">{{detailType === 'flat' ? '公寓设施':'房屋配置'}}</text>
+            <view class="facility">
+                <view class="list" wx:for="{{typeIcon[0].list}}" wx:key="key">
+                    <image class="icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/{{item.has ? item.hasicon : item.noicon}}?tdsourcetag=s_pcqq_aiomsg"></image>
+                    <view class="name {{item.has ? '' : 'no'}}">{{item.name}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 公寓品牌 -->
+    <view class="box brand-blcok" wx:if="{{detailType === 'flat'}}" data-name="{{houseInfo.brand}}" bindtap="toBrandList">
+        <image class="brand-pic" src="{{houseInfo.brandLogUrl}}"></image>
+        <view class="brand-info">
+            <view class="brand-name">{{houseInfo.brand}}</view>
+            <view class="brand-text">{{houseInfo.desc}}</view>
+        </view>
+        <image class="brand-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+    </view>
+    <view class="box house-des" wx:if="{{detailType !== 'flat' && houseInfo.desc}}">
+        <view class="content">
+            <text class="common-title">房源描述</text>
+            <view class="intro {{toggleParams.flag === 1 ? 'intro-h':''}}">
+                <view class="intro-desc" wx:if="{{houseDesc.length < 2}}">{{houseInfo.desc}}</view>
+                <view class="intro-part" wx:else>
+                    <view class="intro-list">
+                        <view class="li" wx:for="{{houseDesc}}" wx:key="key">
+                            <!-- <text class="dot"></text> -->
+                            <view class="describe">{{item}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="show-all-text" wx:if="{{toggleParams.show}}" bindtap="handleToggleShow">
+                {{toggleParams.flag == 1 ? '展开':'收起'}}
+            </view>
+        </view>
+    </view>
+    <view class="box map {{detailType === 'flat' || detailType === 'family' ? 'last-box-map' : ''}}">
+        <view class="content">
+            <text class="common-title">位置以及周边</text>
+            <view class="place">
+                <text class="text">地址</text>
+                <text class="monick" bindtap="toSetMap">{{houseUrl}}</text>
+            </view>
+            <view class="address">
+                <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location="true" markers="{{markers}}" bindmarkertap="makertap"></map>
+                <cover-view class="lucency-layer" bindtap="toSetMap">
+                    <cover-view class="lucency-content">
+                        <cover-view class="lucency-box">
+                            <cover-view class="text">
+                                {{subwayInfo.regionName + ' '+subwayInfo.gardenName}}
+                            </cover-view>
+                            <cover-image class="icon-arrow" src="../../../image/common/img-triangle@2x.png"></cover-image>
+                        </cover-view>
+                    </cover-view>
+                </cover-view>
+            </view>
+        </view>
+    </view>
+    <!-- 公寓详情没有相似房源 -->
+    <view class="box similar" wx:if="{{detailType !== 'flat' && similarItem.length > 0}}">
+        <view class="content">
+            <text class="common-title">相似房源</text>
+            <view class="similar-item">
+                <view class="similar-list" wx:for="{{similarItem}}" wx:key="key" data-id="{{item.websiteHouseId}}" data-type="{{item.tenementType}}" bindtap="handleJumpDetail">
+                    <view class="cover">
+                        <image class="cover" src="{{item.imgUrl}}"></image>
+                    </view>
+                    <view class="r-content">
+                        <view class="r-content-h">
+                            <view class="name">{{item.title}}</view>
+                            <view class="size">
+                                {{item.regionName}} | {{item.businessName}} | {{item.maxRoomArea}}m² | {{item.direction}}
+                            </view>
+                            <!-- <view class="dist">距5号环中线坂田站600米</view> -->
+                            <view class="tags" wx:if="{{item.tags.length > 0}}">
+                                <view wx:for="{{item.tags}}" wx:for-index="idx" wx:for-item="list" wx:key="key">
+                                    {{list}}
+                                </view>
+                            </view>
+                        </view>
+                        <view class="price">
+                            {{item.maxPrice == item.minPrice ? item.maxPrice + '元/月': item.minPrice + '元/月起'}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- <view class="fix-bottom">
+        <view class="content action">
+            <view class="collect">
+                <view class="icon-collect"></view>
+                <text>收藏</text>
+            </view>
+            <view class="share">
+                <button class="icon-share" open-type="share"></button>
+                <text>分享</text>
+            </view>
+            <view class="btn-call">打电话</view>
+        </view>
+    </view> -->
+    <view wx:if="{{debugId}}" class="show-debug">{{id}}</view>
+    <!-- 底部的导航栏 -->
+    <foot-mode type="{{searchBox.detailType}}" infoList='{{agents}}' wx:if="{{agents.length>0}}"></foot-mode>
+    <!-- 回到首页 -->
+    <cover-view class="fix-goback {{isShare == 1 ? '': 'hide'}}" bindtap="handleGoHome">
+        <cover-image class="icon-home" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-details-backhome@2x.png"></cover-image>
+    </cover-view>
+</view>
+<no-data show="{{noData}}" pageType='index'></no-data>

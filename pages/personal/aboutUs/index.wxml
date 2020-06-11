@@ -1,0 +1,24 @@
+<!-- index.wxml -->
+<view class="container">
+    <view class="top">
+        <cover-image class="logo" src="{{aboutUs.logo}}"></cover-image>
+    </view>
+    <view class="footer">
+        <view class="aobut">
+            <view class="content">
+                {{"自定义是以大数据技术驱动的房产服务平台，赋能房产优质服务者及企业，提供高效全系列服务解决方案，让成交更容易。我们致力于汇聚全网高品质房源信息，实时反映市场变化，为找房用户智能搜索精准匹配需求，并推荐优质的服务者，在捜房宝找房子更简单。"}}
+            </view>
+            <view class="content">
+                {{"在自定义您不仅可以找到全网高品质房源信息，还可以比价格比服务，轻轻松松找到家。自定义是一家房产公司，公司旨在为全国各城市购房客户提供以下服务："}}
+            </view>
+            <view class="about-list">
+                <view class="list-item">为全国各城市购房客户提供全面、准确的房源基本信息；</view>
+                <view class="list-item" bindtap="openShow">为客户提供及时的房源价格变动提醒；</view>
+                <view class="list-item">为客户提供各城市的房价走势信息。</view>
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class="official-web">官网网站：{{aboutUs.web}}</view>
+        <view class="phone">客服电话：{{aboutUs.phone}}</view>
+    </view>
+</view>

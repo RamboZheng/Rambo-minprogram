@@ -1,0 +1,104 @@
+<!-- pages/detail/baseInfo/index.wxml -->
+<view class="container">
+    <view class="content">
+        <view class="section">
+            <text class="title">基本属性</text>
+            <view class="part">
+                <view class="list">
+                    <text class="label">建筑面积</text>
+                    {{baseHouseInfo.buildArea}}㎡
+                </view>
+                <view class="list">
+                    <text class="label">套内面积</text>
+                    {{baseHouseInfo.roomArea}}㎡
+                </view>
+                <view class="list">
+                    <text class="label">房屋户型</text>
+                    {{baseHouseInfo.roomPattern}}
+                </view>
+                <view class="list">
+                    <text class="label">房屋楼层</text>
+                    {{baseHouseInfo.floorName}}/{{baseHouseInfo.totalFloor}}层
+                </view>
+                <view class="list">
+                    <text class="label">房屋朝向</text>
+                    {{baseHouseInfo.direction}}
+                </view>
+                <view class="list">
+                    <text class="label">装修情况</text>
+                    {{baseHouseInfo.decoration}}
+                </view>
+                <view class="list">
+                    <text class="label">户型结构</text>
+                    {{baseHouseInfo.roomStructural}}
+                </view>
+                <!-- <view class="list">
+                    <text class="label">建筑类型</text>
+                    {{baseHouseInfo.floorName}}
+                </view> -->
+                <!-- <view class="list">
+                    <text class="label">建筑结构</text>
+                    {{baseHouseInfo.roomPattern}}
+                </view> -->
+                <!-- <view class="list">
+                    <text class="label">梯户比例</text>
+                    {{baseHouseInfo.elevatorAccountRateDesc}}
+                </view> -->
+                <view class="list">
+                    <text class="label">配备电梯</text>
+                    {{baseHouseInfo.hasElevator}}
+                </view>
+                <!-- <view class="list">
+                    <text class="label">产权年限</text>
+                    {{baseHouseInfo.propertyPeriod}}年
+                </view> -->
+            </view>
+        </view>
+        <view class="section no-border">
+            <text class="title">交易属性</text>
+            <view class="part">
+                <view class="list">
+                    <text class="label">挂牌时间</text>
+                    {{baseHouseInfo.listingDate}}
+                </view>
+                <!-- <view class="list">
+                    <text class="label">交易属性</text>
+                    {{baseHouseInfo.propertyType}}
+                </view>
+                <view class="list">
+                    <text class="label">上次交易</text>
+                    {{baseHouseInfo.modifyDate}}
+                </view> -->
+                <view class="list">
+                    <text class="label">房屋用途</text>
+                    {{baseHouseInfo.propertyType}}
+                </view>
+                <!-- <view class="list">
+                    <text class="label">房屋年限</text>
+                    {{baseHouseInfo.propertyPeriod}}年
+                </view> -->
+                <!-- <view class="list">
+                    <text class="label">产权所属</text>
+                    {{baseHouseInfo.propertyOwnerShip}}
+                </view> -->
+                <view class="list">
+                    <text class="label">抵押信息</text>
+                    {{baseHouseInfo.pledgeInfo}}
+                </view>
+                <view class="list">
+                    <text class="label">房屋年限</text>
+                    {{baseHouseInfo.propertyPerio}}年
+                </view>
+                <!-- <view class="list">
+                    <text class="label">房本备件</text>
+                    {{baseHouseInfo.backRoomBook}}
+                </view>
+                <view class="list">
+                    <text class="label">房协编码</text>
+                    {{baseHouseInfo.roomCode}}
+                </view> -->
+            </view>
+        </view>
+        <text class="tips">*以上基本属性和交易属性信息仅供参考，购房时以房产证/不动产权证信息为准。</text>
+    </view>
+</view>

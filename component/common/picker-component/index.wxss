@@ -1,0 +1,73 @@
+/**picker**/
+.pick-box {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.pick-box .picker-style {
+  position: absolute;
+  z-index: 11;
+  background: white;
+  bottom: 0;
+}
+.pick-box .picker-style .picker-but {
+  padding: 34rpx 40rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.pick-box .picker-style .picker-but view {
+  display: flex;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #475266;
+  justify-content: center;
+  align-items: center;
+}
+.pick-box .picker-style .picker-but .certain {
+  color: #1950BC;
+}
+.pick-box .picker-style .mid-bar {
+  width: 100%;
+  height: 20rpx;
+  background-color: #F2F3F5;
+}
+.pick-box .picker-style .picker-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  color: #2C2F37;
+}
+.pick-box .picker-style .bottom-input {
+  background-color: #fff;
+  width: 90%;
+  padding: 20rpx;
+  position: relative;
+}
+.pick-box .picker-style .bottom-input .bottom-percent {
+  position: absolute;
+  font-size: 32rpx;
+  color: #878D99;
+  top: 38rpx;
+  left: 458rpx;
+}
+.pick-box .picker-style .bottom-input input {
+  font-size: 32rpx;
+  color: #878D99;
+  padding: 16rpx 40rpx;
+  width: 60%;
+  display: inline-block;
+  background: #F2F3F5;
+  border: 2rpx solid #E3E5E6;
+  border-radius: 8rpx;
+}
+.pick-box .picker-style .bottom-input .input-button {
+  font-size: 32rpx;
+  color: #FFFFFF;
+  padding: 16rpx 40rpx;
+  display: inline-block;
+  background: #1950BC;
+  border-radius: 8rpx;
+  vertical-align: top;
+  float: right;
+}

@@ -1,0 +1,108 @@
+// out:./index.wxss
+// compress:true
+// sourceMpa:true
+.container {
+    padding-top: 16%;
+
+    .top {
+        width: 100%;
+        background-color: #fff;
+        position: fixed;
+        top: 0;
+        z-index: 5;
+        padding-top: 30rpx;
+    }
+
+    .have-data {
+        width: 100%;
+        font-size: 24rpx;
+        border-bottom: 2rpx solid #EDEFF0;
+        margin-top: 76rpx;
+
+        .result-box {
+            padding-bottom: 32rpx;
+            position: relative;
+
+            .result-name {
+                font-size: 36rpx;
+                color: #475266;
+                padding-left: 30rpx;
+
+                image {
+                    width: 14rpx;
+                    height: 24rpx;
+                    margin-left: 20rpx;
+
+                }
+            }
+
+            .result-size {
+                color: #878D99;
+                padding-left: 30rpx;
+                margin-top: 20rpx;
+
+                .house-total {
+                    display: inline-block;
+                }
+            }
+
+            .collect-button {
+                border: 2rpx solid #6595F4;
+                border-radius: 34rpx;
+                width: 132rpx;
+                color: #6595F4;
+                display: inline-block;
+                position: absolute;
+                top: 42rpx;
+                right: 30rpx;
+                line-height: 60rpx;
+                font-size: 24rpx;
+
+                view {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+
+            .blue-button {
+                background: #6595F4;
+                color: #fff
+            }
+
+            .white-button {
+                background: #fff;
+                color: #6595F4
+            }
+        }
+
+    }
+
+    .no-data {
+        width: 100%;
+        font-size: 24rpx;
+        border-bottom: 2rpx solid #EDEFF0;
+        padding: 150rpx 0 32rpx 0;
+        color: #475266;
+        position: relative;
+
+        .top-text {
+            image {
+                width: 42rpx;
+                height: 42rpx;
+                vertical-align: top;
+                margin-right: 30rpx;
+            }
+
+            font-size: 32rpx;
+            color: rgba(71, 82, 102, 0.80);
+            width: 60%;
+            margin:0 auto;
+        }
+
+        .bottom-text {
+            font-size: 28rpx;
+            color: #475266;
+            padding: 60rpx 30rpx 0 30rpx;
+        }
+    }
+}

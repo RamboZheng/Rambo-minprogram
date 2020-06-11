@@ -1,0 +1,17 @@
+<!-- 星星评价 -->
+<view class="comment1-description">
+    <view class="star-pos" wx:if="{{starType=='glod'}}">
+        <view class="stars-glod {{flag>=1? 'glod-star': ''}}" data-level='1' bindtap="changeColor"></view>
+        <view class="stars-glod {{flag>=2? 'glod-star': ''}}" data-level='2' bindtap="changeColor"></view>
+        <view class="stars-glod {{flag>=3? 'glod-star': ''}}" data-level='3' bindtap="changeColor"></view>
+        <view class="stars-glod {{flag>=4? 'glod-star': ''}}" data-level='4' bindtap="changeColor"></view>
+        <view class="stars-glod {{flag>=5? 'glod-star': ''}}" data-level='5' bindtap="changeColor"></view>
+    </view>
+    <view class="star-pos" wx:if="{{starType=='blue'}}">
+        <view class="stars-blue {{flag>=1? 'blue-star': ''}}" data-level='1' bindtap="changeColor"></view>
+        <view class="stars-blue {{flag>=2? 'blue-star': ''}}" data-level='2' bindtap="changeColor"></view>
+        <view class="stars-blue {{flag>=3? 'blue-star': ''}}" data-level='3' bindtap="changeColor"></view>
+        <view class="stars-blue {{flag>=4? 'blue-star': ''}}" data-level='4' bindtap="changeColor"></view>
+        <view class="stars-blue {{flag>=5? 'blue-star': ''}}" data-level='5' bindtap="changeColor"></view>
+    </view>
+</view>

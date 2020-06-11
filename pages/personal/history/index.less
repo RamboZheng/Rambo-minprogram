@@ -1,0 +1,100 @@
+// out:./index.wxss
+// compress:true
+// sourceMpa:true
+page {
+    height: 100%;
+
+    .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .nav {
+            width: 100%;
+            height: 80rpx;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            border-bottom: 2rpx solid #edeff0;
+            background: #ffffff;
+
+            view {
+                width: 100%;
+                // height: 100%;
+                font-family: PingFangSC-Regular;
+                font-size: 28rpx;
+                color: #878d99;
+                text-align: center;
+                flex: 1;
+                line-height: 80rpx;
+                padding: 0 25rpx;
+            }
+
+            .cur text {
+                width: 100%;
+                height: 78rpx;
+                font-family: PingFangSC-Regular;
+                font-size: 28rpx;
+                text-align: center;
+                color: #6595f4;
+                display: inline-block;
+                border-bottom: 4rpx solid #6595f4;
+            }
+        }
+
+        .swiper {
+            position: absolute;
+            top: 80rpx;
+            bottom: 0;
+            width: 100%;
+
+            swiper {
+                height: 100%;
+
+                swiper-item {
+                    overflow-y: auto;
+                }
+            }
+
+
+
+        }
+
+        .button-box {
+            width: 100%;
+            padding: 20rpx 0;
+            display: flex;
+            position: fixed;
+            top: 82rpx;
+            z-index: 2;
+            background-color: #fff;
+
+            .button {
+                font-size: 28rpx;
+                color: #878D99;
+                background: #F2F3F5;
+                padding: 10rpx 72rpx;
+                margin: 0 80rpx;
+                border-radius: 30rpx;
+            }
+
+            .bg-blue {
+                background: #9CBDFF;
+                color: #FFFFFF;
+            }
+        }
+
+        .c-no-data {
+            .tips {
+                font-size: 32rpx;
+                color: #475266;
+                text-align: center;
+                margin-top: 80rpx;
+            }
+        }
+    }
+}

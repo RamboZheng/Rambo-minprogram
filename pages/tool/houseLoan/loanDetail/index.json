@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "tab-bar": "/component/common/tab-bar/index"
+    },
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "还款详情",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark"
+}

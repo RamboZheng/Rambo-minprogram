@@ -1,0 +1,28 @@
+page {
+    height: 100%
+}
+
+page .page-type {
+    padding: 60rpx 30rpx
+}
+
+page .page-type .page-item {
+    margin-bottom: 30rpx
+}
+
+page .page-type .page-item .item-title {
+    font-size: 32rpx;
+    color: #475266;
+    font-family: PingFangSC-Medium
+}
+
+page .page-type .page-item .item-desc {
+    font-size: 28rpx;
+    color: #646D7F;
+    margin-top: 20rpx
+}
+
+page .page-type .page-tip {
+    font-size: 26rpx;
+    color: #CBCBCB
+}

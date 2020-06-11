@@ -1,0 +1,111 @@
+// 公共样式
+.top {
+    .top-img {
+        width: 30rpx;
+        height: 30rpx;
+        position: absolute;
+        top: 26rpx;
+        left: 40rpx;
+    }
+
+    .top-input {
+        width: 630rpx;
+        border-radius: 16rpx;
+        margin: 0 auto;
+        padding: 20rpx 0 20rpx 80rpx;
+        font-size: 28rpx;
+    }
+}
+
+// 首页搜索栏样式
+.home-top {
+    width: 750rpx;
+    z-index: 5;
+    margin-top: 305rpx;
+
+    .home-action {
+        padding: 25rpx;
+        width: 86%;
+        margin: 0 auto;
+        // background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-home-research-bg@2x.png);
+        // background: rgba(255, 255, 255, 0.2);
+        background-size: 100% 100%;
+        background-color: #fff;
+        box-shadow: 0 12px 22px 0 rgba(0, 68, 200, 0.10);
+        border-radius: 10px;
+
+        .input-box {
+            width: 640rpx;
+            margin: 0 auto;
+            background-color: #F5F7FA;
+            display: flex;
+            align-items: center;
+            border-radius: 8rpx;
+
+            .locate {
+                min-width: 108rpx;
+                text-align: center;
+                padding: 0 10rpx;
+                font-size: 26rpx;
+                color: #5A5E66;
+                position: relative;
+
+                .locate-icon {
+                    font-size: 15rpx;
+
+                    position: absolute;
+                    top: 10rpx;
+                }
+
+                &:after {
+                    content: ' ';
+                    display: inline-block;
+                    border-left: 12rpx solid transparent;
+                    border-right: 12rpx solid transparent;
+                    border-top: 12rpx solid #fff;
+                    width: 0;
+                    height: 0;
+                    margin-left: 10rpx;
+                    border-radius: 12rpx;
+                    margin-top: -2rpx;
+                    vertical-align: middle;
+                }
+            }
+
+            .seek-img {
+                width: 30rpx;
+                height: 30rpx;
+                margin-left: 40rpx;
+            }
+
+            .top-input {
+                padding: 20rpx 0;
+                width: 60%;
+                margin-left: 20rpx;
+                font-size: 26rpx;
+                color: #9399A5;
+            }
+
+            .line {
+                width: 2rpx;
+                height: 40rpx;
+                background-color: #E3E5E6;
+            }
+        }
+
+    }
+
+
+}
+
+// 其他页面搜索栏样式
+.renting-top {
+    width: 750rpx;
+    background-color: #fff;
+    position: relative;
+
+    .top-input {
+        background: #F2F3F5;
+        color: #878D99;
+    }
+}

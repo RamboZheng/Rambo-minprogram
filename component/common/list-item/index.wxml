@@ -1,0 +1,234 @@
+<!-- 组件模板 -->
+<import src="../../wxParse/wxParse.wxml" />
+<view class="item">
+    <!-- 小区item -->
+    <view class="item-block {{showBorder?'border-bottom':''}}" wx:if='{{detailType=="block" && titleH5.nodes}}' bindtap="toModuleDetail" data-id="{{listItem.id}}">
+        <image mode="aspectFill" src="{{listItem.coverImageUrl?listItem.coverImageUrl:emptyImg}}"></image>
+        <view class="right-content">
+            <view class="block-item">
+                <view class="item-text {{looked?'looked':''}}">
+                    <template is="wxParse" data="{{wxParseData:titleH5.nodes}}" />
+                </view>
+                <view class="item-size">
+                    {{listItem.regionName}}-{{listItem.businessName}}
+                    <text class="size-bar">|</text>
+                    {{listItem.maxBuiltYear}}建
+                    <text class="size-bar" wx:if='{{listItem.houseTotal!="暂无数据"}}'>|</text>
+                    <!-- <text wx:if='{{listItem.houseTotal == "暂无数据"}}'>{{listItem.houseTotal}}</text> -->
+                    <text wx:if='{{listItem.houseTotal!="暂无数据"}}'>在售{{listItem.houseTotal}}套</text>
+                </view>
+            </view>
+            <block>
+                <view class="item-price" wx:if='{{listItem.price == "暂无均价"}}'>
+                    <view class="avg-price">{{listItem.price}}</view>
+                </view>
+                <view class="item-price" wx:else>
+                    <view class="avg-price">{{unitPrice}}元/㎡</view>
+                </view>
+            </block>
+        </view>
+    </view>
+    <!-- 二手房使用item -->
+    <view class="item-house {{showBorder?'border-bottom':''}}" wx:if='{{(detailType=="house"|| detailType=="newHouse" || detailType=="cutMoney") && titleH5.nodes}}' bindtap="toDetail" data-id="{{listItem.id}}">
+        <view class="left-content">
+            <image mode="aspectFill" src="{{listItem.imgUrl?listItem.imgUrl:emptyImg}}"></image>
+            <view class="save-money" wx:if='{{listItem.beforePrice-listItem.price > 0}}'>
+                -{{listItem.beforePrice-listItem.price}}万
+            </view>
+        </view>
+        <view class="right-content">
+            <view class="block-item">
+                <view class="item-text {{looked?'looked':''}}">
+                    <template is="wxParse" data="{{wxParseData:titleH5.nodes}}" />
+                </view>
+                <view class="item-size">
+                    {{listItem.bedRoom}}室{{listItem.livingRoom}}厅{{'/'+listItem.buildArea}}㎡{{'/'+listItem.direction}}{{'/' + newGardenName}}
+                    <!-- <view style="display: inline-block">
+                        <view style="display:flex;">
+                            <template is="wxParse" data="{{wxParseData:gardenNameA.nodes}}" />
+                        </view>
+                    </view> -->
+                </view>
+                <view class="item-style" wx:if="{{listItem.newRoom}}">
+                    <view class="first-style">新上</view>
+                </view>
+                <view class="item-style" wx:for="{{listItem.houseTags}}" wx:for-item="houseTags" wx:key="key">
+                    <view class="other-style">{{houseTags}}</view>
+                </view>
+            </view>
+            <!-- 这段存在的是因为推荐小区房源，后面带了单位，后端那边不能去 -->
+            <block wx:if="{{needTips}}">
+                <view class="item-price">
+                    <view class="before-price" wx:if="{{listItem.markDown}}">
+                        {{listItem.beforePrice}}万
+                    </view>
+                    {{listItem.price}}万
+                    <view class="avg-price">{{listItem.unitPrice}}元/㎡</view>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="item-price">
+                    {{listItem.price}}
+                    <view class="avg-price">{{listItem.unitPrice}}</view>
+                </view>
+            </block>
+        </view>
+    </view>
+    <!-- 租房使用item -->
+    <view class="item-rent {{showBorder?'border-bottom':''}}" wx:if='{{(detailType=="rent" || detailType=="intact" || detailType=="combine") && titleH5.nodes}}' bindtap="toRentDetail" data-id="{{listItem.websiteHouseId}}" data-type="{{listItem.tenementType}}">
+        <view class="left-content">
+            <image mode="aspectFill" src="{{listItem.imgUrl?listItem.imgUrl:emptyImg}}"></image>
+            <view class="save-money" wx:if='{{listItem.beforePrice-listItem.price > 0}}'>
+                -{{listItem.beforePrice-listItem.price}}万
+            </view>
+        </view>
+        <view class="right-content">
+            <view class="block-item">
+                <view class="item-text {{looked?'looked':''}}">
+                    <template is="wxParse" data="{{wxParseData:titleH5.nodes}}" />
+                </view>
+                <view class="item-size">
+                    {{listItem.regionName?listItem.regionName:""}}
+                    <text class="size-bar" wx:if="{{listItem.businessName}}">|</text>
+                    {{listItem.businessName?listItem.businessName:""}}
+                    <text class="size-bar" wx:if="{{listItem.minRoomArea}}">|</text>
+                    {{listItem.minRoomArea?listItem.minRoomArea+"㎡":""}}
+                    <text class="size-bar" wx:if="{{listItem.direction}}">|</text>
+                    {{listItem.direction?listItem.direction:""}}
+                </view>
+                <view class="item-size" wx:if="{{listItem.metroInfo}}">{{listItem.metroInfo}}</view>
+                <view class="item-style" wx:for="{{listItem.tags}}" wx:for-item="houseTags" wx:key="key">
+                    <view class="other-style">{{houseTags}}</view>
+                </view>
+            </view>
+            <!-- 这段存在的是因为推荐小区房源，后面带了单位，后端那边不能去 -->
+            <block wx:if="{{listItem.minPrice != '0'}}">
+                <view class="item-price">
+                    {{listItem.minPrice}}元/月{{listItem.tenementType== 'LAY_OUT'?'起':''}}
+                </view>
+            </block>
+            <block wx:else>
+                <view class="item-price">暂无价格</view>
+            </block>
+        </view>
+    </view>
+    <!-- 公寓使用item -->
+    <view class="item-flat {{showBorder?'border-bottom':''}}" wx:if='{{detailType=="flat" && titleH5.nodes}}' bindtap="toRentDetail" data-id="{{listItem.outNetId}}">
+        <image class='house-img' mode="aspectFill" src="{{listItem.coverImgUrl?listItem.coverImgUrl:emptyImg}}"></image>
+        <image wx:if="{{listItem.imgUrl}}}" class="head-pic" src="{{listItem.imgUrl}}"></image>
+        <view class="item-name {{looked?'looked':''}}">
+            <template is="wxParse" data="{{wxParseData:titleH5.nodes}}" />
+        </view>
+        <view class="item-size">
+            {{listItem.region?listItem.region:""}}
+            <text class="size-bar" wx:if="{{listItem.bizArea}}">|</text>
+            {{listItem.bizArea?listItem.bizArea:""}}
+            <text class="size-bar" wx:if="{{listItem.areaFrom || listItem.areaTo}}">|</text>
+            {{listItem.address?listItem.address:""}}
+        </view>
+        <!-- 这段存在的是因为推荐小区房源，后面带了单位，后端那边不能去 -->
+        <block wx:if="{{listItem.priceFrom != '0'}}">
+            <view class="item-price">
+                {{listItem.priceFrom}}{{listItem.priceTo&&(listItem.priceFrom < listItem.priceTo)?" - "+listItem.priceTo:""}}元/月
+            </view>
+            <view class="item-tip">
+                {{listItem.houseTypeNumber?listItem.houseTypeNumber + "个房型":""}}
+                <text class="size-bar" wx:if="{{listItem.houseTypeNumber}}">|</text>
+                {{listItem.availableRoomNum ?listItem.availableRoomNum + "套在租":""}}
+            </view>
+        </block>
+        <block wx:else>
+            <view class="item-price">暂无价格</view>
+        </block>
+    </view>
+    <!-- 公寓下面的户型使用item +++++++++++++++++暂时弃用+++++++++++++ -->
+    <view class="item-rent {{showBorder?'border-bottom':''}}" wx:if='{{detailType=="family" && titleH5.nodes}}' bindtap="toRentDetail" data-id="{{listItem.websiteHouseId}}">
+        <view class="left-content">
+            <image mode="aspectFill" src="{{listItem.imgUrl?listItem.imgUrl:emptyImg}}"></image>
+            <view class="save-money" wx:if='{{listItem.beforePrice-listItem.price > 0}}'>
+                -{{listItem.beforePrice-listItem.price}}万
+            </view>
+        </view>
+        <view class="right-content">
+            <view class="block-item">
+                <view class="item-text {{looked?'looked':''}}">
+                    <template is="wxParse" data="{{wxParseData:titleH5.nodes}}" />
+                </view>
+                <view class="item-size">
+                    {{listItem.bedRoom}}室{{listItem.livingRoom}}厅
+                    <text class="size-bar">|</text>
+                    {{listItem.buildArea}}㎡
+                    <text class="size-bar">|</text>
+                    {{listItem.direction}}
+                </view>
+                <!-- <view class="item-size">{{listItem.desc}}</view> -->
+                <view class="item-size">距5号环中线坂田站600米</view>
+            </view>
+            <!-- 这段存在的是因为推荐小区房源，后面带了单位，后端那边不能去 -->
+            <block wx:if="{{listItem.minPrice != '0'}}">
+                <view class="item-price">{{listItem.minPrice}}元/月</view>
+            </block>
+            <block wx:else>
+                <view class="item-price">暂无价格</view>
+            </block>
+        </view>
+    </view>
+    <!-- 小区 item -->
+    <view class="item-block {{showBorder?'border-bottom':''}}" wx:if='{{detailType=="garden" && titleH5.nodes}}' bindtap="toModuleDetail" data-id="{{listItem.id}}">
+        <image mode="aspectFill" src="{{listItem.coverImageUrl?listItem.coverImageUrl:emptyImg}}"></image>
+        <view class="right-content">
+            <view class="block-item">
+                <view class="item-text {{looked?'looked':''}}">
+                    <template is="wxParse" data="{{wxParseData:titleH5.nodes}}" />
+                </view>
+                <view class="item-size">
+                    {{listItem.regionName?listItem.regionName:'暂无数据'}}{{listItem.businessName?"-"+listItem.businessName:''}}
+                    <text class="size-bar" wx:if='{{listItem.maxBuiltYear}}'>|</text>
+                    <text wx:if='{{listItem.maxBuiltYear}}'>{{listItem.maxBuiltYear}}建</text>
+                </view>
+                <view class="item-size">
+                    {{listItem.saleRoomQuantity?"在售"+listItem.saleRoomQuantity+"套":""}}
+                    <text class="size-bar" wx:if='{{listItem.rentRoomQuantity}}'>|</text>
+                    {{listItem.rentRoomQuantity?"在租"+listItem.rentRoomQuantity+"套":""}}
+                </view>
+                <!-- <view class="item-style" wx:for="{{listItem.houseTags}}" wx:for-item="houseTags" wx:key="key">
+                    <view class="other-style">{{houseTags}}</view>
+                </view> -->
+            </view>
+            <block>
+                <view class="item-price" wx:if='{{!listItem.price}}'>暂无均价</view>
+                <view class="item-price" wx:else>{{listItem.price}}元/㎡</view>
+            </block>
+        </view>
+    </view>
+    <!-- 学校 item -->
+    <view class="item-block {{showBorder?'border-bottom':''}}" wx:if='{{detailType=="school" && schoolName.nodes}}' bindtap="toModuleDetail" data-id="{{listItem.id}}">
+        <image mode="aspectFill" src="{{listItem.image?listItem.image:emptyImg}}"></image>
+        <view class="right-content">
+            <view class="block-item">
+                <view class="item-text {{looked?'looked':''}}">
+                    <template is="wxParse" data="{{wxParseData:schoolName.nodes}}" />
+                </view>
+                <view class="item-size">
+                    {{listItem.gardenSize =="暂无数据"?"":"对口小区"+listItem.gardenSize+"个"}}
+                    <text class="size-bar" wx:if='{{listItem.houseTotal!="暂无数据"}}'>|</text>
+                    {{listItem.houseTotal == "暂无数据"?"":"在售房源"+listItem.houseTotal+"套"}}
+                </view>
+                <view class="item-size">
+                    {{listItem.regionName?listItem.regionName:'暂无数据'}}-{{listItem.businessName?listItem.businessName:'暂无数据'}}
+                    <text class="size-bar" wx:if='{{listItem.address!="暂无数据"}}'>|</text>
+                    <text wx:if='{{listItem.address!="暂无数据"}}'>{{listItem.address}}</text>
+                </view>
+                <view class="item-style" wx:for="{{listItem.houseTags}}" wx:for-item="houseTags" wx:key="key">
+                    <view class="other-style">{{houseTags}}</view>
+                </view>
+            </view>
+            <block>
+                <view class="item-price" wx:if='{{listItem.price == "暂无均价" || listItem.price == "暂无数据"}}'>
+                    暂无数据
+                </view>
+                <view class="item-price" wx:else>{{listItem.price}}万/套 起</view>
+            </block>
+        </view>
+    </view>
+</view>

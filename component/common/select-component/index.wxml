@@ -1,0 +1,11 @@
+<!-- 组件模板 -->
+<view class='select-box'>
+  <view class='select-content' bindtap='selectToggle'>
+    <view class='select-text {{selectShow ? "up" : ""}}'>{{nowText}}</view>
+  </view>
+  <view class='select-list' wx:if="{{selectShow}}">
+    <view wx:for="{{propArray}}" data-index="{{index}}" wx:key='key' class="select-item {{nowText === item.text ? 'on' : ''}}" bindtap='setText'>
+      {{item.text}}
+    </view>
+  </view>
+</view>

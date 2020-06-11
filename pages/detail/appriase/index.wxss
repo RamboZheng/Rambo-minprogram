@@ -1,0 +1,94 @@
+/* pages/detail/appriase/index.wxss */
+.title {
+    display: block;
+    padding: 30rpx 0;
+    font-size: 32rpx;
+    color: #2C2F37;
+    font-weight: 700;
+}
+
+.eval-list .eval-item {
+    border-bottom: 2rpx solid #edeff0;
+    padding-bottom: 30rpx;
+    padding-top: 30rpx;
+}
+
+.eval-list .eval-item:first-child {
+    padding-top: 0;
+}
+
+.eval-list .eval-item:last-child {
+    border-bottom: 0;
+}
+
+.eval-list .eval-item {
+    padding-right: 4%;
+}
+
+.eval-list .dl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30rpx;
+}
+
+.eval-list .dl .dt {
+    display: flex;
+    align-items: center;
+}
+
+.eval-list .dt .avatar {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.eval-list .dt .avatar image {
+    width: 100%;
+    height: 100%;
+}
+
+.eval-list .dt .people {
+    margin-left: 20rpx;
+}
+
+.eval-list .people .user {
+    font-size: 32rpx;
+    color: #475266;
+    display: block;
+}
+
+.eval-list .people .date {
+    font-size: 28rpx;
+    color: #878d99;
+    margin-top: 10rpx;
+    line-height: 40rpx;
+    display: block;
+}
+
+.eval-list .dl .dd {
+    width: 64rpx;
+    height: 64rpx;
+    background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-phone-bule@2x.png?tdsourcetag=s_pcqq_aiomsg);
+    background-size: cover;
+}
+
+.eval-list .eval-item .appraise {
+    font-size: 30rpx;
+    color: #878d99;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-height: 42rpx;
+}
+
+.show-tips {
+    font-size: 32rpx;
+    color: #cbcbcb;
+    border-top: 2rpx solid #edeff0;
+    padding: 30rpx 0;
+    text-align: center;
+    width: 100%;
+}

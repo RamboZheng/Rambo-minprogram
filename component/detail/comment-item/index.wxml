@@ -1,0 +1,35 @@
+<!-- 组件模板 -->
+<!-- 基本信息 -->
+<view class="comment-box" wx:if="{{item && type=='houseUserComment'}}">
+    <view class="comment-user">
+        <view class="item-top">
+            <image class="item-img" src="{{item.userAvatar?item.userAvatar:'https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-head@2x.png'}}"></image>
+            <view class="item-text">
+                <view class="item-name">{{item.userName}}</view>
+                <view class="item-time">{{item.createDate}}</view>
+            </view>
+            <view data-commentId='{{item.id}}' class="icon-collect {{isPraised ? 'on' : ''}}" bindtap="praised"></view>
+            <button class="button-collect" wx:if="{{!isLogin}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
+        </view>
+        <view class="item-desc">{{item.content}}</view>
+    </view>
+</view>
+<view class="comment-broker" wx:if="{{item && type=='houseBrokerComment'}}">
+    <view class="item-top">
+        <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img_apartment_banner@2x.png"></image>
+        <view class="text-box">
+            <view class="text-num">{{item.brokerPhone}}</view>
+            <view class="star-box">
+                用户评分：
+                <view class="star">
+                    <star-level isHandle="{{false}}" starType='{{"glod"}}' flagLevel='{{item.score}}'></star-level>
+                </view>
+            </view>
+        </view>
+        <view class="text-time">{{item.createDate}}</view>
+    </view>
+    <view class="item-desc">{{item.content}}</view>
+    <view class="item-tags" wx:if="{{item.labelIds.length>0}}">
+        <view class="tag" wx:for='{{item.labelIds}}' wx:for-item="tag" wx:key="key">{{tag}}</view>
+    </view>
+</view>

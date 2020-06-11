@@ -1,0 +1,49 @@
+<!-- index.wxml -->
+<view class="container">
+    <!-- 经纪人登录弹框 -->
+    <agent-invite></agent-invite>
+    <view class="top">
+        <view class="top-search">
+            <view class="top-bar"></view>
+            <search-input city="{{city}}" homeSearch="true"></search-input>
+        </view>
+        <view class="top-button" style='width:100%'>
+            <view class="entrance-box" wx:for='{{entranceList}}' listItem="{{item}}" data-lebal='{{item.lebal}}' bindtap="intoEntrance" wx:key='{{item.iconUrl}}'>
+                <image src="{{item.iconUrl}}"></image>
+                <view class="entrance-name">{{item.name}}</view>
+            </view>
+            <!-- <view class="button left-image" bindtap="toResultList">
+                <view class="button-text">二手房</view>
+            </view>
+            <view class="button right-image" bindtap="toRenting">
+                <view class="button-text">安心租房</view>
+            </view> -->
+        </view>
+    </view>
+    <view class="recommand">
+        <view class="recommand-name" hover-class="none" hover-stop-propagation="false">
+            推荐房源
+            <view class="recommand-right">
+                <view class="right-text" data-type='house' bindtap='switchType' style="{{listType == 'house' ?'color:#3270E7':'color:#9399A5'}}">
+                    二手房
+                </view>
+                <view class="right-text" data-type='rent' bindtap='switchType' style="{{listType == 'rent' ?'color:#3270E7':'color:#9399A5'}}">
+                    租房
+                </view>
+            </view>
+        </view>
+        <view class="list" wx:if='{{listType=="house"}}'>
+            <list-item wx:for="{{homeList}}" wx:if='{{item}}' listItem="{{item}}" detailType="{{listType}}" wx:key="key"></list-item>
+            <view class="list-bottom" data-lebal='house' bindtap="intoEntrance">查看更多二手房</view>
+            <no-data show='{{homeList.length ==  0}}'></no-data>
+            <pull-get showMore="{{showMore && homeList.length > 0}}" showEnd="{{showEnd && homeList.length>0}}"></pull-get>
+        </view>
+        <view class="list" wx:if='{{listType=="rent"}}'>
+            <list-item wx:for="{{rentList}}" wx:if='{{item}}' listItem="{{item}}" detailType="{{listType}}" wx:key="key"></list-item>
+            <view class="list-bottom" data-lebal='rent' bindtap="intoEntrance">查看更多租房</view>
+            <no-data show='{{rentList.length ==  0}}'></no-data>
+            <pull-get showMore="{{showMore && rentList.length > 0}}" showEnd="{{showEnd && rentList.length>0}}"></pull-get>
+        </view>
+    </view>
+    <image wx:if='{{showIcon}}' bindtap="toTop" class="top-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-list-backtop@2x.png"></image>
+</view>

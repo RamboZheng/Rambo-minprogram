@@ -1,0 +1,111 @@
+/* pages/detail/setMap/index.wxss */
+page,
+.container {
+    height: 100%;
+}
+
+.show-map {
+    width: 100%;
+    /* height: 100%; */
+    height: calc(100% - 128rpx);
+}
+
+.show-map .coverView {
+    width: 100%;
+    height: 100%
+}
+
+.show-map map {
+    width: 100%;
+    height: 100%;
+}
+
+.fix-show-info {
+    position: fixed;
+    top: 30rpx;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 12;
+    background-color: rgba(0, 0, 0, 0.5);
+    max-width: 92%;
+    border-radius: 8rpx;
+    /* min-height: 80rpx; */
+    /* line-height: 80rpx; */
+    text-align: center;
+    padding: 20rpx 0;
+}
+
+.fix-show-info .tips {
+    font-size: 28rpx;
+    padding: 0 10rpx;
+    color: #fff;
+    width: 96%;
+    white-space: normal;
+
+}
+
+.fix-show-info.hide {
+    display: none
+}
+
+.tab {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 128rpx;
+    z-index: 12;
+    background-color: #fff;
+}
+
+.matter-box {
+    overflow-y: scroll;
+}
+
+.matter-box::-webkit-scrollbar {
+    display: none;
+}
+
+.type {
+    display: flex;
+    /* justify-content: space-between; */
+    padding-top: 20rpx;
+    padding-bottom: 18rpx;
+}
+
+.type .type-item {
+    text-align: center;
+    padding: 0 34rpx;
+    min-width: 90rpx;
+}
+
+.type .type-item .name {
+    margin-top: 13rpx;
+    font-size: 28rpx;
+    color: #878D99;
+    line-height: 40rpx;
+}
+
+.type .type-item.on .name {
+    color: #6595F4;
+}
+
+
+.icon {
+    width: 38rpx;
+    height: 38rpx;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+}
+
+.icon-metro {
+    background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-xiangqing-list-metro@2x.png);
+
+}
+
+.icon-metro.on {
+    background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-xiangqing-list-metro-selected@2x.png);
+}

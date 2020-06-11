@@ -1,0 +1,9 @@
+<view class="loading">
+    <view class="load-box">
+        <view class="load-content">
+            <view class="loading-icon"></view>
+            <view class="loading-icon"></view>
+            <view class="loading-icon"></view>
+        </view>
+    </view>
+</view>

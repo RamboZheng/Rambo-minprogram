@@ -1,0 +1,20 @@
+<view class="box allocation">
+    <view class="content" wx:if="{{type == 'flat'}}">
+        <view class="common-title">公寓设施</view>
+        <view class="facility">
+            <view class="list" wx:for="{{typeIcon[0].list}}" wx:key="key">
+                <image class="icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/{{item.has ? item.hasicon : item.noicon}}?tdsourcetag=s_pcqq_aiomsg"></image>
+                <view class="name {{item.has ? '' : 'no'}}">{{item.name}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="content" wx:if="{{type == 'apart'}}">
+        <text class="common-title">房屋配置</text>
+        <view class="facility">
+            <view class="list" wx:for="{{typeIcon[0].list}}" wx:key="key">
+                <image class="icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/{{item.has ? item.hasicon : item.noicon}}?tdsourcetag=s_pcqq_aiomsg"></image>
+                <view class="name {{item.has ? '' : 'no'}}">{{item.name}}</view>
+            </view>
+        </view>
+    </view>
+</view>

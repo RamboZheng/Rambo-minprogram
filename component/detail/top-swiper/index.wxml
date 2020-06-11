@@ -1,0 +1,31 @@
+<block>
+    <view class="banner">
+        <view class="banner-box">
+            <swiper class="banner-content" current="{{index == 1 ? 0 : (index - 1)}}" bindchange="handleChange" bindtap="handleShowBox">
+                <swiper-item class="item" wx:for="{{bannerImgUrl}}" wx:key="{{key}}" item-id="{{item.cType}}">
+                    <image src="{{item.url}}" />
+                </swiper-item>
+            </swiper>
+            <view class="dot-number {{type === 'rent' ? 'dot-center' : ''}}" wx:if="{{ bannerImgUrl.length > 0}}">
+                {{index}}/{{ bannerImgUrl.length}}
+            </view>
+            <view class="dot-number {{type === 'rent' ? 'dot-center' : ''}}" wx:else>0/0</view>
+            <slot name="btnCollection"></slot>
+        </view>
+    </view>
+    <view class="layoutImg {{showLayer ? '' : 'hidden'}}">
+        <!-- <view class="layout-top">
+        <view class="layou-list">
+            <view class="item {{currentType == bindex ? 'on' : ''}}" wx:for="{{houseImages}}" wx:for-index="bindex" wx:key="{{key}}" bindtap="handleChatImg" data-len="{{item.imgList.length}}" data-currentype="{{bindex}}">
+                {{item.name}}({{item.imgList.length}})
+            </view>
+        </view>
+    </view> -->
+        <swiper class="layout-content" current="{{index == 1 ? 0 : (index - 1)}}" bindchange="handleChange" bindtap="handleHideBox">
+            <swiper-item class="layout-scale" wx:for="{{bannerImgUrl}}" wx:key="{{key}}" item-id="{{item.cType}}">
+                <image src="{{item.url}}" />
+            </swiper-item>
+        </swiper>
+        <slot name="layerBottom"></slot>
+    </view>
+</block>

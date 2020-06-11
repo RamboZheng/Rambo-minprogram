@@ -1,0 +1,40 @@
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background: white;
+  display: flex;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tab-bar .tab-bar-border {
+  background: #edeff0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 2rpx;
+  transform: scaleY(0.5);
+  z-index: 5;
+}
+.tab-bar .tab-bar-item {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tab-bar .tab-bar-item button {
+  width: 100%;
+  height: 98rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 46rpx;
+  margin: 0rpx;
+  background-color: #ffffff;
+}
+.tab-bar .tab-bar-item button::after {
+  border: none;
+}

@@ -1,0 +1,14 @@
+{
+    "usingComponents": {
+        "tab-bar": "/component/common/tab-bar/index",
+        "list-item": "/component/common/list-item/index",
+        "no-data": "/component/common/no-data/index",
+        "pull-get": "/component/homePage/pull-get/index",
+        "intro-info": "/component/detail/intro-info/index",
+        "condition-item": "/component/homePage/condition-item/index"
+    },
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "公寓品牌",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark"
+}

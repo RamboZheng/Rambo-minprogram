@@ -1,0 +1,12 @@
+<!-- miniprogram/custom-tab-bar/index.wxml -->
+<cover-view class="tab-bar">
+  <cover-view class="tab-bar-border"></cover-view>
+  <cover-view wx:for="{{list}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" data-index="{{index}}">
+    <button wx:if="{{btnStatus && selected === 0}}" data-path='{{item.pagePath}}' open-type="{{index !== 0 && btnStatus ? status : ''}}" bindtap="{{ index === 0 ? 'goPath' : '' }}" bindgetphonenumber="getPhoneNumber">
+      <cover-image src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>
+    </button>
+    <button wx:if="{{!(btnStatus && selected === 0)}}" data-path='{{item.pagePath}}' bindtap="goPath">
+      <cover-image src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>
+    </button>
+  </cover-view>
+</cover-view>

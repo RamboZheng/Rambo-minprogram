@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "tab-bar": "/component/common/tab-bar/index",
+        "picker-component": "/component/common/picker-component/index"
+    },
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "房贷计算器",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark"
+}

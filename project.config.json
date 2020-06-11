@@ -1,0 +1,158 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.10.2",
+	"appid": "wxf67d67fbf5845fc6",
+	"projectname": "miniprogram",
+	"cloudfunctionTemplateRoot": "",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "pages/detail/moduleDetail/index",
+					"pathName": "pages/detail/moduleDetail/index",
+					"query": "detailType=apart&id=11492124",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "pages/detail/rentDetail/index",
+					"pathName": "pages/detail/rentDetail/index",
+					"query": "detailType=flat&id=1001052",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "小区详情页面有背景图片的",
+					"pathName": "pages/detail/index/index",
+					"query": "detailType=block&id=1905153377",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "pages/detail/rentDetail/index",
+					"pathName": "pages/detail/rentDetail/index",
+					"query": "detailType=SHARED_RENT&id=1905155625",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "pages/detail/index/index",
+					"pathName": "pages/detail/index/index",
+					"query": "detailType=house&id=11649768",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/detail/rentDetail/index",
+					"pathName": "pages/detail/rentDetail/index",
+					"query": "detailType=LAY_OUT&id=10403498",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "pages/detail/brokerDetail/index",
+					"pathName": "pages/detail/brokerDetail/index",
+					"query": "brokerId=50e4007c7c9b3d57dd0b86cbb38ae8c8",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "pages/tool/houseLoan/result/index",
+					"pathName": "pages/tool/houseLoan/result/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "pages/homePage/search/index",
+					"pathName": "pages/homePage/search/index",
+					"query": "detailType=garden&id=1905163818",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "pages/tool/houseMeans/index",
+					"pathName": "pages/tool/houseMeans/index",
+					"query": "detailType=flat&id=374693394095939584",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "pages/tool/houseLoan/index/index",
+					"pathName": "pages/tool/houseLoan/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "pages/personal/myCollect/index",
+					"pathName": "pages/personal/myCollect/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "公寓列表",
+					"pathName": "pages/homePage/brandList/index",
+					"query": "brandId=374682734909857792",
+					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "pages/detail/moduleDetail/index",
+					"pathName": "pages/detail/moduleDetail/index",
+					"query": "detailType=apart&id=11492115",
+					"scene": null
+				}
+			]
+		}
+	}
+}

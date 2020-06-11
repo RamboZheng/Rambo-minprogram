@@ -1,0 +1,37 @@
+<!-- index.wxml -->
+<view class="container" style='height:{{swiperH}}'>
+    <view class="nav">
+        <view wx:for="{{navTab}}" wx:key="index" data-idx="{{index}}" bindtap="currentTab" class="{{currentTab==index ? 'cur' : ''}}">
+            <text>{{item}}</text>
+        </view>
+    </view>
+    <view class='button-box' wx:if="{{info.type=='rent' || info.type=='flat' }}">
+        <view class="button {{info.type=='rent'?'bg-blue':''}}" data-type="rent" bindtap="getRentType">
+            房源
+        </view>
+        <view class="button {{info.type=='flat'?'bg-blue':''}}" data-type="flat" bindtap="getRentType">
+            公寓
+        </view>
+    </view>
+    <view class="swiper">
+        <swiper current="{{currentTab}}" bindchange="curChange" style='height:{{swiperH}}rpx; overflow-x:hidden;'>
+            <swiper-item>
+                <list-item wx:for="{{houseList}}" listItem="{{item}}" detailType="{{info.type}}" wx:key="key"></list-item>
+                <pull-get showMore="{{showMore}}" showEnd="{{showEnd}}"></pull-get>
+            </swiper-item>
+            <swiper-item>
+                <list-item wx:for="{{gardenList}}" listItem="{{item}}" price="{{item.price}}" detailType="{{info.type}}" wx:key="key"></list-item>
+                <pull-get showMore="{{showMore}}" showEnd="{{showEnd}}"></pull-get>
+            </swiper-item>
+            <swiper-item style="padding-top:100rpx">
+                <list-item wx:for="{{rentingList}}" listItem="{{item}}" wx:key="key" detailType="{{info.type}}"></list-item>
+                <pull-get showMore="{{showMore}}" showEnd="{{showEnd}}"></pull-get>
+            </swiper-item>
+            <swiper-item>
+                <broker-item wx:for="{{brokerList}}" info="{{item}}" type='view' wx:key="key"></broker-item>
+                <pull-get showMore="{{showMore}}" showEnd="{{showEnd}}"></pull-get>
+            </swiper-item>
+        </swiper>
+        <no-data class="c-no-data" show="{{swiperH==0}}" pageType="{{'person'}}"></no-data>
+    </view>
+</view>

@@ -1,0 +1,13 @@
+<!-- 组件模板 -->
+<!-- 基本信息 -->
+<view class="list-block" wx:if="{{list.length>0}}">
+    <view class="content">
+        <view class="title-item">
+            <view class="title-text">{{boxInfo.title}}</view>
+        </view>
+        <comment-item wx:for="{{list}}" wx:if='{{showItem}}' item="{{item}}" bind:refresh="refreshList" type="{{boxInfo.type}}" wx:key="key"></comment-item>
+        <view class="check-more" wx:if="{{recordTotal > 2}}" bindtap="toCommentList">
+            查看更多（共{{recordTotal}}条）
+        </view>
+    </view>
+</view>

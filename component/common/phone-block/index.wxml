@@ -1,0 +1,12 @@
+<!-- 组件模板 -->
+<view class="phone-block">
+    <view class="title">拨打电话</view>
+    <view class="number">{{number}}</view>
+    <view class="phone-button">
+        <view class="button" style="background: #F2F3F5;color: #475266;" bindtap="cancelPhone">
+            取消
+        </view>
+        <view class="button" bindtap="callIn">确定</view>
+    </view>
+</view>
+<view class="swiper-beijing" bindtap="hideNav"></view>

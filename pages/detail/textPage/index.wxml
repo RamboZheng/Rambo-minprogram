@@ -1,0 +1,60 @@
+<view class="page">
+    <view class="page-type" wx:if="{{searchBox.detailType=='schoolDesc'}}">
+        <view class="page-item" wx:if="{{info.remark}}">
+            <view class="item-title">学校简介</view>
+            <view class="item-desc">{{info.remark}}</view>
+        </view>
+        <view class="page-item" wx:if="{{info.faculty}}">
+            <view class="item-title">师资力量</view>
+            <view class="item-desc">{{info.faculty}}</view>
+        </view>
+        <view class="page-item" wx:if="{{info.hardwareFacility}}">
+            <view class="item-title">硬件设施</view>
+            <view class="item-desc">{{info.hardwareFacility}}</view>
+        </view>
+        <view class="page-item" wx:if="{{info.feature}}">
+            <view class="item-title">学校特色</view>
+            <view class="item-desc">{{info.feature}}</view>
+        </view>
+        <view class="page-tip">*以上信息仅供参考</view>
+    </view>
+    <view class="page-type" wx:if="{{searchBox.detailType=='schoolWays'}}">
+        <view class="page-item">
+            <view class="item-title">升学方式介绍</view>
+        </view>
+        <view class="page-item">
+            <view class="item-title">十二年一贯</view>
+            <view class="item-desc">"十二年一贯制学校"是指集小学、初中和高中为一体的十二年一贯制学校。</view>
+        </view>
+        <view class="page-item">
+            <view class="item-title">对口直升</view>
+            <view class="item-desc">
+                “对口直升”是指在公办小学的毕业生，按照小学升入对口中学和统筹分配学位的原则，学生不用考试或者推荐和电脑派位，实行免试、相对就近入学。
+            </view>
+        </view>
+        <view class="page-item">
+            <view class="item-title">九年一贯</view>
+            <view class="item-desc">
+                所谓“九年一贯制”学校，通常是指该校的小学和初中施行一体化的教育，小学毕业后可直升本校初中，主要特点是连贯，学生从一年级至九年级，相继完成小学至初中教育，其间不间断、不选拔。
+            </view>
+        </view>
+        <view class="page-item">
+            <view class="item-title">推优</view>
+            <view class="item-desc">
+                “推优”是指小学根据学生的身体素质、综合素质、三好学生、优秀学生干部和学业成绩等一定标准，选出一些优秀学生向重点中学进行推荐。
+            </view>
+        </view>
+        <view class="page-item">
+            <view class="item-title">派位</view>
+            <view class="item-desc">
+                “电脑派位”是指经由电脑按一定条件挑选出的学生，这些学生按各自所属条件被规划在不同学校中。在片区内的小学都可以参加片区里中学的电脑派位，随机就近入学。
+            </view>
+        </view>
+        <view class="page-item">
+            <view class="item-title">自主招生</view>
+            <view class="item-desc">“自主招生”一般是指扩大学校自主权、深化学校招生录取制度改革的重要举措，也是对选拔优秀创新人才的新探索。</view>
+        </view>
+    </view>
+    <view class="page-type" wx:if="{{searchBox.detailType=='schoolDesc3'}}"></view>
+    <view class="page-type" wx:if="{{searchBox.detailType=='schoolDesc4'}}"></view>
+</view>

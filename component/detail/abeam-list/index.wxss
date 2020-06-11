@@ -1,0 +1,94 @@
+.recommend {
+  margin-top: -9rpx;
+  padding: 60rpx 0;
+  border-top: 2rpx solid #EDEFF0;
+}
+.recommend .title {
+  font-size: 32rpx;
+  color: #2C2F37;
+  padding: 0 30rpx;
+  margin-bottom: 30rpx;
+  font-weight: 700;
+}
+.recommend .silder {
+  padding-bottom: 60rpx;
+  overflow-x: scroll;
+}
+.recommend .silder .silder-box {
+  /* min-height: 460rpx; */
+  display: flex;
+}
+.recommend .silder::-webkit-scrollbar {
+  display: none;
+}
+.recommend .list {
+  width: 380rpx;
+  margin-left: 30rpx;
+}
+.recommend .list .cover {
+  width: 380rpx;
+  height: 284rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+.recommend .list .cover image {
+  width: 100%;
+  height: 100%;
+  background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-380pic-default@2x.png?tdsourcetag=s_pcqq_aiomsg);
+  background-size: cover;
+}
+.recommend .list .relate {
+  margin-top: 20rpx;
+  text-align: left;
+}
+.recommend .list .relate .item-text {
+  padding-left: 6rpx;
+  font-size: 28rpx;
+  color: #475266;
+  display: -webkit-box;
+  line-height: 40rpx;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-family: PingFangSC-Medium;
+  font-weight: 600;
+}
+.recommend .list .relate .item-size {
+  margin-top: 15rpx;
+  font-size: 24rpx;
+  color: #878d99;
+  line-height: 30rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.recommend .list .relate .item-size .size-bar {
+  color: #edeff0;
+  border-radius: 1px;
+  margin: 0 10rpx;
+}
+.recommend .list .relate .item-price {
+  padding-left: 4rpx;
+  margin-top: 14rpx;
+  font-family: SourceHanSansCN-Heavy;
+  font-size: 28rpx;
+  color: #e56a67;
+  font-weight: bold;
+}
+.recommend .list .relate .item-price .avg-price {
+  font-size: 24rpx;
+  color: #a4a4a4;
+  display: inline-block;
+  vertical-align: bottom;
+  font-weight: 400;
+}
+.recommend .tip {
+  font-size: 26rpx;
+  color: #cbcbcb;
+  /* padding-bottom: 70rpx; */
+  width: 92%;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 80rpx;
+}

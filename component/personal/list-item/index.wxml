@@ -1,0 +1,101 @@
+<!-- component/personal/list-item/index.wxml -->
+<view class="item" bindtap="toDetail" data-id="{{listItem.id}}">
+    <!-- 二手房 -->
+    <view wx:if="{{false}}" class="itemBox">
+        <view class="left">
+            <image class="item-image" src="{{listItem.imgUrl}}" alt=""></image>
+            <view class="price-spread">
+                <view>
+                    {{(listItem.price-listItem.beforePrice) ? (listItem.price-listItem.beforePrice)+'万' : ''}}
+                </view>
+            </view>
+        </view>
+        <view class="right">
+            <view class="item-title">{{listItem.title}}</view>
+            <view class="item-describe">
+                {{listItem.bedRoom}}室{{listItem.livingRoom}}厅
+                <text class="line">|</text>
+                {{listItem.buildArea}}㎡
+                <text class="line">|</text>
+                {{listItem.direction}}
+            </view>
+            <view class="item-tags">
+                <view class="tag" wx:for="{{listItem.houseTags}}" wx:for-item="houseTags" wx:key="key">
+                    {{houseTags}}
+                </view>
+            </view>
+            <view class="item-price">
+                <view class="test-price">
+                    {{listItem.beforePrice ? listItem.beforePrice+'万' : '暂无'}}
+                </view>
+                <view class="price">{{listItem.price}}万</view>
+                <view class="unit-price">{{listItem.unitPrice}}元/㎡</view>
+            </view>
+        </view>
+    </view>
+    <!-- 小区 -->
+    <view wx:if="{{false}}" class="itemBox">
+        <view class="left">
+            <image class="item-image" src="{{listItem.imgUrl}}" alt=""></image>
+        </view>
+        <view class="right">
+            <view class="item-title">{{listItem.gardenName}}</view>
+            <view class="item-describe">
+                {{listItem.regionName}}-{{item.businessName}}
+                <text class="line">|</text>
+                {{listItem.maxBuiltYear}}年
+                <text class="line">|</text>
+                在售{{listItem.totalFloor?listItem.totalFloor:0}}套
+            </view>
+            <view class="item-tags">
+                <!-- <view class="tag" wx:for="{{listItem.houseTags}}" wx:for-item="houseTags" wx:key="key">
+                    {{houseTags}}
+                </view> -->
+            </view>
+            <view class="item-price">
+                <view class="price">{{listItem.price}}万</view>
+                <view class="unit-price">{{listItem.unitPrice}}元/㎡</view>
+            </view>
+        </view>
+    </view>
+    <!-- 租房 -->
+    <view wx:if="{{true}}" class="itemBox">
+        <view class="left">
+            <image class="item-image" src="{{listItem.imgUrl}}" alt=""></image>
+            <view class="price-spread">
+                <!-- <view>
+                    {{(listItem.price-listItem.beforePrice) ? (listItem.price-listItem.beforePrice)+'万' : ''}}
+                </view> -->
+            </view>
+        </view>
+        <view class="right">
+            <view class="item-title">
+                {{(listItem.state?listItem.state:'整租')+'·'+listItem.gardenName}}
+            </view>
+            <view class="item-describe">
+                {{listItem.regionName}}-{{listItem.businessName}}
+                <text class="line">|</text>
+                {{listItem.buildArea}}㎡
+                <text class="line">|</text>
+                {{listItem.direction}}
+            </view>
+            <view class="distance">距5号环中线坂田站600米</view>
+            <view wx:if="{{listItem.houseTags.length!==0}}" class="item-tags">
+                <view class="tag" wx:for="{{listItem.houseTags}}" wx:for-item="houseTags" wx:key="key">
+                    {{houseTags}}
+                </view>
+            </view>
+            <view class="item-price">
+                <!-- <view class="test-price">
+                    {{listItem.beforePrice ? listItem.beforePrice+'万' : '暂无'}}
+                </view> -->
+                <view class="price">{{listItem.price}}元/月</view>
+                <!-- <view class="unit-price">{{listItem.unitPrice}}元/㎡</view> -->
+            </view>
+        </view>
+    </view>
+    <!-- 下架标签 -->
+    <view wx:if="{{isSoldOut}}" class="shage">
+        <image class="SoldOutIcon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-list-lowershelf@2x.png"></image>
+    </view>
+</view>

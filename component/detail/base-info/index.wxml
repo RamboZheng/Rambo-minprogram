@@ -1,0 +1,141 @@
+<!-- 组件模板 -->
+<!-- 基本信息 -->
+<view class="base-info" wx:if="{{type === 'school'}}">
+    <view class="content">
+        <text class="common-title">学校基本信息</text>
+        <view class="list">
+            <view class="item">
+                <view class="item-info">
+                    <text class="label">学校别名</text>
+                    {{info.alias ? info.alias : '暂无数据'}}
+                </view>
+                <view class="item-info">
+                    <text class="label">学校类别</text>
+                    {{info.subTypeDesc ? info.subTypeDesc : '暂无数据'}}
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-info">
+                    <text class="label">名额规定</text>
+                    {{info.quotaRuleDesc ? info.quotaRuleDesc : '暂无数据'}}
+                </view>
+                <view class="item-info" bindtap="toTextPage" data-type='schoolWays'>
+                    <text class="label" type='schoolWays'>升学方式</text>
+                    {{info.entranceWayDesc ? info.entranceWayDesc : '暂无数据'}}
+                    <image class="ways-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_my_costdescription@2x.png"></image>
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-info w100" style='color: #1950BC' bindtap="toSetMap" wx:if="{{info.latitude &&info.longitude}}">
+                    <text class="label">学校地址</text>
+                    {{info.address ? info.address : '暂无数据'}}
+                    <image class="map-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_zizhi_weizhi@2x.png"></image>
+                </view>
+                <view class="item-info w100" wx:else>
+                    <text class="label">学校地址</text>
+                    {{info.address ? info.address : '暂无数据'}}
+                </view>
+            </view>
+            <!-- <view class="item">
+                <view class="item-info w100" bindtap="toMap">
+                    <text class="label">对口中学</text>
+                    {{info.middleSchool ? info.middleSchool : '暂无数据'}}
+                </view>
+            </view> -->
+        </view>
+    </view>
+    <!-- 招生简章 -->
+    <view wx:if="{{info.recruitmentBrochure}}" class="estate-rule" bindtap="toTextPage" data-type='schoolEstate'>
+        {{info.recruitmentBrochure}}
+    </view>
+</view>
+<view class="base-info" wx:if="{{type === 'garden'}}">
+    <view class="content">
+        <text class="common-title">小区基本信息</text>
+        <view class="list">
+            <view class="item">
+                <view class="item-info">
+                    <text class="label">建筑年代</text>
+                    {{info.buildDate ? info.buildDate : '暂无数据'}}
+                </view>
+                <view class="item-info">
+                    <text class="label">产权年限</text>
+                    {{info.rightYear ? info.rightYear+'年': '暂无数据'}}
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-info">
+                    <text class="label">建筑类型</text>
+                    {{info.architecturalType ? info.architecturalType : '暂无数据'}}
+                </view>
+                <view class="item-info">
+                    <text class="label">交易属性</text>
+                    {{info.transactionOwnership ? info.transactionOwnership : '暂无数据'}}
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-info">
+                    <text class="label">用水类型</text>
+                    {{info.waterType ? info.waterType : '暂无数据'}}
+                </view>
+                <view class="item-info">
+                    <text class="label">用电类型</text>
+                    {{info.powerType ? info.powerType : '暂无数据'}}
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-info">
+                    <text class="label">停车位</text>
+                    {{info.parking ? info.parking+'个' : '暂无数据'}}
+                </view>
+                <view class="item-info">
+                    <text class="label">停车费</text>
+                    {{info.parkingFee ? info.parkingFee+"元/月": '暂无数据'}}
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-info w100" bindtap="toMap">
+                    <text class="label">物业公司</text>
+                    {{info.propertyCompany ? info.propertyCompany : '暂无数据'}}
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-info w100" bindtap="toMap">
+                    <text class="label">物业费用</text>
+                    {{info.propertyFee ? info.propertyFee : '暂无数据'}}
+                </view>
+            </view>
+        </view>
+        <view class="info-tip">* 以上信息仅供参考，购房时请以房产证或不动产证信息为准。</view>
+    </view>
+</view>
+<view class="base-info" wx:if="{{type === 'apart'}}">
+    <view class="content">
+        <view class="tag-box" wx:if="{{info.tags.length>0}}">
+            <view class="tag" wx:for='{{info.tags}}'>{{item}}</view>
+        </view>
+        <text class="common-title">房源基本信息</text>
+        <view class="list">
+            <view class="item">
+                <view class="item-info">
+                    <text class="label">朝向</text>
+                    {{info.direction ? info.direction : '暂无数据'}}
+                </view>
+                <view class="item-info">
+                    <text class="label">入住</text>
+                    {{info.checkIn ? info.checkIn: '暂无数据'}}
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-info">
+                    <text class="label">窗户</text>
+                    {{info.windowType ? info.windowType : '暂无数据'}}
+                </view>
+                <view class="item-info">
+                    <text class="label">租期</text>
+                    {{info.rentBeginMonth == info.rentEndMonth?info.rentEndMonth: info.rentBeginMonth+ '-' +info.rentEndMonth}}个月
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

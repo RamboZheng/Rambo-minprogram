@@ -1,0 +1,47 @@
+<!-- 组件模板 -->
+<!-- 基本信息 -->
+<view class="foot-mode">
+    <view class="foot-block" wx:if='{{type == "broker"}}'>
+        <view class="foot-item" data-type='collect' bindtap="triggerItem">
+            <image src="{{isCollect=='1'?'https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_details_collection@2x.png':'https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_details_collection_selected@2x.png'}}"></image>
+            收藏
+        </view>
+        <view class="foot-item" data-type='comment' bindtap="triggerItem">
+            <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_details_comment@2x.png"></image>
+            评价
+        </view>
+        <view class="foot-item" data-type='phone' bindtap="triggerItem">
+            <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon_details_small_dianhua@2x.png"></image>
+            电话
+        </view>
+    </view>
+</view>
+<!-- 底部的导航栏 -->
+<cover-view class="fix-bottom" wx:if="{{infoList.length == 1}}">
+    <cover-view class="content action">
+        <cover-view class="content-info">
+            <cover-view class="avatar" data-id="{{infoList[0].id}}" bindtap="toBrokerDetail">
+                <cover-image class="avatar-img" src="{{infoList[0].photoUrl}}"></cover-image>
+            </cover-view>
+            <cover-view class="people">
+                <cover-view class="user">{{infoList[0].name}}</cover-view>
+                <cover-view class="date">{{infoList[0].source}}</cover-view>
+            </cover-view>
+        </cover-view>
+        <cover-view class="btn-call {{infoList.length > 0 ? '':'no-click'}}" bindtap="callIn" data-phone="{{infoList[0].contact}}">
+            打电话
+        </cover-view>
+    </cover-view>
+</cover-view>
+<cover-view class="icon-up" wx:if="{{infoList.length > 1 && showSingle}}">
+    <cover-image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-details-uparrow@2x.png" bindtap="showAll"></cover-image>
+</cover-view>
+<cover-view class="contact" wx:if="{{infoList.length > 1}}">
+    <cover-image class="icon-down" wx:if="{{infoList.length > 1 && !showSingle}}" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-details-downarrow@2x.png" bindtap="showAll"></cover-image>
+    <cover-view class="contact-list" wx:if='{{showSingle}}'>
+        <broker-item info="{{infoList[0]}}" type='coverView'></broker-item>
+    </cover-view>
+    <cover-view class="contact-list" wx:else>
+        <broker-item wx:for="{{infoList}}" info="{{item}}" type='coverView' wx:key="key"></broker-item>
+    </cover-view>
+</cover-view>

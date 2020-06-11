@@ -1,0 +1,117 @@
+.comment-box {
+  width: 92%;
+  padding: 30rpx;
+}
+.comment-box .comment-user .item-top {
+  margin-bottom: 30rpx;
+  position: relative;
+}
+.comment-box .comment-user .item-top .item-text {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 15rpx;
+}
+.comment-box .comment-user .item-top .item-text .item-name {
+  font-size: 32rpx;
+  color: #475266;
+  margin-bottom: 10rpx;
+}
+.comment-box .comment-user .item-top .item-text .item-time {
+  font-size: 28rpx;
+  color: #878D99;
+}
+.comment-box .comment-user .item-top .item-img {
+  width: 100rpx;
+  height: 100rpx;
+}
+.comment-box .comment-user .item-top .icon-collect {
+  float: right;
+  vertical-align: top;
+  width: 42rpx;
+  height: 42rpx;
+  background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icons_dianzan_default@2x.png);
+  background-size: cover;
+}
+.comment-box .comment-user .item-top .icon-collect.on {
+  background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icons_dianzan_selected@2x.png);
+  background-size: cover;
+}
+.comment-box .comment-user .item-top .button-collect {
+  width: 60rpx;
+  height: 60rpx;
+  background-color: pink;
+  position: absolute;
+  right: 0rpx;
+  top: 3rpx;
+  opacity: 0;
+}
+.comment-box .comment-user .item-desc {
+  font-size: 30rpx;
+  color: #878D99;
+  display: -webkit-box;
+  line-height: 40rpx;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-family: PingFangSC-Medium;
+}
+.comment-broker {
+  margin-left: 30rpx;
+  border-top: 2rpx solid #F2F3F5;
+  padding: 35rpx 30rpx 35rpx 0;
+}
+.comment-broker .item-top {
+  width: 100%;
+  display: flex;
+}
+.comment-broker .item-top image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.comment-broker .item-top .text-box {
+  width: 53%;
+  margin-left: 20rpx;
+}
+.comment-broker .item-top .text-box .text-num {
+  font-size: 28rpx;
+  color: #475266;
+}
+.comment-broker .item-top .text-box .star-box {
+  font-size: 28rpx;
+  color: #646D7F;
+  margin-top: 10rpx;
+}
+.comment-broker .item-top .text-box .star-box .star {
+  display: inline-block;
+}
+.comment-broker .item-top .text-time {
+  font-size: 28rpx;
+  color: #CBCBCB;
+  margin-left: auto;
+}
+.comment-broker .item-desc {
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #475266;
+  display: -webkit-box;
+  line-height: 40rpx;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-family: PingFangSC-Medium;
+}
+.comment-broker .item-tags {
+  width: 100%;
+  display: flex;
+  flex-flow: wrap;
+}
+.comment-broker .item-tags .tag {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: #9CBDFF;
+  padding: 6rpx 10rpx;
+  border: 2rpx solid #9CBDFF;
+  border-radius: 4px;
+  margin-right: 30rpx;
+}

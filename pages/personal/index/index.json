@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "personal-item": "/component/personal/personal-item/index",
+        "dialog": "/component/common/dialog/index"
+    }
+}

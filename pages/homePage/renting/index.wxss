@@ -1,0 +1,156 @@
+.container .top {
+  width: 100%;
+  background-color: #fff;
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+.container .top .top-search {
+  width: 750rpx;
+}
+.container .top .top-search .button-box {
+  width: 100%;
+  display: flex;
+}
+.container .top .top-search .button-box .box-item {
+  padding: 60rpx 0;
+  width: 33%;
+}
+.container .top .top-search .button-box .box-item image {
+  width: 130rpx;
+  height: 130rpx;
+  margin: 0 auto;
+  margin-left: 25%;
+}
+.container .top .top-search .button-box .box-item .button-text {
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: #475266;
+  margin-top: 30rpx;
+}
+.container .top .top-search .recommand-text {
+  display: block;
+  font-size: 40rpx;
+  color: #475266;
+  padding: 0 0 10rpx 30rpx;
+}
+.container .swiper-tab {
+  width: 100%;
+  display: flex;
+  background: #fff;
+  color: #475266;
+  flex-direction: row;
+}
+.container .swiper-tab .swiper-tab-list {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  height: 16rpx;
+  line-height: 40rpx;
+  padding: 25rpx;
+  font-size: 28rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.container .swiper-tab .swiper-tab-list .tab-icon {
+  width: 24rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+.container .swiper-tab .swiper-tab-list .tab-arrow {
+  width: 16rpx;
+  height: 12rpx;
+  position: absolute;
+  right: 25rpx;
+  top: 38rpx;
+}
+.container .swiper-num {
+  width: 100%;
+  display: flex;
+  background: #fff;
+  color: #475266;
+  flex-direction: row;
+  border-bottom: 2rpx solid#F2F3F5;
+  height: 30rpx;
+}
+.container .swiper-num .num-box {
+  flex: 1;
+}
+.container .swiper-num .num-box .tab-num {
+  font-size: 24rpx;
+  text-align: center;
+  color: #6595F4;
+}
+.container .center-ton {
+  width: 100%;
+  border-bottom: 2rpx solid #F2F3F5;
+}
+.container .center-view {
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  padding-top: 30rpx;
+}
+.container .show-result {
+  width: 100%;
+  font-size: 24rpx;
+  border: 2rpx solid #EDEFF0;
+}
+.container .show-result .have-data {
+  padding: 32rpx 0;
+  position: relative;
+}
+.container .show-result .have-data .result-name {
+  font-size: 36rpx;
+  color: #475266;
+  padding-left: 30rpx;
+}
+.container .show-result .have-data .result-name image {
+  width: 14rpx;
+  height: 24rpx;
+  margin-left: 20rpx;
+}
+.container .show-result .have-data .result-size {
+  color: #878D99;
+  padding-left: 30rpx;
+  margin-top: 20rpx;
+}
+.container .show-result .have-data .collect-button {
+  border: 2rpx solid #6595F4;
+  border-radius: 34rpx;
+  padding: 14rpx 42rpx;
+  color: #6595F4;
+  position: absolute;
+  top: 40rpx;
+  right: 30rpx;
+  text-align: center;
+}
+.container .show-result .no-data {
+  padding: 60rpx 0 32rpx 0;
+  color: #475266;
+  position: relative;
+}
+.container .show-result .no-data .top-text {
+  font-size: 32rpx;
+  color: rgba(71, 82, 102, 0.8);
+  width: 65%;
+  margin: 0 auto;
+}
+.container .show-result .no-data .top-text image {
+  width: 42rpx;
+  height: 42rpx;
+  vertical-align: top;
+  margin-right: 30rpx;
+}
+.container .show-result .no-data .bottom-text {
+  padding: 60rpx 30rpx 0 30rpx;
+}
+.on {
+  color: #6595F4;
+}

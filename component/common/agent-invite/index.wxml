@@ -1,0 +1,13 @@
+<!-- 组件模板 -->
+<!-- 如果使用wx:if来控制组件的渲染，华为mate20会出现点击登录无反应的情况，所以在这里组件的显示隐藏使用display：blcok/none 来控制 -->
+<view class="agent-beijing" bindtap="hideAgent" style="display:{{showAgent}}" catchtouchmove='true'>
+    <view class="agent-box">
+        <image class='close-img' src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/record_h5_ icon_delete@2x.png" bindtap="hideAgent"></image>
+        <image class="agent-img" src="{{agentInfo.brokerImg?agentInfo.brokerImg:'https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-head@2x.png'}}"></image>
+        <view class="agent-name">{{agentInfo.brokerName?agentInfo.brokerName:"暂无数据"}}</view>
+        <view class="agent-text">邀请您使用自定义找房</view>
+        <button class="agent-button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+            微信登录
+        </button>
+    </view>
+</view>

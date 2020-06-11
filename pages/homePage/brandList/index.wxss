@@ -1,0 +1,89 @@
+.container .brand-pic {
+  background: #D8D8D8;
+  width: 100%;
+  height: 240rpx;
+  object-fit: cover;
+}
+.container .list-box {
+  width: 100%;
+}
+.container .list-box .center-view {
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  padding-top: 30rpx;
+}
+.container .list-box .swiper-tab {
+  width: 100%;
+  display: flex;
+  background: #fff;
+  color: #475266;
+  flex-direction: row;
+}
+.container .list-box .swiper-tab .swiper-tab-list {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  height: 16rpx;
+  line-height: 40rpx;
+  padding: 25rpx;
+  font-size: 28rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.container .list-box .swiper-tab .swiper-tab-list .tab-icon {
+  width: 24rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+.container .list-box .swiper-tab .swiper-tab-list .tab-arrow {
+  width: 16rpx;
+  height: 12rpx;
+  position: absolute;
+  right: 25rpx;
+  top: 38rpx;
+}
+.container .list-box .swiper-num {
+  width: 100%;
+  display: flex;
+  background: #fff;
+  color: #475266;
+  flex-direction: row;
+  border-bottom: 2rpx solid#F2F3F5;
+  height: 30rpx;
+}
+.container .list-box .swiper-num .num-box {
+  flex: 1;
+}
+.container .list-box .swiper-num .num-box .tab-num {
+  font-size: 24rpx;
+  text-align: center;
+  color: #6595F4;
+}
+.container .list-box .brand-desc {
+  padding: 30rpx;
+}
+.container .list-box .brand-desc .desc-title {
+  font-size: 32rpx;
+  color: #2C2F37;
+  text-align: left;
+  margin-bottom: 30rpx;
+}
+.container .list-box .brand-desc .desc-text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #878D99;
+  line-height: 70rpx;
+}
+.container .list-box .desc-bar {
+  width: 100%;
+  height: 20rpx;
+  background: #F2F3F5;
+}
+.on {
+  color: #6595F4;
+}

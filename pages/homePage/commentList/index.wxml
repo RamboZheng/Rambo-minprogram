@@ -1,0 +1,32 @@
+<!-- 组件模板 -->
+<!-- 基本信息 -->
+<view class="comment-list">
+    <view class="uesr-comment" wx:if="{{list.length>0 && type=='houseUserComment'}}">
+        <view class="content">
+            <view class="title-item">
+                <view class="title-text">{{boxInfo.title}}</view>
+            </view>
+            <comment-item wx:for="{{list}}" wx:if='{{showItem}}' item="{{item}}" bind:refresh="refreshList" type="{{boxInfo.type}}" wx:key="key"></comment-item>
+        </view>
+        <view class="bottom">
+            <input type="text" class="bottom-input" value="{{inputVal}}" placeholder="有何高见，展开讲讲" maxlength='50' bindinput="inputTyping" />
+            <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-opinion@2x.png" bindtap='commitComment'></image>
+        </view>
+    </view>
+    <view class="broker-comment" wx:if="{{type=='houseBrokerComment'}}">
+        <view class="top-info">
+            <view class="info-title">综合评分</view>
+            <view class="info-score">
+                <view class="bar"></view>
+                <view class="score">{{score}}</view>
+                <view class="bar"></view>
+            </view>
+            <view class="info-total">共{{recordTotal}}条评价</view>
+        </view>
+        <view class="mid-bar"></view>
+        <view class="bottom-list">
+            <comment-item wx:for="{{list}}" wx:if='{{item}}' item="{{item}}" type="{{boxInfo.type}}" wx:key="key"></comment-item>
+        </view>
+        <view class="no-more">没有更多了</view>
+    </view>
+</view>

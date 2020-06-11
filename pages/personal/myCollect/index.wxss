@@ -1,0 +1,93 @@
+page {
+  height: 103%;
+}
+page .container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+page .container .nav {
+  width: 100%;
+  height: 80rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #edeff0;
+  background: #ffffff;
+}
+page .container .nav view {
+  width: 100%;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #878d99;
+  text-align: center;
+  flex: 1;
+  line-height: 80rpx;
+  padding: 0 25rpx;
+}
+page .container .nav .cur text {
+  width: 100%;
+  height: 78rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  text-align: center;
+  color: #6595f4;
+  display: inline-block;
+  border-bottom: 4rpx solid #6595f4;
+}
+page .container .swiper {
+  position: absolute;
+  top: 80rpx;
+  bottom: 0;
+  width: 100%;
+}
+page .container .swiper swiper swiper-item {
+  overflow-y: auto;
+}
+page .container .swiper .button-box {
+  width: 100%;
+  padding: 20rpx 0;
+  display: flex;
+}
+page .container .swiper .button-box .button {
+  font-size: 28rpx;
+  color: #878D99;
+  background: #F2F3F5;
+  padding: 10rpx 72rpx;
+  margin: 0 80rpx;
+  border-radius: 30rpx;
+}
+page .container .swiper .button-box .bg-blue {
+  background: #9CBDFF;
+  color: #FFFFFF;
+}
+page .container .button-box {
+  width: 100%;
+  padding: 20rpx 0;
+  display: flex;
+  position: fixed;
+  top: 82rpx;
+  z-index: 2;
+  background-color: #fff;
+}
+page .container .button-box .button {
+  font-size: 28rpx;
+  color: #878D99;
+  background: #F2F3F5;
+  padding: 10rpx 72rpx;
+  margin: 0 80rpx;
+  border-radius: 30rpx;
+}
+page .container .button-box .bg-blue {
+  background: #9CBDFF;
+  color: #FFFFFF;
+}
+page .container .c-no-data .tips {
+  font-size: 32rpx;
+  color: #475266;
+  text-align: center;
+  margin-top: 80rpx;
+}

@@ -1,0 +1,22 @@
+.list-block {
+  border-bottom: 2rpx solid #edeff0;
+  padding-bottom: 60rpx;
+  width: 750rpx;
+}
+.list-block .title-item {
+  display: flex;
+}
+.list-block .title-item .title-text {
+  font-weight: 700;
+  font-size: 32rpx;
+  width: 100%;
+  padding: 0 30rpx;
+  color: #2C2F37;
+}
+.list-block .check-more {
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: #1950BC;
+  margin-top: 40rpx;
+}

@@ -1,0 +1,509 @@
+<!-- index.wxml -->
+<view class="condition-item" wx:if="{{moreCondition.length>0}}" data-newArr="{{moreCondition}}">
+    <view class="swiper">
+        <!-- 二手房tab栏 -->
+        <view class="swiper-tab" wx:if="{{infoBox.type=='house'||infoBox.type=='newHouse'||infoBox.type=='cutMoney'}}">
+            <view class="swiper-tab-list {{currentTab==0||selectedName||regionStr.length>0 || metroStr.length>0? 'on' : ''}}" data-current="0" catchtap="tabNav" data-type='region'>
+                {{selectedName ? selectedName:tabList.first}}
+                <image class='tab-arrow' src="{{currentTab==0?upArrow:downArrow}}" data-current="0" data-type='region'></image>
+            </view>
+            <view class="swiper-tab-list {{currentTab==1||priceStr.length>0 ? 'on' : ''}}" data-current="1" catchtap="tabNav" data-type='price'>
+                {{priceName?priceName:tabList.second}}
+                <image class='tab-arrow' src="{{currentTab==1?upArrow:downArrow}}" data-current="1" data-type='price'></image>
+            </view>
+            <view class="swiper-tab-list {{currentTab==2||patternStr.length>0 ? 'on' : ''}}" data-current="2" catchtap="tabNav" data-type='house'>
+                {{patternName?patternName:tabList.thirds}}
+                <image class='tab-arrow' src="{{currentTab==2?upArrow:downArrow}}" data-current="2" data-type='house'></image>
+            </view>
+            <view class="swiper-tab-list  {{currentTab==3 ||moreStr.length>0? 'on' : ''}}" data-current="3" catchtap="tabNav" data-type='more'>
+                {{moreName?moreName:tabList.fours}}
+                <image class='tab-arrow' src="{{currentTab==3?upArrow:downArrow}}" data-current="3" data-type='more'></image>
+            </view>
+            <!-- icon下拉 -->
+            <view class="swiper-tab-list" style="display:{{currentTab==99 ? 'none' : 'block'}}" data-current="99" bindtap="tabNav" data-type='icon'>
+                <image data-current="99" data-type='icon' class="tab-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-home-sort@2x.png"></image>
+            </view>
+            <view class="swiper-tab-list" style="display:{{currentTab==99 ? 'block' : 'none'}}" data-current="99" bindtap="tabNav" data-type='icon'>
+                <image data-current="99" data-type='icon' class="tab-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-home-sort-selected@2x.png"></image>
+            </view>
+        </view>
+        <view class="swiper-num" wx:if="{{infoBox.type=='house'||infoBox.type=='newHouse'||infoBox.type=='cutMoney'}}">
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{regionStr.length>0 || metroStr.length>0}}" data-current="0" data-type='region'>
+                    ({{metroStr.length+regionStr.length+1}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{priceStr.length>1}}" data-current="1" data-type='price'>
+                    ({{priceStr.length}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{patternStr.length>1}}" data-current="2" data-type='house'>
+                    ({{patternStr.length}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{moreStr.length>1}}" data-current="3" data-type='more'>
+                    ({{moreStr.length}})
+                </view>
+            </view>
+            <view class='num-box'></view>
+        </view>
+        <!-- 公寓tab栏 -->
+        <view class="swiper-tab" wx:if="{{infoBox.type=='flat'}}">
+            <view class="swiper-tab-list {{currentTab==7||brandStr.length>0  ? 'on' : ''}}" data-current="7" catchtap="tabNav" data-type='brand'>
+                {{brandName?brandName:tabList.eight}}
+                <image class='tab-arrow' src="{{currentTab==7?upArrow:downArrow}}" data-current="7" data-type='brand'></image>
+            </view>
+            <view class="swiper-tab-list {{currentTab==0||selectedName||regionStr.length>0 || metroStr.length>0 ? 'on' : ''}}" data-current="0" catchtap="tabNav" data-type='region'>
+                {{selectedName ? selectedName:tabList.first}}
+                <image class='tab-arrow' src="{{currentTab==0?upArrow:downArrow}}" data-current="0" data-type='region'></image>
+            </view>
+            <view class="swiper-tab-list {{currentTab==6||rentalStr.length>0 ? 'on' : ''}}" data-current="6" catchtap="tabNav" data-type='rental'>
+                {{rentalName?rentalName:tabList.seven}}
+                <image class='tab-arrow' src="{{currentTab==6?upArrow:downArrow}}" data-current="6" data-type='rental'></image>
+            </view>
+            <view class="swiper-tab-list  {{currentTab==3||moreStr.length>0 ? 'on' : ''}}" data-current="3" catchtap="tabNav" data-type='more'>
+                {{moreName?moreName:tabList.fours}}
+                <image class='tab-arrow' src="{{currentTab==3?upArrow:downArrow}}" data-current="3" data-type='more'></image>
+            </view>
+        </view>
+        <view class="swiper-num" wx:if="{{infoBox.type=='flat'}}">
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{brandStr.length>1}}" data-current="7" data-type='brand'>
+                    ({{brandStr.length}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{regionStr.length>0 || metroStr.length>0}}" data-current="0" data-type='region'>
+                    ({{metroStr.length+regionStr.length+1}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{rentalStr.length>1}}" data-current="6" data-type='rental'>
+                    ({{rentalStr.length}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{moreStr.length>1}}" data-current="3" data-type='more'>
+                    ({{moreStr.length}})
+                </view>
+            </view>
+        </view>
+        <!-- 公寓品牌tab栏 -->
+        <view class="swiper-tab" wx:if="{{infoBox.type=='brand'}}">
+            <view class="swiper-tab-list {{currentTab==0||selectedName||regionStr.length>0 || metroStr.length>0?  'on' : ''}}" data-current="0" catchtap="tabNav" data-type='region'>
+                {{selectedName ? selectedName:tabList.first}}
+                <image class='tab-arrow' src="{{currentTab==0?upArrow:downArrow}}" data-current="0" data-type='region'></image>
+            </view>
+            <view class="swiper-tab-list {{currentTab==6||rentalStr.length>0 ? 'on' : ''}}" data-current="6" catchtap="tabNav" data-type='rental'>
+                {{rentalName?rentalName:tabList.seven}}
+                <image class='tab-arrow' src="{{currentTab==6?upArrow:downArrow}}" data-current="6" data-type='rental'></image>
+            </view>
+            <view class="swiper-tab-list  {{currentTab==3 ||moreStr.length>0? 'on' : ''}}" data-current="3" catchtap="tabNav" data-type='more'>
+                {{moreName?moreName:tabList.fours}}
+                <image class='tab-arrow' src="{{currentTab==3?upArrow:downArrow}}" data-current="3" data-type='more'></image>
+            </view>
+        </view>
+        <view class="swiper-num" wx:if="{{infoBox.type=='brand'}}">
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{regionStr.length>0 || metroStr.length>0}}" data-current="0" data-type='region'>
+                    ({{metroStr.length+regionStr.length+1}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{rentalStr.length>1}}" data-current="6" data-type='rental'>
+                    ({{rentalStr.length}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{moreStr.length>1}}" data-current="3" data-type='more'>
+                    ({{moreStr.length}})
+                </view>
+            </view>
+        </view>
+        <!-- 租房tab栏 -->
+        <view class="swiper-tab" wx:if="{{infoBox.type=='rent' || infoBox.type=='combine' || infoBox.type=='intact' || infoBox.type=='rentIndex'}}">
+            <view class="swiper-tab-list {{currentTab==0||selectedName||regionStr.length>0 || metroStr.length>0?  'on' : ''}}" data-current="0" catchtap="tabNav" data-type='region'>
+                {{selectedName ? selectedName:tabList.first}}
+                <image class='tab-arrow' src="{{currentTab==0?upArrow:downArrow}}" data-current="0" data-type='region'></image>
+            </view>
+            <view class="swiper-tab-list {{currentTab==4 ||methodStr.length>0? 'on' : ''}}" data-current="4" catchtap="tabNav" data-type='method'>
+                {{methodName?methodName:tabList.fifth}}
+                <image class='tab-arrow' src="{{currentTab==4?upArrow:downArrow}}" data-current="4" data-type='method'></image>
+            </view>
+            <view class="swiper-tab-list {{currentTab==6||rentalStr.length>0 ? 'on' : ''}}" data-current="6" catchtap="tabNav" data-type='rental'>
+                {{rentalName?rentalName:tabList.seven}}
+                <image class='tab-arrow' src="{{currentTab==6?upArrow:downArrow}}" data-current="6" data-type='rental'></image>
+            </view>
+            <view class="swiper-tab-list  {{currentTab==3||moreStr.length>0 ? 'on' : ''}}" data-current="3" catchtap="tabNav" data-type='more'>
+                {{moreName?moreName:tabList.fours}}
+                <image class='tab-arrow' src="{{currentTab==3?upArrow:downArrow}}" data-current="3" data-type='more'></image>
+            </view>
+            <!-- icon下拉 -->
+            <view class="swiper-tab-list" style="display:{{currentTab==99 ? 'none' : 'block'}}" data-current="99" bindtap="tabNav" data-type='icon'>
+                <image data-current="99" data-type='icon' class="tab-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-home-sort@2x.png"></image>
+            </view>
+            <view class="swiper-tab-list" style="display:{{currentTab==99 ? 'block' : 'none'}}" data-current="99" bindtap="tabNav" data-type='icon'>
+                <image data-current="99" data-type='icon' class="tab-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-home-sort-selected@2x.png"></image>
+            </view>
+        </view>
+        <view class="swiper-num" wx:if="{{infoBox.type=='rent' || infoBox.type=='combine' || infoBox.type=='intact' || infoBox.type=='rentIndex'}}">
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{regionStr.length>0 || metroStr.length>0}}" data-current="0" data-type='region'>
+                    ({{metroStr.length+regionStr.length+1}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{methodStr.length>1}}" data-current="4" data-type='method'>
+                    ({{methodStr.length}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{rentalStr.length>1}}" data-current="6" data-type='rental'>
+                    ({{rentalStr.length}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{moreStr.length>1}}" data-current="3" data-type='more'>
+                    ({{moreStr.length}})
+                </view>
+            </view>
+            <view class='num-box'></view>
+        </view>
+        <!-- 小区tab栏 -->
+        <view class="swiper-tab" wx:if="{{infoBox.type=='garden'}}">
+            <view class="swiper-tab-list {{currentTab==0||selectedName||regionStr.length>0 || metroStr.length>0?  'on' : ''}}" data-current="0" catchtap="tabNav" data-type='region'>
+                {{selectedName ? selectedName:tabList.first}}
+                <image class='tab-arrow' src="{{currentTab==0?upArrow:downArrow}}" data-current="0" data-type='region'></image>
+            </view>
+            <view class="swiper-tab-list {{currentTab==10||averagePriceStr.length>0 ? 'on' : ''}}" data-current="10" catchtap="tabNav" data-type='averagePrice'>
+                {{averagePriceName?averagePriceName:tabList.eleven}}
+                <image class='tab-arrow' src="{{currentTab==10?upArrow:downArrow}}" data-current="10" data-type='averagePrice'></image>
+            </view>
+            <view class="swiper-tab-list {{currentTab==11||ageBuildingStr.length>0 ? 'on' : ''}}" data-current="11" catchtap="tabNav" data-type='ageBuilding'>
+                {{ageBuildingName?ageBuildingName:tabList.twelve}}
+                <image class='tab-arrow' src="{{currentTab==11?upArrow:downArrow}}" data-current="11" data-type='ageBuilding'></image>
+            </view>
+            <view class="swiper-tab-list  {{currentTab==12||usesStr.length>0 ? 'on' : ''}}" data-current="12" catchtap="tabNav" data-type='uses'>
+                {{usesName?usesName:tabList.thirteen}}
+                <image class='tab-arrow' src="{{currentTab==12?upArrow:downArrow}}" data-current="12" data-type='uses'></image>
+            </view>
+            <!-- simpleIcon下拉 -->
+            <view class="swiper-tab-list" style="display:{{currentTab==98 ? 'none' : 'block'}}" data-current="98" bindtap="tabNav" data-type='icon'>
+                <image data-current="98" data-type='icon' class="tab-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-home-sort@2x.png"></image>
+            </view>
+            <view class="swiper-tab-list" style="display:{{currentTab==98 ? 'block' : 'none'}}" data-current="98" bindtap="tabNav" data-type='icon'>
+                <image data-current="98" data-type='icon' class="tab-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-home-sort-selected@2x.png"></image>
+            </view>
+        </view>
+        <view class="swiper-num" wx:if="{{infoBox.type=='garden'}}">
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{regionStr.length>0 || metroStr.length>0}}" data-current="0" data-type='region'>
+                    ({{metroStr.length+regionStr.length+1}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{averagePriceStr.length>1}}" data-current="10" data-type='averagePrice'>
+                    ({{averagePriceStr.length}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{ageBuildingStr.length>1}}" data-current="11" data-type='ageBuilding'>
+                    ({{ageBuildingStr.length}})
+                </view>
+            </view>
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{usesStr.length>1}}" data-current="12" data-type='uses'>
+                    ({{usesStr.length}})
+                </view>
+            </view>
+            <view class='num-box'></view>
+        </view>
+        <!-- 学校tab栏 -->
+        <view class="swiper-tab" wx:if="{{infoBox.type=='school'}}">
+            <view class="swiper-tab-list {{currentTab==0||selectedName||regionStr.length>0 || metroStr.length>0?  'on' : ''}}" data-current="0" catchtap="tabNav" data-type='region'>
+                {{selectedName ? selectedName:tabList.first}}
+                <image class='tab-arrow' src="{{currentTab==0?upArrow:downArrow}}" data-current="0" data-type='region'></image>
+            </view>
+            <view class="swiper-tab-list {{currentTab==9||typeName? 'on' : ''}}" data-current="9" catchtap="tabNav" data-type='type'>
+                {{typeName?typeName:tabList.nine}}
+                <image class='tab-arrow' src="{{currentTab==9?upArrow:downArrow}}" data-current="9" data-type='type'></image>
+            </view>
+            <!-- simpleIcon下拉 -->
+            <!-- <view class="swiper-tab-list" style="display:{{currentTab==98 ? 'none' : 'block'}}" data-current="98" bindtap="tabNav" data-type='icon'>
+                <image data-current="98" data-type='icon' class="tab-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-home-sort@2x.png"></image>
+            </view>
+            <view class="swiper-tab-list" style="display:{{currentTab==98 ? 'block' : 'none'}}" data-current="98" bindtap="tabNav" data-type='icon'>
+                <image data-current="98" data-type='icon' class="tab-icon" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-home-sort-selected@2x.png"></image>
+            </view> -->
+        </view>
+        <view class="swiper-num" wx:if="{{infoBox.type=='school'}}">
+            <view class='num-box'>
+                <view class='tab-num' wx:if="{{regionStr.length>0 || metroStr.length>0}}" data-current="0" data-type='region'>
+                    ({{metroStr.length+regionStr.length+1}})
+                </view>
+            </view>
+            <view class='num-box'></view>
+            <!-- <view class='num-box'></view> -->
+        </view>
+        <!-- 下拉菜单 -->
+        <view style='display:{{displays}}'>
+            <!-- 区域下拉 -->
+            <view class="area-metro {{currentTab=='0' ?'show':'hidden'}}">
+                <view class="left-area">
+                    <view class="{{selectedR ?'blue':'default'}}" data-type="region" bindtap="clickItem">
+                        {{regionList.name}}
+                    </view>
+                    <view class="{{selectedM?'blue':'default'}}" data-type="metro" bindtap="clickItem">
+                        {{metroList.name}}
+                    </view>
+                </view>
+                <scroll-view class='mid-scroll' scroll-x="false" scroll-y="true">
+                    <view id="rights" class="mid-area">
+                        <view class="{{selectedR?'show':'hidden'}}">
+                            <view class="mid-item {{areaList.length>0?'item-border':''}}" data-index="noRegion" bindtap="clearCon" style="{{ metroStr.length== 0  && areaList.length== 0?'color:#6595F4':'color: #475266'}}">
+                                不限
+                            </view>
+                        </view>
+                        <view class="{{selectedR?'show':'hidden'}}" wx:for="{{regionList.resultList}}" wx:key="key" data-type="{{regionList.type}}">
+                            <view class="mid-item {{areaList.length>0?'item-border':''}}" data-index="{{item.code}}" bindtap="selectedItem" style="{{item.code == selectedCode ?'color:#6595F4':'color: #475266'}}">
+                                {{item.name}}
+                            </view>
+                        </view>
+                        <view class="{{selectedM?'show':'hidden'}}">
+                            <view class="mid-item {{areaList.length>0?'item-border':''}}" data-index="noMetro" bindtap="clearCon" style="{{ metroStr.length== 0  && areaList.length== 0?'color:#6595F4':'color: #475266'}}">
+                                不限
+                            </view>
+                        </view>
+                        <view class="{{selectedM?'show':'hidden'}}" wx:for="{{metroList.resultList}}" wx:key="key" data-type="{{metroList.type}}">
+                            <view class="mid-item {{areaList.length>0?'item-border':''}}" data-index="{{item.code}}" bindtap="selectedItem" style="{{item.code == selectedCode ?'color:#6595F4':'color: #475266'}}">
+                                {{item.name}}
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+                <scroll-view class='right-scroll' scroll-x="false" scroll-y="true">
+                    <checkbox-group class="right-area" wx:if='{{areaList.length>0}}' bindchange="checkboxChange">
+                        <label class="right-item" data-con="{{true}}" bindtap="clearCon" style="{{clearCon ?'color:#6595F4':'color: #475266;'}}">
+                            不限
+                        </label>
+                        <label class="right-item" wx:for="{{areaList}}" wx:key="key">
+                            <checkbox class='right-radio' color='#6595F4' value="{{item.code}}" checked="{{item.checked}}" />
+                            {{item.name}}
+                        </label>
+                    </checkbox-group>
+                </scroll-view>
+                <view class="qingkong">
+                    <view wx:if="{{!selectedCode}}" class="left-button-gray">不限条件</view>
+                    <view wx:else class="left-button" bindtap="clearCon">不限条件</view>
+                    <view class="right-button" bindtap="commitCon">确定</view>
+                </view>
+            </view>
+            <!-- 售价下拉 -->
+            <view class="pull-more {{currentTab=='1' ?'show':'hidden'}}" catchtouchmove='true'>
+                <view class="con-item">
+                    <span class="con-name">价格区间（万）</span>
+                    <view class="zidingyi">
+                        <input class="min-money" type='number' maxlength="6" placeholder="最低价格" value='{{minValue}}' bindinput="inputTyping1" placeholder-class="place-holder"></input>
+                        <p>~</p>
+                        <input class="max-money" type='number' maxlength="6" placeholder="最高价格" value='{{maxValue}}' bindinput="inputTyping2" placeholder-class="place-holder"></input>
+                    </view>
+                    <view class="chose-txt" wx:for="{{priceList.resultList}}" wx:key="key">
+                        <view data-id="{{index}}" data-code="{{item.code}}" data-type="priceList" bindtap="chooseCon" style="{{item.isChoose?'background:#6595F4; color: #fff':'background:#F2F3F5; color:#878D99'}}">
+                            <text class="chose-p">{{item.name}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="qingkong">
+                    <view wx:if="{{priceStr.length == 0 && !minPrice && !maxPrice}}" class="left-button-gray">
+                        不限条件
+                    </view>
+                    <view wx:else class="left-button" bindtap="clearCon">不限条件</view>
+                    <view class="right-button" bindtap="commitCon">确定</view>
+                </view>
+            </view>
+            <!-- 户型下拉 -->
+            <view class="pull-more {{currentTab=='2' ?'show':'hidden'}}" catchtouchmove='true'>
+                <view class="con-item">
+                    <span class="con-name">{{patternList.name}}</span>
+                    <view class="chose-txt" wx:for="{{patternList.resultList}}" wx:key="key">
+                        <view data-id="{{index}}" data-code="{{item.code}}" data-type="patternList" bindtap="chooseCon" style="{{item.isChoose?'background:#6595F4; color: #fff':'background:#F2F3F5; color:#878D99'}}">
+                            <text class="chose-p">{{item.name}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="qingkong">
+                    <view wx:if="{{patternStr.length == 0}}" class="left-button-gray">不限条件</view>
+                    <view wx:else class="left-button" bindtap="clearCon">不限条件</view>
+                    <view class="right-button" bindtap="commitCon">确定</view>
+                </view>
+            </view>
+            <!-- 更多下拉 -->
+            <view class="pull-more {{currentTab=='3' ?'show':'hidden'}}">
+                <scroll-view style="width:100%;max-height:800rpx;background:#fff" scroll-x="false" scroll-y="true">
+                    <view class="con-item" wx:for="{{moreList}}" wx:for-index="kkey" wx:key="key">
+                        <span class="con-name">{{item.name}}</span>
+                        <view class="chose-txt" wx:for="{{item.resultList}}" wx:for-item="condition" wx:key="key">
+                            <view data-code="{{condition.code}}" data-fid="{{kkey}}" data-id="{{index}}" bindtap="chooseCon" data-type="moreList" style="{{condition.isChoose?'background:#6595F4; color: #fff':'background:#F2F3F5; color:#878D99'}}">
+                                <text class="chose-p">{{condition.name}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+                <view class="qingkong">
+                    <view wx:if="{{moreStr.length == 0}}" class="left-button-gray">不限条件</view>
+                    <view wx:else class="left-button" bindtap="clearCon">不限条件</view>
+                    <view class="right-button" bindtap="commitCon">确定</view>
+                </view>
+            </view>
+            <!-- 方式下拉 -->
+            <view class="pull-more {{currentTab=='4' ?'show':'hidden'}}" catchtouchmove='true'>
+                <view class="con-item" wx:for="{{methodList}}" wx:for-index="kkey" wx:key="key">
+                    <span class="con-name">{{item.name}}</span>
+                    <view class="chose-txt" wx:for="{{item.resultList}}" wx:for-item="condition" wx:key="key">
+                        <view data-code="{{condition.code}}" data-fid="{{kkey}}" data-id="{{index}}" bindtap="chooseCon" data-type="methodList" style="{{condition.isChoose?'background:#6595F4; color: #fff':'background:#F2F3F5; color:#878D99'}}">
+                            <text class="chose-p">{{condition.name}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="qingkong">
+                    <view wx:if="{{methodStr.length == 0}}" class="left-button-gray">不限条件</view>
+                    <view wx:else class="left-button" bindtap="clearCon">不限条件</view>
+                    <view class="right-button" bindtap="commitCon">确定</view>
+                </view>
+            </view>
+            <!-- 租金下拉 -->
+            <view class="pull-more {{currentTab=='6' ?'show':'hidden'}}" catchtouchmove='true'>
+                <view class="con-item">
+                    <span class="con-name">租金区间（元）</span>
+                    <view class="zidingyi">
+                        <input class="min-money" type='number' maxlength="6" placeholder="最低价格" value='{{minValue}}' bindinput="inputTyping1" placeholder-class="place-holder"></input>
+                        <p>~</p>
+                        <input class="max-money" type='number' maxlength="6" placeholder="最高价格" value='{{maxValue}}' bindinput="inputTyping2" placeholder-class="place-holder"></input>
+                    </view>
+                    <view class="chose-txt" wx:for="{{rentalList.resultList}}" wx:key="key">
+                        <view data-id="{{index}}" data-code="{{item.code}}" data-type="rentalList" bindtap="chooseCon" style="{{item.isChoose?'background:#6595F4; color: #fff':'background:#F2F3F5; color:#878D99'}}">
+                            <text class="chose-p">{{item.name}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="qingkong">
+                    <view wx:if="{{rentalStr.length == 0 && !minPrice && !maxPrice}}" class="left-button-gray">
+                        不限条件
+                    </view>
+                    <view wx:else class="left-button" bindtap="clearCon">不限条件</view>
+                    <view class="right-button" bindtap="commitCon">确定</view>
+                </view>
+            </view>
+            <!-- 品牌下拉 -->
+            <view class="pull-more {{currentTab=='7' ?'show':'hidden'}}">
+                <scroll-view style="width:100%;height:800rpx;background:#fff" scroll-y="true">
+                    <checkbox-group class="brand-area" wx:if='{{brandList.length>0}}' checked="{{item.checked}}" bindchange="checkBrand">
+                        <view class="brand-item" wx:for="{{brandList}}" wx:key="key">
+                            <!-- 全部品牌 -->
+                            <view class="brand-box" wx:if='{{!item.brandId}}'>
+                                <image src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-brand-pic@2x.png"></image>
+                                <view class="brand-content">
+                                    <view class="brand-name">{{item.name}}</view>
+                                    <view class="brand-num">{{item.count}}家门店</view>
+                                </view>
+                                <checkbox class='right-radio' color='#6595F4' value="{{item.brandId}}" checked="{{clearCon}}" />
+                            </view>
+                            <view class="brand-box" wx:else>
+                                <image src="{{item.logoUrl?item.logoUrl:brandUrl}}"></image>
+                                <view class="brand-content">
+                                    <view class="brand-name">{{item.name}}</view>
+                                    <view class="brand-num">{{item.count}}家门店</view>
+                                </view>
+                                <checkbox class='right-radio' color='#6595F4' value="{{item.brandId}}" checked="{{item.checked}}" />
+                            </view>
+                        </view>
+                    </checkbox-group>
+                </scroll-view>
+                <view class="qingkong">
+                    <view wx:if="{{brandStr.length == 0}}" class="left-button-gray">不限条件</view>
+                    <view wx:else class="left-button" bindtap="clearCon">不限条件</view>
+                    <view class="right-button" bindtap="commitCon">确定</view>
+                </view>
+            </view>
+            <!-- 均价下拉 -->
+            <view class="pull-more {{currentTab=='10' ?'show':'hidden'}}" catchtouchmove='true'>
+                <view class="con-item">
+                    <span class="con-name">价格区间（万）</span>
+                    <view class="zidingyi">
+                        <input class="min-money" type='number' maxlength="6" placeholder="最低价格" value='{{minValue}}' bindinput="inputTyping1" placeholder-class="place-holder"></input>
+                        <p>~</p>
+                        <input class="max-money" type='number' maxlength="6" placeholder="最高价格" value='{{maxValue}}' bindinput="inputTyping2" placeholder-class="place-holder"></input>
+                    </view>
+                    <view class="chose-txt" wx:for="{{averagePriceList.resultList}}" wx:key="key">
+                        <view data-id="{{index}}" data-code="{{item.code}}" data-type="averagePriceList" bindtap="chooseCon" style="{{item.isChoose?'background:#6595F4; color: #fff':'background:#F2F3F5; color:#878D99'}}">
+                            <text class="chose-p">{{item.name}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="qingkong">
+                    <view wx:if="{{averagePriceList.length == 0 && !minPrice && !maxPrice}}" class="left-button-gray">
+                        不限条件
+                    </view>
+                    <view wx:else class="left-button" bindtap="clearCon">不限条件</view>
+                    <view class="right-button" bindtap="commitCon">确定</view>
+                </view>
+            </view>
+            <!-- 楼龄下拉 -->
+            <view class="pull-more {{currentTab=='11' ?'show':'hidden'}}" catchtouchmove='true'>
+                <view class="con-item">
+                    <span class="con-name">{{ageBuildingList.name}}</span>
+                    <view class="chose-txt" wx:for="{{ageBuildingList.resultList}}" wx:key="key">
+                        <view data-id="{{index}}" data-code="{{item.code}}" data-type="ageBuildingList" bindtap="chooseCon" style="{{item.isChoose?'background:#6595F4; color: #fff':'background:#F2F3F5; color:#878D99'}}">
+                            <text class="chose-p">{{item.name}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="qingkong">
+                    <view wx:if="{{ageBuildingStr.length == 0}}" class="left-button-gray">
+                        不限条件
+                    </view>
+                    <view wx:else class="left-button" bindtap="clearCon">不限条件</view>
+                    <view class="right-button" bindtap="commitCon">确定</view>
+                </view>
+            </view>
+            <!-- 用途下拉 -->
+            <view class="pull-more {{currentTab=='12' ?'show':'hidden'}}" catchtouchmove='true'>
+                <view class="con-item">
+                    <span class="con-name">{{usesList.name}}</span>
+                    <view class="chose-txt" wx:for="{{usesList.resultList}}" wx:key="key">
+                        <view data-id="{{index}}" data-code="{{item.code}}" data-type="usesList" bindtap="chooseCon" style="{{item.isChoose?'background:#6595F4; color: #fff':'background:#F2F3F5; color:#878D99'}}">
+                            <text class="chose-p">{{item.name}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="qingkong">
+                    <view wx:if="{{usesStr.length == 0}}" class="left-button-gray">不限条件</view>
+                    <view wx:else class="left-button" bindtap="clearCon">不限条件</view>
+                    <view class="right-button" bindtap="commitCon">确定</view>
+                </view>
+            </view>
+            <!-- icon下拉 -->
+            <view class="pull-more {{currentTab=='99' ?'show':'hidden'}}">
+                <view class="icon-shaixuan" wx:for="{{iconCondition}}" wx:key="key" data-index="{{item.code}}" data-code="{{item.code}}" data-type="icon" bindtap="chooseCon" style="{{item.code == iconStr?'color:#6595F4':'color: #878D99'}}">
+                    <text class="chose-p">{{item.name}}</text>
+                </view>
+            </view>
+            <!-- simlpeIcon下拉 -->
+            <view class="pull-more {{currentTab=='98' ?'show':'hidden'}}">
+                <view class="icon-shaixuan" wx:for="{{gardenCondition}}" wx:key="key" data-index="{{item.code}}" data-code="{{item.code}}" data-type="icon" bindtap="chooseCon" style="{{item.code == iconStr?'color:#6595F4':'color: #878D99'}}">
+                    <text class="chose-p">{{item.name}}</text>
+                </view>
+            </view>
+            <!-- 学校类型下拉 -->
+            <view class="pull-more {{currentTab=='9' ?'show':'hidden'}}">
+                <view class="icon-shaixuan" wx:for="{{schoolType}}" wx:key="key" data-index="{{item.code}}" data-code="{{item.code}}" data-type="icon" bindtap="chooseCon" style="{{item.code == iconStr?'color:#6595F4':'color: #878D99'}}">
+                    <text class="chose-p">{{item.name}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="swiper-beijing" bindtap="hideNav" style='display:{{displays}}'></view>

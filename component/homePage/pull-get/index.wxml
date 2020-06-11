@@ -1,0 +1,6 @@
+<!-- 组件模板 -->
+<!-- 首页搜索栏 -->
+<view class="box" wx:if="{{showMore}}">
+  <view class="more-text" wx:if="{{showEnd}}">没有更多内容……</view>
+  <view class="more-text" wx:else>加载中……</view>
+</view>

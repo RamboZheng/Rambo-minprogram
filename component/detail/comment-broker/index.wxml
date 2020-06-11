@@ -1,0 +1,24 @@
+<!-- 组件模板 -->
+<!-- 基本信息 -->
+<view class="comment-broker">
+    <view class="title">
+        发表评价
+        <image data-type='cancel' bindtap="handle" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/record_h5_ icon_delete@2x.png"></image>
+    </view>
+    <view class='lebal-box'>
+        <view class="star-box">
+            总体评分
+            <view class="star">
+                <star-level isHandle="{{true}}" starType='{{"blue"}}' bind:commitStar="getLevel"></star-level>
+            </view>
+        </view>
+        <view class="tag-box">
+            <view class="tag-item {{item.isChoose?'choose-tag':''}}" wx:for="{{tagList}}" data-id='{{item.id}}' checked="{{item.checked}}" bindtap="chooseTag" wx:key="key">
+                {{item.name}}
+            </view>
+        </view>
+    </view>
+    <textarea value="{{inputVal}}" bindinput="inputTyping" maxlength='200' style='width:92%;border:2px solid #E3E5E6;margin:40rpx 0;color: #CBCBCB;padding:20rpx' placeholder='请描述您的宝贵意见，分享给其他人参考（非必填）'></textarea>
+    <button class="button" data-type='commit' bindtap="handle">提交</button>
+</view>
+<view class="swiper-beijing" data-type='cancel' bindtap="handle"></view>

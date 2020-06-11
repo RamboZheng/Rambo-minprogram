@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "list-item": "/component/common/list-item/index",
+        "no-data": "/component/common/no-data/index"
+    }
+}

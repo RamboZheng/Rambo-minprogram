@@ -1,0 +1,17 @@
+<!-- index.wxml -->
+<view class="container">
+  <view class="box">
+    <view class="user-top">
+      <view class="userinfo" bindtap="toLogin">
+        <view class="img-head">
+          <image class="" src="{{userAvatarUrl?userAvatarUrl:avatarUrl}}" bindload="" binderror=""></image>
+        </view>
+        <view class="user-login">{{token?(phone?phone:name):'点击登录'}}</view>
+      </view>
+    </view>
+    <view class="list">
+      <personal-item wx:for="{{personalList}}" personalItem="{{item}}" loginStatus="{{loginStatus}}" bind:change="changeStatus" wx:key="key"></personal-item>
+    </view>
+  </view>
+</view>
+<dialog wx:if="{{boxStatus}}" bind:exit="exit" bind:close="close" loginOut="{{loginOut}}"></dialog>

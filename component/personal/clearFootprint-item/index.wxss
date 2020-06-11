@@ -1,0 +1,21 @@
+.clear-footeprint {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20rpx 30rpx;
+  background: #9cbdff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #ffffff;
+}
+.clear-footeprint .box-left {
+  flex: 3;
+}
+.clear-footeprint .box-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

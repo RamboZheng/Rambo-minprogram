@@ -1,0 +1,20 @@
+<!-- 组件模板 -->
+<!-- 周边模块 -->
+<view class="map-mode">
+    <view class="title">位置以及周边</view>
+    <view class="place">
+        <text class="text">地址</text>
+        <text class="monick" bindtap="toSetMap">{{address}}</text>
+    </view>
+    <view class="address">
+        <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location="true" markers="{{markers}}"></map>
+        <cover-view class="lucency-layer" bindtap="toSetMap">
+            <cover-view class="lucency-content">
+                <cover-view class="lucency-box">
+                    <cover-view class="text">{{region + ' '+name}}</cover-view>
+                    <cover-image class="icon-arrow" src="../../../image/common/img-triangle@2x.png"></cover-image>
+                </cover-view>
+            </cover-view>
+        </cover-view>
+    </view>
+</view>

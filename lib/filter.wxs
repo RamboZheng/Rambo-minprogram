@@ -1,0 +1,52 @@
+var formateSlice = function(data) {
+    var index = data.indexOf('年');
+    if (index > -1) {
+        return data.slice(0, index + 1);
+    } else {
+        if (IsNumber(data)) {
+            return data + '年';
+        }
+        return data;
+    }
+};
+var goPoint = function(data) {
+    if (data.indexOf('-') > -1) {
+        var newArr = [];
+        var arr1 = data.split(' - ');
+        for (var i = 0; i < arr1.length; i++) {
+            var str = arr1[i].split('.');
+            var unit = str[1].charAt(str[1].length - 1); // 单位
+
+            var str2 = str[0] + unit;
+            newArr.push(str2);
+        }
+        return newArr.join(' - ');
+    }
+    return data;
+};
+var hasUnit = function(data) {
+    if (data.indexOf('/m²') > -1 || data.indexOf('/㎡') > -1) {
+        return data;
+    } else {
+        // if (IsNumber(data)) {
+        //     return data + '元/m²';
+        // }
+        return data + '元/m²';
+    }
+};
+
+var getUpdateTime = function(data) {
+    return data.slice(0, 10);
+};
+
+function IsNumber(value) {
+    var reg = getRegExp('^d+(.d+)?$');
+    var bool = reg.test(value);
+    return bool;
+}
+module.exports = {
+    formateSlice: formateSlice,
+    goPoint: goPoint,
+    hasUnit: hasUnit,
+    getUpdateTime: getUpdateTime
+};

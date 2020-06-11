@@ -1,0 +1,60 @@
+<!-- 组件模板 -->
+<!-- 基本信息 -->
+<view class="list-block" wx:if="{{type == 'garden' && (houseRoom.length>0||rentRoom.length>0)}}">
+    <view class="content">
+        <view class="title-item">
+            <view class="title-text">{{title}}</view>
+            <view class="title-button">
+                <view class="button-text" wx:if='{{houseRoom.length>0}}' bindtap="changeTab" data-type='house' style="{{listType=='house'?'color: #1950BC;':'color: #475266;'}}">
+                    在售
+                </view>
+                <view class="button-text" wx:if='{{rentRoom.length>0}}' bindtap="changeTab" data-type='rent' style="{{listType=='rent'?'color: #1950BC;':'color: #475266;'}}">
+                    在租
+                </view>
+            </view>
+        </view>
+        <view class="type">
+            <!-- tab栏 -->
+            <view wx:for="{{houseRoom}}" wx:if="{{listType=='house'}}" class="room-button" data-roomnum="{{item.bedroomNumber}}" bindtap="getRoomList" style="{{selectTab==item.bedroomNumber?'color: #FFF; background: #1950BC':'color: #878D99;background: #F2F3F5'}}" wx:key="key">
+                {{item.name}}
+            </view>
+            <view wx:for="{{rentRoom}}" wx:if="{{listType=='rent'}}" class="room-button" data-roomnum="{{item.id}}" bindtap="getRoomList" style="{{selectTab==item.id?'color: #FFF; background: #1950BC':'color: #878D99;background: #F2F3F5'}}" wx:key="key">
+                {{item.msg}}
+            </view>
+        </view>
+        <view class="similar-item">
+            <list-item wx:for="{{list}}" wx:if='{{item}}' listItem="{{item}}" showBorder="{{false}}" detailType='{{listType}}' wx:key="key"></list-item>
+            <view wx:if="{{longList.length>0}}">
+                <view class="get-more" bindtap="getMore" wx:if='{{!showEnd}}'>查看更多</view>
+                <view class="get-more" bindtap="packUp" wx:else>收起</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="list-block" wx:if="{{type == 'broker'}}">
+    <view class="content">
+        <view class="title-item">
+            <view class="title-text">TA的房源({{dataCount}}套)</view>
+            <view class="title-button">
+                <view class="button-text" bindtap="changeTab" data-type='house' style="{{listType=='house'?'color: #1950BC;':'color: #475266;'}}">
+                    二手房
+                </view>
+                <view class="button-text" bindtap="changeTab" data-type='rent' style="{{listType=='rent'?'color: #1950BC;':'color: #475266;'}}">
+                    租房
+                </view>
+            </view>
+        </view>
+        <view class="similar-item" wx:if="{{brokerList.length>0}}">
+            <list-item wx:for="{{brokerList}}" wx:if='{{item}}' showBorder="{{false}}" listItem="{{item}}" detailType='{{code==0?"house":"rent"}}' wx:key="key"></list-item>
+            <view wx:if="{{dataCount>=30}}">
+                <view class="get-more" bindtap="getBrokerMore" wx:if='{{!showEnd}}'>
+                    查看更多({{dataCount - brokerList.length}})
+                </view>
+                <view class="get-more" bindtap="packBrokerUp" wx:else>收起</view>
+            </view>
+        </view>
+        <view wx:else class="no-data">
+            <no-data show="{{true}}"></no-data>
+        </view>
+    </view>
+</view>

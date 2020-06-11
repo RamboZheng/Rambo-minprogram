@@ -1,0 +1,43 @@
+/* pages/detail/lookImg/index.wxss */
+.content {
+    width: 92%;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 32rpx;
+    color: #2C2F37;
+    font-weight: 700;
+    margin-top: 30rpx;
+    margin-bottom: 20rpx;
+    display: block;
+}
+
+.section {
+    padding-bottom: 30rpx;
+    border-bottom: 2rpx solid #EDEFF0;
+}
+
+.section:last-child,
+.section.no-border {
+    border-bottom: 0;
+}
+
+.section .list {
+    font-size: 28rpx;
+    color: #475266;
+    margin-bottom: 10rpx;
+}
+
+.section .list .label {
+    margin-right: 20rpx;
+    color: #878D99;
+}
+
+.tips {
+    font-size: 28rpx;
+    color: #CBCBCB;
+    line-height: 40rpx;
+    width: 78%;
+    display: block;
+}

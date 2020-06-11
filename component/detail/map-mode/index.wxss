@@ -1,0 +1,73 @@
+.map-mode {
+  padding: 60rpx 30rpx;
+  width: 92%;
+  margin: 0 auto;
+  border-top: 2rpx solid #EDEFF0;
+}
+.map-mode .title {
+  font-size: 32rpx;
+  color: #2C2F37;
+  margin-bottom: 30rpx;
+  font-weight: 700;
+}
+.map-mode .place {
+  font-size: 28rpx;
+}
+.map-mode .place .text {
+  color: #878d99;
+  vertical-align: top;
+  display: inline-block;
+}
+.map-mode .place .monick {
+  margin-left: 20rpx;
+  color: #475266;
+  display: inline-block;
+  width: 88%;
+  line-height: 40rpx;
+}
+.map-mode .address {
+  height: 356rpx;
+  margin-top: 30rpx;
+  position: relative;
+}
+.map-mode .address map {
+  width: 100%;
+  height: 100%;
+}
+.map-mode .lucency-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 6;
+}
+.map-mode .lucency-content {
+  position: absolute;
+  top: 80rpx;
+  max-width: 80%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 34rpx;
+}
+.map-mode .lucency-content .lucency-box {
+  position: relative;
+  display: inline-block;
+}
+.map-mode .lucency-content .text {
+  width: auto;
+  background-color: #fff;
+  padding: 10rpx 10rpx;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  color: #475266;
+  line-height: 34rpx;
+}
+.map-mode .lucency-content .icon-arrow {
+  width: 28rpx;
+  height: 10rpx;
+  margin: 0 auto;
+}

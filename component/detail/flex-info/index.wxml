@@ -1,0 +1,69 @@
+<!-- 组件模板 -->
+<!-- 公寓信息 -->
+<view class="flex-info">
+    <view class="info" wx:if="{{type === 'apart'}}">
+        <view class="left">
+            <view wx:if="{{info.maxPrice> 0 && info.maxPrice > 0}}">
+                {{info.maxPrice == info.minPrice ? info.maxPrice + '元/月' : info.minPrice + '-' + info.maxPrice + '元/月'}}
+            </view>
+            <view wx:else>暂无价格</view>
+            <text class="desc">房租</text>
+        </view>
+        <view class="line"></view>
+        <view class="center">
+            <view wx:if="{{info.bedRoom != 0 || info.bathRoom != 0 || info.livingRoom != 0}}">
+                {{info.bedRoom}}室{{info.livingRoom}}厅{{info.bathRoom}}卫
+            </view>
+            <view wx:else>暂无数据</view>
+            <text class="desc">户型</text>
+        </view>
+        <view class="line"></view>
+        <view class="right">
+            <view wx:if="{{info.minRoomArea!= 0 && info.maxRoomArea != 0}}">
+                {{info.minRoomArea ===info.maxRoomArea ? info.minRoomArea : info.minRoomArea + '-'+ info.maxRoomArea}}m²
+            </view>
+            <view wx:else>暂无数据</view>
+            <text class="desc">建筑面积</text>
+        </view>
+    </view>
+    <!-- 学校信息 -->
+    <view class="info" wx:if="{{type === 'school'}}">
+        <view class="left">
+            <view wx:if="{{info.gardenQuantity}}">{{info.gardenQuantity}}个</view>
+            <view wx:else>暂无数据</view>
+            <text class="desc">对口小区</text>
+        </view>
+        <view class="line"></view>
+        <view class="center">
+            <view wx:if="{{info.houseTotal}}">{{info.houseTotal}}套</view>
+            <view wx:else>暂无数据</view>
+            <text class="desc">在售房源</text>
+        </view>
+        <view class="line"></view>
+        <view class="right">
+            <view wx:if="{{info.roomMinTotalPrice}}">{{info.roomMinTotalPrice}}万起</view>
+            <view wx:else>暂无价格</view>
+            <text class="desc">房源售价</text>
+        </view>
+    </view>
+    <!-- 小区信息 -->
+    <view class="info" wx:if="{{type === 'garden'}}">
+        <view class="left">
+            <view wx:if="{{info.avgPrice}}">{{info.avgPrice}}元/m²</view>
+            <view wx:else>暂无价格</view>
+            <text class="desc">参考均价</text>
+        </view>
+        <view class="line"></view>
+        <view class="center">
+            <view wx:if="{{info.saleRoomQuantity}}">{{info.saleRoomQuantity}}套</view>
+            <view wx:else>暂无数据</view>
+            <text class="desc">在售房源</text>
+        </view>
+        <view class="line"></view>
+        <view class="right">
+            <view wx:if="{{info.rentRoomQuantity}}">{{info.rentRoomQuantity}}套</view>
+            <view wx:else>暂无数据</view>
+            <text class="desc">在租房源</text>
+        </view>
+    </view>
+</view>

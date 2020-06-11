@@ -1,0 +1,292 @@
+// out:./index.wxss
+// compress:true
+// sourceMpa:true
+
+.item {
+    width: 750rpx;
+    background-color: #fff;
+
+    .border-bottom {
+        border-bottom: 1px solid #edeff0;
+    }
+
+    // 二手房
+    .item-house {
+        width: 690rpx;
+        margin: 0 auto;
+        padding: 30rpx 0;
+
+
+        .left-content {
+            width: 240rpx;
+            height: 185rpx;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+
+            image {
+                background: #d8d8d8;
+                border-radius: 16rpx;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border: 2px solid #E3E5E6;
+            }
+
+            .save-money {
+                width: 100%;
+                position: absolute;
+                background: #9CBDFF;
+                font-size: 24rpx;
+                color: #FFFFFF;
+                bottom: -4rpx;
+                right: -3rpx;
+                border-radius: 0px 0px 16rpx 16rpx;
+                text-align: center;
+                padding: 4rpx 0;
+            }
+
+        }
+    }
+
+    // 小区
+    .item-block {
+        width: 690rpx;
+        margin: 0 auto;
+        padding: 30rpx 0;
+
+
+        image {
+            background: #d8d8d8;
+            border-radius: 16rpx;
+            width: 238rpx;
+            height: 185rpx;
+            object-fit: cover;
+            border: 2px solid #E3E5E6;
+        }
+
+
+    }
+
+    // 租房
+    .item-rent {
+        width: 690rpx;
+        margin: 0 auto;
+        padding: 30rpx 0;
+
+        .left-content {
+            width: 240rpx;
+            height: 185rpx;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+
+            image {
+                background: #d8d8d8;
+                border-radius: 16rpx;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border: 2px solid #E3E5E6;
+            }
+
+            .save-money {
+                width: 100%;
+                position: absolute;
+                background: #9CBDFF;
+                font-size: 24rpx;
+                color: #FFFFFF;
+                bottom: -4rpx;
+                right: -3rpx;
+                border-radius: 0px 0px 16rpx 16rpx;
+                text-align: center;
+                padding: 4rpx 0;
+            }
+
+        }
+    }
+
+    // 公寓
+    .item-flat {
+        width: 690rpx;
+        margin: 0 auto;
+        padding: 30rpx 0;
+        position: relative;
+
+        .house-img {
+            background: #d8d8d8;
+            border-radius: 16rpx;
+            width: 100%;
+            height: 420rpx;
+            object-fit: cover;
+        }
+
+        .item-name {
+            font-family: PingFangSC-Medium;
+            font-size: 36rpx;
+            color: #475266;
+            margin: 30rpx 0 20rpx 0;
+        }
+
+        .item-size {
+            font-size: 28rpx;
+            color: #646D7F;
+        }
+
+        .item-price {
+            margin-top: 20rpx;
+            font-family: PingFangSC-Medium;
+            font-size: 36rpx;
+            color: #E56A67;
+        }
+
+        .item-tip {
+            position: absolute;
+            right: 0;
+            bottom: 34rpx;
+            font-size: 30rpx;
+            color: #CBCBCB;
+
+            .size-bar {
+                color: #CBCBCB;
+                border-radius: 1px;
+                margin: 0 10rpx;
+            }
+        }
+
+        .head-pic {
+            position: absolute;
+            bottom: 25%;
+            right: 5%;
+            width: 100rpx;
+            height: 100rpx;
+            border-radius: 50%;
+            border: 10rpx solid #fff;
+            box-shadow: 0 6px 15px 0 rgba(101, 149, 244, 0.20);
+        }
+    }
+}
+
+//  item文案的公共样式
+.right-content {
+    width: 58%;
+    display: inline-block;
+    margin-left: 30rpx;
+    vertical-align: top;
+
+    .block-item {
+        min-height: 134rpx;
+    }
+
+    .item-text {
+        padding-left: 6rpx;
+        font-size: 28rpx;
+        color: #475266;
+        display: -webkit-box;
+        line-height: 40rpx;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        font-family: PingFangSC-Medium;
+        font-weight: 600;
+    }
+
+
+
+    .item-size {
+        margin-top: 15rpx;
+        font-size: 24rpx;
+        color: #878d99;
+        line-height: 30rpx;
+        // margin-left: 6rpx;
+
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+
+
+        .size-bar {
+            color: #edeff0;
+            border-radius: 1px;
+            margin: 0 10rpx;
+        }
+    }
+
+    .item-desc {
+        padding-left: 7rpx;
+        margin-top: 15rpx;
+        font-family: PingFangSC-Regular;
+        font-size: 24rpx;
+        color: #878d99;
+        line-height: 30rpx;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
+
+    .item-style {
+        margin: 14rpx 10rpx 0 0;
+        display: inline-block;
+        font-size: 20rpx;
+    }
+
+    .first-style {
+        border-radius: 8rpx;
+        padding: 10rpx;
+        color: #6595f4;
+        border: 1rpx solid #6595f4;
+    }
+
+    .other-style {
+        border-radius: 8rpx;
+        padding: 10rpx;
+        background: #edeff0;
+        color: #878d99;
+        border: 1rpx solid #edeff0;
+    }
+
+    .item-price {
+        padding-left: 4rpx;
+        margin-top: 14rpx;
+        font-family: SourceHanSansCN-Heavy;
+        font-size: 28rpx;
+        color: #e56a67;
+        font-weight: bold;
+
+        .before-price {
+            display: inline-block;
+            font-family: PingFangSC-Regular;
+            font-size: 24rpx;
+            color: #A4A4A4;
+            text-decoration: line-through;
+            margin-right: 20rpx;
+        }
+
+        .avg-price {
+            font-size: 24rpx;
+            color: #a4a4a4;
+            display: inline-block;
+            vertical-align: bottom;
+            font-weight: 400;
+            margin-left: 20rpx;
+        }
+    }
+}
+
+// 查看过的房源置灰
+.looked {
+    color: #a4a4a4 !important;
+
+}
+
+// wxParse 也就是控制item标题的类 勿删
+.wxParse-inline {
+    display: inline;
+}
+
+.space {
+    width: 100%;
+    height: 50rpx;
+}

@@ -1,0 +1,78 @@
+// out:./index.wxss
+// compress:true
+// sourceMpa:true
+.select-box {
+    width: 170rpx;
+    display: inline-block;
+    vertical-align: top;
+    background-color: #F2F3F5;
+    height: 80rpx;
+    border-radius: 8rpx 0 0 8rpx;
+
+    .select-content {
+        position: relative;
+        height: 40rpx;
+        line-height: 40rpx;
+        margin: 20rpx 0;
+        border-right: 2rpx solid #E3E5E6;
+
+
+        .select-text {
+            font-size: 28rpx;
+            color: #878D99;
+            padding: 0 10rpx 0 30rpx;
+            font-size: 28rpx;
+        }
+
+        .select-text:after {
+            content: '';
+            display: inline-block;
+            width: 12rpx;
+            height: 9rpx;
+            background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-home-arrow-huise@2x.png?tdsourcetag=s_pcqq_aiomsg);
+            background-size: cover;
+            margin-left: 10rpx;
+            vertical-align: middle;
+            transition: all .3s ease;
+        }
+
+        .select-text.up:after {
+            transform: rotate(180deg);
+            transition: all .3s ease;
+
+        }
+    }
+
+}
+
+.select-list {
+
+    width: inherit;
+    position: absolute;
+    top: 90rpx;
+    z-index: 3;
+    max-height: 600rpx;
+    box-shadow: 0 3rpx 8rpx 0 rgba(173, 188, 217, 0.50);
+    border-radius: 0rpx 20rpx 20rpx 40rpx;
+    background: #FFFFFF;
+
+    .select-item {
+        height: 40rpx;
+        line-height: 40rpx;
+        border-top: 1rpx solid #e2e2e2;
+        padding: 20rpx 0;
+        text-align: center;
+        color: #878D99;
+        font-size: 28rpx;
+        margin: 0 20rpx;
+    }
+
+    .select-item.on {
+        color: #6595F4;
+    }
+
+    .select-item:first-child {
+        border-top: none;
+    }
+
+}

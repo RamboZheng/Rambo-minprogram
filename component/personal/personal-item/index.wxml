@@ -1,0 +1,14 @@
+<!-- 组件模板 -->
+<view wx:if="{{(personalItem.name!== '退出登录'|| loginStatus)}}" class="item" bindtap="toPersonalItem" style="{{personalItem.style}}" data-path="{{personalItem.path}}" data-verify="{{personalItem.isVerify}}">
+  <view class="item-left">
+    <image wx:if="{{personalItem.name!== '退出登录'}}" class="item-icon" src="{{personalItem.iconUrl}}" bindload="" binderror=""></image>
+    <view class="{{personalItem.name!== '退出登录'?'item-content':'login-out'}}">
+      {{personalItem.name}}
+    </view>
+  </view>
+  <view class="item-right">
+    <view class="item-phone">{{personalItem.phone}}</view>
+    <image wx:if="{{personalItem.name!== '退出登录'}}" class="item-arrow" src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-my-arrow@2x.png"></image>
+  </view>
+  <button wx:if="{{personalItem.name==='意见反馈'}}" open-type='feedback'></button>
+</view>

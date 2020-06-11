@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "comment-item": "/component/detail/comment-item/index"
+    },
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "全部评价",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark"
+}

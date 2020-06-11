@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "tab-bar": "/component/common/tab-bar/index",
+        "list-item": "/component/common/list-item/index",
+        "ec-canvas": "/component/common/ec-canvas/ec-canvas"
+    },
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "计算结果",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark"
+}

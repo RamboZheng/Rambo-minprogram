@@ -1,0 +1,68 @@
+<view class="container {{banMove?'container-fixed':''}}">
+    <view class="top-bar"></view>
+    <view class="center-view" style="display:{{showTop || banMove?'blcok':'none'}}">
+        <search-input type='{{searchBox.type}}' jumpNav='{{true}}' homeSearch="{{false}}"></search-input>
+        <condition-item id="condition" wx:if="{{showCon}}" infoBox="{{searchBox}}" moreCondition="{{conditionList}}" bind:changeCon="refreshList" bind:openItem="isBanMove"></condition-item>
+    </view>
+    <view class="top">
+        <view class="top-search">
+            <search-input type='{{searchBox.type}}' jumpNav='{{true}}' homeSearch="{{false}}"></search-input>
+            <view class="button-box">
+                <view class="box-item" wx:for="{{iconPath}}" wx:key="key" data-name="{{item.text}}" data-type='{{item.type}}' bindtap="toList">
+                    <image src="{{item.img}}"></image>
+                    <view class="button-text">{{item.text}}</view>
+                </view>
+            </view>
+            <view class="recommand-text">推荐好房</view>
+        </view>
+    </view>
+    <view class='swiper-tab' wx:if="{{!showTop}}">
+        <!-- 租房tab栏 -->
+        <view class="swiper-tab-list {{currentTab==0||selectedName||regionStr.length>0 || metroStr.length>0 ? 'on' : ''}}" data-current="0" catchtap="indexNav" data-type='region'>
+            {{selectedName ? selectedName:"区域"}}
+            <image class='tab-arrow' src="{{currentTab==0?upArrow:downArrow}}" data-current="0" data-type='region'></image>
+        </view>
+        <view class="swiper-tab-list {{currentTab==4 ||methodStr.length > 0 ? 'on' : ''}}" data-current="4" catchtap="indexNav" data-type='method'>
+            {{methodName?methodName:"方式"}}
+            <image class='tab-arrow' src="{{currentTab==4?upArrow:downArrow}}" data-current="4" data-type='method'></image>
+        </view>
+        <view class="swiper-tab-list {{currentTab==6|| rentalStr.length>0  ? 'on' : ''}}" data-current="6" catchtap="indexNav" data-type='rental'>
+            {{rentalName?rentalName:"租金"}}
+            <image class='tab-arrow' src="{{currentTab==6?upArrow:downArrow}}" data-current="6" data-type='rental'></image>
+        </view>
+        <view class="swiper-tab-list  {{currentTab==3|| moreStr.length>0 ? 'on' : ''}}" data-current="3" catchtap="indexNav" data-type='more'>
+            {{moreName?moreName:"更多"}}
+            <image class='tab-arrow' src="{{currentTab==3?upArrow:downArrow}}" data-current="3" data-type='more'></image>
+        </view>
+        <!-- icon下拉 -->
+        <view class="swiper-tab-list" style="display:{{currentTab==99 ? 'none' : 'block'}}" data-current="99" catchtap="indexNav" data-type='icon'>
+            <image class="tab-icon" data-current="99" data-type='icon' src="https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/icon-home-sort@2x.png"></image>
+        </view>
+    </view>
+    <view class="swiper-num" wx:if="{{!showTop}}">
+        <view class='num-box'>
+            <view class='tab-num' wx:if="{{regionStr.length>0 || metroStr.length>0}}" data-current="0" data-type='region'>
+                ({{metroStr.length+regionStr.length+1}})
+            </view>
+        </view>
+        <view class='num-box'>
+            <view class='tab-num' wx:if="{{methodStr.length>1}}" data-current="4" data-type='method'>
+                ({{methodStr.length}})
+            </view>
+        </view>
+        <view class='num-box'>
+            <view class='tab-num' wx:if="{{rentalStr.length>1}}" data-current="6" data-type='rental'>
+                ({{rentalStr.length}})
+            </view>
+        </view>
+        <view class='num-box'>
+            <view class='tab-num' wx:if="{{moreStr.length>1}}" data-current="3" data-type='more'>
+                ({{moreStr.length}})
+            </view>
+        </view>
+        <view class='num-box'></view>
+    </view>
+    <list-item wx:for="{{showList}}" wx:if='{{item}}' listItem="{{item}}" detailType='rent' wx:key="key"></list-item>
+    <no-data show="{{noData}}"></no-data>
+    <pull-get showMore="{{showMore}}" showEnd="{{showEnd}}"></pull-get>
+</view>

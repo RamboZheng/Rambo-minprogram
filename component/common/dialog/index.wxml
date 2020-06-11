@@ -1,0 +1,23 @@
+<!-- component/common/dialog/index.wxml -->
+<!-- 退出登录 -->
+<view wx:if="{{loginOut}}" class="shade">
+    <view class="box">
+        <view class="title">退出登录</view>
+        <view class="contenet">确定要退出登录吗</view>
+        <view class="btn">
+            <button class="no" bindtap="doSomething" data-class="no">取消</button>
+            <button class="yes" bindtap="doSomething" data-class="yes">确定</button>
+        </view>
+    </view>
+</view>
+<!-- 清空浏览记录 -->
+<view wx:if="{{clearFootprint}}" class="shade">
+    <view class="box">
+        <view class="title">清空浏览历史</view>
+        <view class="contenet">是否清空{{navTab}}历史记录</view>
+        <view class="btn">
+            <button class="no" bindtap="doSomething" data-class="no">取消</button>
+            <button class="yes" bindtap="doSomething" data-class="yes">确定</button>
+        </view>
+    </view>
+</view>

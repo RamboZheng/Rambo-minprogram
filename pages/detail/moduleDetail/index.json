@@ -1,0 +1,22 @@
+{
+    "usingComponents": {
+        "list-item": "/component/common/list-item/index",
+        "top-swiper": "/component/detail/top-swiper/index",
+        "flex-info": "/component/detail/flex-info/index",
+        "base-info": "/component/detail/base-info/index",
+        "list-block": "/component/detail/list-block/index",
+        "tabList-block": "/component/detail/tabList-block/index",
+        "abeam-list": "/component/detail/abeam-list/index",
+        "map-mode": "/component/detail/map-mode/index",
+        "foot-mode": "/component/detail/foot-mode/index",
+        "device-box": "/component/detail/device-box/index",
+        "intro-info": "/component/detail/intro-info/index",
+        "agent-invite": "/component/common/agent-invite/index",
+        "no-data": "/component/common/no-data/index"
+
+    },
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "房源详情",
+    "navigationBarTextStyle": "black"
+}

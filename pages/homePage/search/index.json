@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "select-component": "/component/common/select-component/index"
+  },
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "搜索",
+  "navigationBarTextStyle": "black"
+}

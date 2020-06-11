@@ -1,0 +1,64 @@
+<!-- index.wxml -->
+<view class="container">
+    <view class="nav">
+        <view wx:for="{{navTab}}" wx:key="index" data-idx="{{index}}" bindtap="currentTab" class="{{currentTab==index ? 'cur' : ''}}">
+            <text>{{item}}</text>
+        </view>
+    </view>
+    <view class='button-box' wx:if="{{info.type=='rent' || info.type=='flat' }}">
+        <view class="button {{info.type=='rent'?'bg-blue':''}}" data-type="rent" bindtap="getRentType">
+            房源
+        </view>
+        <view class="button {{info.type=='flat'?'bg-blue':''}}" data-type="flat" bindtap="getRentType">
+            公寓
+        </view>
+    </view>
+    <view class="swiper">
+        <swiper current="{{currentTab}}" bindchange="curChange">
+            <!-- 二手房 -->
+            <swiper-item>
+                <view>
+                    <block wx:if="{{houseList.length > 0}}">
+                        <list-item wx:for="{{houseList}}" listItem="{{item}}" detailType="{{info.type}}" wx:key="key"></list-item>
+                    </block>
+                    <block wx:else>
+                        <no-data class="c-no-data" show="{{true}}" pageType="{{'person'}}"></no-data>
+                    </block>
+                </view>
+            </swiper-item>
+            <!-- 小区 -->
+            <swiper-item>
+                <view>
+                    <block wx:if="{{gardenList.length > 0}}">
+                        <list-item wx:for="{{gardenList}}" listItem="{{item}}" price="{{item.price}}" detailType="{{info.type}}" wx:key="key"></list-item>
+                    </block>
+                    <block wx:else>
+                        <no-data class="c-no-data" show="{{true}}" pageType="{{'person'}}"></no-data>
+                    </block>
+                </view>
+            </swiper-item>
+            <!-- 租房/公寓 -->
+            <swiper-item>
+                <view style="padding-top:100rpx">
+                    <block wx:if="{{rentingList.length > 0}}">
+                        <list-item wx:for="{{rentingList}}" listItem="{{item}}" wx:key="key" detailType="{{info.type}}"></list-item>
+                    </block>
+                    <block wx:else>
+                        <no-data class="c-no-data" show="{{true}}" pageType="{{'person'}}"></no-data>
+                    </block>
+                </view>
+            </swiper-item>
+            <!-- 经纪人 -->
+            <swiper-item>
+                <view>
+                    <block wx:if="{{brokerList.length > 0}}">
+                        <list-item wx:for="{{brokerList}}" listItem="{{item}}" wx:key="key" detailType="{{info.type}}"></list-item>
+                    </block>
+                    <block wx:else>
+                        <no-data class="c-no-data" show="{{true}}" pageType="{{'person'}}"></no-data>
+                    </block>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

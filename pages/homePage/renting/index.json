@@ -1,0 +1,13 @@
+{
+    "usingComponents": {
+        "list-item": "/component/common/list-item/index",
+        "search-input": "/component/homePage/search-input/index",
+        "no-data": "/component/common/no-data/index",
+        "pull-get": "/component/homePage/pull-get/index",
+        "condition-item": "/component/homePage/condition-item/index"
+    },
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "租房",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark"
+}

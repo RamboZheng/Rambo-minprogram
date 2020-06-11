@@ -1,0 +1,912 @@
+// out:./index.wxss
+// compress:true
+// sourceMpa:true
+page {
+    padding-bottom: 160rpx;
+}
+
+
+.common {
+    width: 100%;
+}
+
+.content {
+    width: 92%;
+    margin: 0 auto;
+}
+
+.no-scroll {
+    height: 100%;
+    overflow-y: hidden;
+}
+
+
+.container.hide {
+    display: none;
+}
+
+
+
+.common-title {
+    font-size: 32rpx;
+    color: #2c2f37;
+    font-weight: 700;
+    margin-bottom: 30rpx;
+    display: block;
+}
+
+.box {
+    width: 100%;
+
+    .title-info {
+        padding-bottom: 30rpx;
+        width: 92%;
+        margin: 0 auto;
+
+        .name {
+            font-size: 36rpx;
+            color: #475266;
+            line-height: 50rpx;
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            font-weight: bold;
+        }
+
+        .gerden-pos {
+            font-weight: 400;
+            font-size: 28rpx;
+            color: #878d99;
+            margin-top: 20rpx;
+        }
+    }
+
+    .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .left {
+            text-align: left;
+
+
+            view {
+                font-size: 32rpx;
+                color: #e56a67;
+                display: block;
+                font-weight: bold;
+                white-space: nowrap;
+                margin-left: -4px;
+            }
+        }
+
+        .center {
+            text-align: center;
+
+            view {
+                font-size: 32rpx;
+                color: #e56a67;
+                display: block;
+                font-weight: bold;
+            }
+        }
+
+        .line {
+            width: 2rpx;
+            height: 40rpx;
+            background-color: #e3e5e6;
+        }
+
+        .right {
+            text-align: right;
+
+            view {
+                font-size: 32rpx;
+                color: #e56a67;
+                display: block;
+                font-weight: bold;
+            }
+        }
+
+        text {
+            font-size: 32rpx;
+            color: #e56a67;
+            display: block;
+            font-weight: bold;
+        }
+
+        .desc {
+            font-size: 26rpx;
+            color: #878d99;
+            margin-top: 12rpx;
+            font-weight: normal;
+        }
+    }
+
+    .option-group-style {
+        position: absolute;
+        top: 10rpx;
+        right: 30rpx;
+
+        .icon-collect {
+            width: 120rpx;
+            height: 120rpx;
+            border-radius: 50%;
+            background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-details-uncollected@2x.png?tdsourcetag=s_pcqq_aiomsg);
+            background-size: cover;
+            display: inline-block;
+            background-color: transparent;
+
+            &.on {
+                background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-details-collection@2x.png?tdsourcetag=s_pcqq_aiomsg);
+                background-size: cover;
+            }
+        }
+
+        .icon-share {
+            width: 120rpx;
+            height: 120rpx;
+            border-radius: 50%;
+            background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-details-share@2x.png?tdsourcetag=s_pcqq_aiomsg);
+            background-size: cover;
+            background-color: transparent;
+            display: inline-block;
+        }
+    }
+}
+
+.mode-type {
+    width: 100%;
+}
+
+.school-desc {
+    width: 92%;
+    padding: 60rpx 30rpx;
+    border-bottom: 2rpx solid #EDEFF0;
+
+    .title-item {
+        font-weight: 700;
+        font-size: 32rpx;
+        color: #2C2F37;
+
+        text {
+            font-weight: 400;
+            float: right;
+            font-size: 28rpx;
+            color: #1950BC;
+        }
+    }
+
+    .desc-text {
+        font-size: 28rpx;
+        color: #475266;
+        margin-top: 30rpx;
+        display: -webkit-box;
+        line-height: 40rpx;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 7;
+
+    }
+}
+
+.estate-base {
+    .list {
+        margin-bottom: 10rpx;
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20rpx;
+            line-height: 40rpx;
+            font-size: 28rpx;
+
+            .label {
+                color: #878d99;
+                margin-right: 20rpx;
+                width: 112rpx;
+                display: inline-block;
+                text-align: left;
+            }
+
+            .name {
+                display: inline-block;
+                width: calc(100% - 112rpx - 22rpx);
+                vertical-align: top;
+            }
+        }
+
+        .item-info {
+            width: 46%;
+
+
+        }
+
+        .w100 {
+            width: 100%;
+        }
+    }
+
+    .estate-tips {
+        font-size: 26rpx;
+        color: #cbcbcb;
+        line-height: 37rpx;
+    }
+
+    .estate-rule {
+        width: 85%;
+        margin: 0 auto;
+        margin-top: 30rpx;
+        background: #F2F3F5;
+        border-radius: 8rpx;
+        padding: 30rpx;
+        text-align: center;
+        color: #475266;
+    }
+}
+
+
+.block-housing {
+    .block-name {
+        font-size: 32rpx;
+        color: #2c2f37;
+        display: block;
+        margin-left: 4%;
+        padding-bottom: 30rpx;
+        border-bottom: 2rpx solid #edeff0;
+        font-weight: 700;
+    }
+
+    .all-type {
+        margin: 30rpx auto;
+        overflow-x: scroll;
+
+        .type {
+            display: flex;
+            align-items: center;
+        }
+
+        .type-name {
+            margin-right: 30rpx;
+            background: #f2f3f5;
+            border-radius: 4rpx;
+            font-size: 28rpx;
+            color: #878d99;
+            /* padding: 10rpx 40rpx; */
+            min-width: 150rpx;
+            line-height: 60rpx;
+            height: 60rpx;
+            text-align: center;
+
+            .on {
+                background: #6595f4;
+                color: #fff;
+            }
+        }
+    }
+
+    .all-type::-webkit-scrollbar {
+        display: none;
+    }
+
+}
+
+
+
+
+.block-housing .all-housing .chat-more {
+    margin-top: -1rpx;
+    background-color: #fff;
+    text-align: center;
+    font-size: 28rpx;
+    color: #6595f4;
+    padding-top: 30rpx;
+}
+
+
+
+
+.base {
+    .name {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+
+        text {
+            background: #f2f3f5;
+            border-radius: 8rpx;
+            font-size: 28rpx;
+            color: #878d99;
+            margin-right: 30rpx;
+            display: block;
+            padding: 10rpx 20rpx;
+            margin-bottom: 10rpx;
+        }
+    }
+
+    .introduce {
+        .title {
+            font-size: 32rpx;
+            color: #2c2f37;
+            font-weight: 700;
+            margin-bottom: 30rpx;
+        }
+
+        .list {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .item {
+            text-align: left;
+
+            view {
+                font-size: 28rpx;
+                color: #475266;
+                line-height: 40rpx;
+                margin-bottom: 20rpx;
+            }
+        }
+
+        .label {
+            margin-right: 20rpx;
+            color: #878d99;
+        }
+
+        .metro-info {
+            font-size: 28rpx;
+            color: #475266;
+        }
+    }
+}
+
+.map {
+    .place {
+        font-size: 28rpx;
+
+        .text {
+            color: #878d99;
+            vertical-align: top;
+            display: inline-block;
+        }
+
+        .monick {
+            margin-left: 20rpx;
+            color: #475266;
+            display: inline-block;
+            width: 88%;
+            line-height: 40rpx;
+        }
+    }
+
+    .address {
+        height: 356rpx;
+        margin-top: 30rpx;
+        position: relative;
+
+        map {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .lucency-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 6;
+    }
+
+    .lucency-content {
+        position: absolute;
+        top: 80rpx;
+        max-width: 80%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 34rpx;
+    }
+
+    .lucency-content .lucency-box {
+        position: relative;
+        display: inline-block;
+    }
+
+    .lucency-content .text {
+        width: auto;
+        background-color: #fff;
+        padding: 10rpx 10rpx;
+        border-radius: 10rpx;
+        font-size: 24rpx;
+        color: #475266;
+        line-height: 34rpx;
+    }
+
+    .lucency-content .icon-arrow {
+        width: 28rpx;
+        height: 10rpx;
+        margin: 0 auto;
+    }
+}
+
+.rent-house {
+    .rent-title {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .type {
+        width: 60%;
+        display: flex;
+        // justify-content: space-between;
+        justify-content: flex-end;
+        font-size: 28rpx;
+        color: #878d99;
+        font-weight: normal;
+
+        view {
+            margin-left: 30rpx;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+
+        .on {
+            color: #6595f4;
+        }
+    }
+
+    .similar-list {
+        .r-content {
+            .price {
+                margin-top: 19rpx;
+            }
+        }
+    }
+}
+
+.house-info {
+    padding-bottom: 20rpx;
+
+    .info-item {
+        display: flex;
+        justify-content: space-between;
+        // border-top: 2rpx solid #edeff0;
+        // padding-top: 34rpx;
+        padding-bottom: 40rpx;
+
+        .text {
+            width: 78%;
+            display: flex;
+            justify-content: space-between;
+            color: #878d99;
+
+            view {
+                min-width: 30rpx;
+
+                &:nth-child(3) {
+                    min-width: 140rpx;
+                    text-align: right;
+                }
+
+                &:last-child {
+                    min-width: 160rpx;
+                    text-align: right;
+                }
+            }
+        }
+
+        .chat {
+            color: #6595f4;
+        }
+
+        .chat.current {
+            color: #cbcbcb;
+        }
+    }
+}
+
+.allocation {
+    .facility {
+        display: flex;
+        flex-wrap: wrap;
+        // justify-content: space-between;
+
+        .list {
+            margin: 30rpx 19rpx 0 19rpx;
+            // margin-bottom: 30rpx;
+
+            .icon {
+                width: 100rpx;
+                height: 100rpx;
+            }
+
+            .name {
+                text-align: center;
+                color: #878d99;
+                font-size: 28rpx;
+                margin-top: 20rpx;
+            }
+
+            .name.no {
+                color: #cbcbcb;
+            }
+        }
+    }
+}
+
+.brand-blcok {
+    padding: 60rpx 30rpx;
+    position: relative;
+    border-top: 2rpx solid #EDEFF0;
+
+    .brand-pic {
+        width: 120rpx;
+        height: 120rpx;
+        float: left;
+        border-radius: 50%;
+        margin-right: 25rpx;
+    }
+
+    .brand-info {
+        padding: 10rpx 0;
+        font-size: 28rpx;
+
+        .brand-name {
+            color: #475266;
+
+        }
+
+        .brand-text {
+            margin-top: 10rpx;
+            color: #878D99;
+            width: 60%;
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            font-family: PingFangSC-Medium;
+
+        }
+    }
+
+    .brand-icon {
+        width: 18rpx;
+        height: 32rpx;
+        position: absolute;
+        top: 90rpx;
+        right: 30rpx;
+    }
+}
+
+.flat-rule {
+    .rule-item {
+        font-size: 28rpx;
+        color: #475266;
+        vertical-align: top;
+
+        .rule-text {
+            display: inline-block;
+            width: 78%;
+            margin-left: 20rpx;
+            font-family: PingFangSC-Regular;
+            font-size: 28rpx;
+            color: #878D99;
+        }
+    }
+}
+
+.house-des {
+    .intro-desc {
+        font-size: 28rpx;
+        color: #878d99;
+        text-align: justify;
+        vertical-align: top;
+        line-height: 40rpx;
+    }
+
+    .intro-part {
+        // margin-top: 30rpx;
+
+        .title {
+            font-size: 28rpx;
+            color: #475266;
+        }
+    }
+
+    .intro-list {
+        .li {
+            margin-top: 36rpx;
+            width: 100%;
+
+            /* .dot {
+        display: inline-block;
+        width: 16rpx;
+        height: 16rpx;
+        background-color: #b3ccff;
+        margin-right: 20rpx;
+        border-radius: 50%;
+      } */
+
+            .describe {
+                display: block;
+                // display: inline-block;
+                // width: 94%;
+                font-size: 28rpx;
+                color: #878d99;
+                text-align: justify;
+                vertical-align: top;
+                // line-height: 40rpx;
+                line-height: 36rpx;
+            }
+        }
+
+        .li:first-child {
+            // margin-top: 10rpx;
+            margin-top: 0;
+        }
+    }
+
+    .intro {
+        height: auto;
+    }
+
+    .intro-h {
+        height: 280rpx;
+        overflow: hidden;
+        /*自动隐藏文字*/
+        // text-overflow: ellipsis; /*文字隐藏后添加省略号*/
+        // white-space: nowrap; /*强制不换行*/
+        // color: #6699ff;
+    }
+
+    .show-all-text {
+        margin-top: 30rpx;
+        font-size: 28rpx;
+        color: #6595f4;
+        text-align: center;
+    }
+}
+
+.similar {
+    // margin-bottom: 60rpx;
+    // padding-bottom: 0;
+    // padding-bottom: 40rpx;
+    border-bottom: 0;
+    margin-bottom: 140rpx;
+    padding-bottom: 140rpx;
+
+    .common-title {
+        margin-bottom: 0;
+    }
+}
+
+.similar-list {
+    border-bottom: 1rpx solid #edeff0;
+    padding-top: 30rpx;
+    padding-bottom: 32rpx;
+    display: flex;
+
+    .cover {
+        width: 240rpx;
+        height: 180rpx;
+        border-radius: 8rpx;
+        margin-right: 30rpx;
+        background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/img-238pic-default@2x.png);
+        background-size: cover;
+    }
+
+    .r-content-h {
+        min-height: 134rpx;
+    }
+
+    .r-content {
+        .name {
+            font-size: 28rpx;
+            color: #475266;
+        }
+
+        .size,
+        .dist {
+            font-size: 24rpx;
+            color: #878d99;
+        }
+
+        .tags,
+        .price,
+        .size,
+        .dist {
+            margin-top: 10rpx;
+        }
+
+        .tags {
+            display: flex;
+        }
+
+        .tags view {
+            font-size: 20rpx;
+            color: #878d99;
+            padding: 6rpx 10rpx;
+            background: #edeff0;
+            border-radius: 4rpx;
+            margin-right: 10rpx;
+        }
+
+        .price {
+            font-size: 28rpx;
+            color: #e56a67;
+            font-weight: bold;
+        }
+
+        .size,
+        .price {
+            margin-left: -4rpx;
+        }
+    }
+}
+
+.similar-list:last-child {
+    border-bottom: 0;
+}
+
+.fix-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 148rpx;
+    background-color: #f2f3f5;
+    border-top: 2rpx solid #edeff0;
+    z-index: 9;
+
+    .action {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 14rpx;
+    }
+
+    .collect {
+        margin-left: 25rpx;
+        color: #878d99;
+        width: 80rpx;
+        text-align: center;
+    }
+
+    .icon-collect {
+        width: 40rpx;
+        height: 40rpx;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        background-color: transparent;
+    }
+
+    .share {
+        color: #878d99;
+    }
+
+    .icon-share {
+        display: block;
+        width: 40rpx;
+        height: 40rpx;
+        // background-image: url(https://cdn-1.baidu.com/baidu-miniprogram/static/imgs/ic-details-share@2x.png?tdsourcetag=s_pcqq_aiomsg);
+        background-size: cover;
+        vertical-align: top;
+        margin: 0 auto;
+        padding: 0;
+        border-radius: 0;
+        border: 0;
+        background-color: transparent;
+    }
+
+    .text {
+        margin-top: 8rpx;
+    }
+
+    .btn-call {
+        width: 300rpx;
+        height: 100rpx;
+        border-radius: 50rpx;
+        background-color: #6595f4;
+        color: #fff;
+        font-size: 32rpx;
+        text-align: center;
+        line-height: 100rpx;
+
+        &.no-click {
+            background: #ccc;
+        }
+    }
+
+    &.hide {
+        display: none;
+    }
+
+    .content-info {
+        display: flex;
+        align-items: center;
+
+        .avatar {
+            width: 100rpx;
+            height: 100rpx;
+            border-radius: 50%;
+            // border: 5rpx solid transparent;
+            overflow: hidden;
+            margin: 0 5rpx;
+
+            image {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+        }
+
+        .people {
+            margin-left: 20rpx;
+
+            .user {
+                font-size: 32rpx;
+                color: #475266;
+                font-weight: bold;
+            }
+
+            .date {
+                font-size: 28rpx;
+                color: #878d99;
+                margin-top: 10rpx;
+                line-height: 40rpx;
+                max-width: 320rpx;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
+
+button::after {
+    border: none;
+}
+
+.button-hover {
+    // background-color: #fff;
+    background-color: transparent;
+}
+
+.fix-goback {
+    position: fixed;
+    bottom: 210rpx;
+    right: 30rpx;
+    width: 140rpx;
+    height: 140rpx;
+    z-index: 12;
+
+    .icon-home {
+        width: 140rpx;
+        height: 140rpx;
+    }
+
+    &.hide {
+        display: none;
+    }
+}
+
+.chat-more {
+    color: #6595f4;
+    text-align: center;
+}
+
+.last-box-map {
+    margin-bottom: 155rpx;
+    padding-bottom: 155rpx;
+}
+
+.angent-dl .dt .avatar {
+    border: 5rpx solid #edeff0;
+}

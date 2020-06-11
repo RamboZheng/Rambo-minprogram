@@ -1,0 +1,15 @@
+{
+    "usingComponents": {
+        "comment-box": "/component/detail/comment-box/index",
+        "list-item": "/component/common/list-item/index",
+        "ec-canvas": "/component/common/ec-canvas/ec-canvas",
+        "agent-invite": "/component/common/agent-invite/index",
+        "chat-img": "/component/common/showImg/index",
+        "foot-mode": "/component/detail/foot-mode/index",
+        "no-data": "/component/common/no-data/index"
+    },
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "房源详情",
+    "navigationBarTextStyle": "black"
+}

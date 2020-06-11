@@ -1,0 +1,29 @@
+.broker-item {
+  width: 85%;
+  margin: 0 auto;
+  padding: 30rpx;
+  background-color: #fff;
+  display: flex;
+  border-bottom: 2rpx solid #E3E5E6;
+}
+.broker-item .head-pic {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.broker-item .broker-text {
+  font-size: 32rpx;
+  color: #475266;
+  width: 70%;
+  margin-left: 20rpx;
+}
+.broker-item .broker-text .broker-company {
+  font-size: 28rpx;
+  color: #878D99;
+  margin-top: 20rpx;
+}
+.broker-item .phone {
+  width: 64rpx;
+  height: 64rpx;
+  margin-top: 2%;
+}
